@@ -4,7 +4,7 @@ import { FC } from "react";
 
 import clsx from "clsx";
 import { Container } from "@/src/shared/components/ui/container";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 import { withClientOnly } from "@/src/shared/lib/withClientOnly";
 
 type DictionaryPageProps = {

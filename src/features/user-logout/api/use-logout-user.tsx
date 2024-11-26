@@ -1,6 +1,6 @@
 import $api from "@/src/shared/lib/api";
 import { ACCESS_TOKEN } from "@/src/shared/lib/const";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { serialize } from "cookie";
 

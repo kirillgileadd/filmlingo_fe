@@ -23,7 +23,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/src/shared/components/ui/tabs";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 import clsx from "clsx";
 
 const enum TabsVariants {

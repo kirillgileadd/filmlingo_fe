@@ -79,7 +79,7 @@ export const usePlayerCore = (
         });
       }
     }
-  }, [src]);
+  }, [src, videoId]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -133,7 +133,7 @@ export const usePlayerCore = (
   };
 
   const togglePlayPause = (event: MouseEvent<HTMLElement>) => {
-    if (event.target instanceof HTMLElement) {
+    if (event.target instanceof Element) {
       const isControlsClick =
         event.target.closest(".controls") &&
         !event.target.closest(".play-button");

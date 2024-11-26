@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { LoginByEmailReqData, LoginByEmailRes } from "../model/types";
 import { AxiosError } from "axios";
 import { ACCESS_TOKEN } from "@/src/shared/lib/const";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 
 export const useLoginByEmail = () => {
   const { setAuth } = useAuth();

@@ -1,6 +1,7 @@
+import { MutableRefObject } from "react";
+
 export interface PlayerKeyboadrControlRepository {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  videoRef: any;
+  videoRef: MutableRefObject<HTMLVideoElement | null>;
   setCurrentTime: (time: number) => void;
   hideControls: () => void;
   setVolume: (voulme: number) => void;
@@ -8,8 +9,7 @@ export interface PlayerKeyboadrControlRepository {
 }
 
 export interface PlayerSaveTimeToStorageRepository {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  videoRef: any;
+  videoRef: MutableRefObject<HTMLVideoElement | null>;
   videoId: number;
   isLoaded: boolean;
   setCurrentTime: (time: number) => void;

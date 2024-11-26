@@ -8,7 +8,7 @@ import { useStepper } from "@/src/shared/lib/useStepper";
 import { ForgotPasswordBody } from "../model/types";
 import { Input } from "@/src/shared/components/ui/input";
 import { Button } from "@/src/shared/components/ui/button";
-import { useForgotPassword } from "../api/useForgotPassword";
+import { useForgotPassword } from "../api/use-forgot-password";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 

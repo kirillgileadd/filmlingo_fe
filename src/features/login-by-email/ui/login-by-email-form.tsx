@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { LoginByEmailFormData } from "../model/types";
 import { Loader2 } from "lucide-react";
 import { PasswordInput } from "@/src/shared/components/ui/password-input";
-import { useLoginByEmail } from "../api/useLoginByEmail";
+import { useLoginByEmail } from "../api/use-login-by-email";
 
 type LoginByEmailFormProps = {
   className?: string;

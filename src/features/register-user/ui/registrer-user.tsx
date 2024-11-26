@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import clsx from "clsx";
 import { RegisterUserForm } from "./register-user-form";
-import { useRegisterUser } from "../api/useRegisterUser";
+import { useRegisterUser } from "../api/use-register-user";
 import { useStepper } from "@/src/shared/lib/useStepper";
 import { RegisterUserReq } from "../model/types";
 import { ConfirmEmail } from "./confirm-email";

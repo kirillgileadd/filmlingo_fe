@@ -1,5 +1,5 @@
-export { useGetSubtitlesDataQuery } from "./api/useGetSubtitlesDataQuery";
-export { useGetYoutubeSubtitleQuery } from "./api/useGetYouTubeSubtitleQuery";
+export { useGetSubtitlesDataQuery } from "./api/use-get-subtitles-data-query";
+export { useGetYoutubeSubtitleQuery } from "./api/use-get-youtube-subtitle-query";
 
 export type {
   SubtitleJST,

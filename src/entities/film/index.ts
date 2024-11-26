@@ -1,6 +1,6 @@
 export { FilmCard } from "./ui/film-card";
 
-export { useGetFilmsQuery } from "./api/useGetFilmsQuery";
+export { useGetFilmsQuery } from "./api/use-get-films-query";
 
 export type {
   SubtitleT,

@@ -11,7 +11,7 @@ import {
 } from "@/src/shared/components/ui/popover";
 import { SettingsItem } from "@/src/shared/components/ui/settings-item";
 import { UserAvatar } from "@/src/shared/components/ui/user-avatar";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 import { useModal } from "@/src/shared/lib/useModal";
 import { BookIcon, Loader2, LogOut, Youtube } from "lucide-react";
 import Link from "next/link";

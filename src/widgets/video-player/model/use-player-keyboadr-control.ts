@@ -67,5 +67,5 @@ export const usePlayerKeyboadrControl = (
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [repository.setIsPlaying, repository.setCurrentTime, repository.videoRef]);
+  }, [repository.setIsPlaying, repository.setCurrentTime, repository.videoRef, repository]);
 };

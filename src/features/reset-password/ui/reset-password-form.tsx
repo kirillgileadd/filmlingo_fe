@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useResetPassword } from "../api/useResetPassword";
+import { useResetPassword } from "../api/use-reset-password";
 import { ResetPasswordFormDataT } from "../model/types";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";

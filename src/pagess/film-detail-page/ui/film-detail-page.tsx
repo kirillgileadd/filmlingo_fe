@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-import { useGetFilmDetailQuery } from "@/src/entities/film/api/useGetFilmDetailQuery";
+import { useGetFilmDetailQuery } from "@/src/entities/film/api/use-get-film-detail-query";
 import { Button } from "@/src/shared/components/ui/button";
 import { Container } from "@/src/shared/components/ui/container";
 import { loaderIMG } from "@/src/shared/lib/imgLoader";

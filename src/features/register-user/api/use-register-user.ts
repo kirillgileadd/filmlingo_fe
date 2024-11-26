@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { RegisterUserReq, RegisterUserRes } from "../model/types";
 import { ACCESS_TOKEN } from "@/src/shared/lib/const";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 
 export const useRegisterUser = () => {
   const { setAuth } = useAuth();

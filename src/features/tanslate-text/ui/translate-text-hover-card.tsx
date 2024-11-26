@@ -9,7 +9,7 @@ import {
 import { useDebounce } from "@/src/shared/lib/useDebounce";
 import { useModal } from "@/src/shared/lib/useModal";
 import { Loader2Icon } from "lucide-react";
-import { useTranslateTextMutation } from "../api/useTranslateTextMutation";
+import { useTranslateTextMutation } from "../api/use-translate-text-mutation";
 
 type TranslateTextHoverCardProps = {
   word: string;

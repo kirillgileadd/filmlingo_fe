@@ -1,1 +1,1 @@
-export { useLogoutUser } from "./api/useLogoutUser";
+export { useLogoutUser } from "./api/use-logout-user";

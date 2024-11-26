@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import clsx from "clsx";
-import { useAuth } from "@/src/shared/lib/useAuth";
+import { useAuth } from "@/src/shared/lib/auth";
 import { useGetCurrentUser } from "@/src/entities/user";
 import { Container } from "@/src/shared/components/ui/container";
 import { Button } from "@/src/shared/components/ui/button";
@@ -15,8 +15,6 @@ export const ConfirmEmail: FC<ConfirmEmailProps> = ({ className }) => {
   const modal = useModal(true);
   const { isAuth } = useAuth();
   const userQuery = useGetCurrentUser(!!isAuth);
-
-  console.log(userQuery.data);
 
   if (userQuery.data && !userQuery.data?.isActivated && modal.isOpen)
     return (

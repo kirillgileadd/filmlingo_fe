@@ -7,10 +7,10 @@ import { TranslateTextHoverCard } from "@/src/features/tanslate-text";
 import { Slider } from "@/src/shared/components/ui/slider";
 import { Loader2, XIcon } from "lucide-react";
 import React, { useState } from "react";
-import { usePlaerControls } from "../model/usePlayerControls";
-import { usePlayerCore } from "../model/usePlayerCore";
-import { usePlayerKeyboadrControl } from "../model/usePlayerKeyboadrControl";
-import { useSetTimeToStorage } from "../model/useSetTimeToStorage";
+import { usePlaerControls } from "../model/use-player-controls";
+import { usePlayerCore } from "../model/use-player-core";
+import { usePlayerKeyboadrControl } from "../model/use-player-keyboadr-control";
+import { useSetTimeToStorage } from "../model/use-set-time-to-storage";
 import { ChangeVolume } from "./change-volume";
 import { PlayButton } from "./play-button";
 import { PlayerControls } from "./player-controls";
@@ -37,8 +37,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const videoVariant = useChangeVideoVariant(videoVariants);
   const subtitlesQuery = useGetSubtitlesDataQuery(subtitles);
 
-  const core = usePlayerCore(videoId, videoVariant.currentVideoVariant);
   const contorls = usePlaerControls();
+  const core = usePlayerCore(videoId, videoVariant.currentVideoVariant);
 
   useSetTimeToStorage({
     videoId,
@@ -85,6 +85,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           controls={false}
           className="bg-black aspect-video w-full video"
           onClick={core.togglePlayPause}
+          onDoubleClick={core.toggleFullscreen}
         />
         {core.isVideoLoading && (
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">

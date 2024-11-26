@@ -1,17 +1,8 @@
 "use client";
 
+import { AuthContext } from "@/src/shared/lib/auth";
 import { getAccessToken } from "@/src/shared/utils/getAccessToken";
-import { createContext, useEffect, useState } from "react";
-
-interface AuthContextProps {
-  isAuth: boolean;
-  setAuth: (value: boolean) => void;
-}
-
-export const AuthContext = createContext<AuthContextProps>({
-  isAuth: false,
-  setAuth: () => {},
-});
+import { useEffect, useState } from "react";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const accessToken = getAccessToken();
