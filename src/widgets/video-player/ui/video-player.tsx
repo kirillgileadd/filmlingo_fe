@@ -17,6 +17,7 @@ import { PlayerControls } from "./player-controls";
 import { PlayerFullscreenButton } from "./player-fullscreen-button";
 import { PlayerSettings } from "./player-settings";
 import { PlayerTimeDuration } from "./player-time-duration";
+import { AddWordButton } from "@/src/features/add-word";
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];
@@ -105,6 +106,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               key={index}
               word={word}
               fullPhrase={fullPhrase}
+              renderAddWord={({ phrase, translation, original }) => (
+                <AddWordButton
+                  phrase={phrase}
+                  translation={translation}
+                  original={original}
+                />
+              )}
             >
               {word}{" "}
             </TranslateTextHoverCard>

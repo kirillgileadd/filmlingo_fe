@@ -15,12 +15,18 @@ type TranslateTextHoverCardProps = {
   word: string;
   fullPhrase: string;
   children: ReactNode;
+  renderAddWord: (params: {
+    original: string;
+    phrase: string;
+    translation: string;
+  }) => ReactNode;
 };
 
 export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   word,
   fullPhrase,
   children,
+  renderAddWord,
 }) => {
   const modal = useModal();
   const [value, setValue] = useState("");
@@ -74,16 +80,25 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
       </HoverCardTrigger>
       <HoverCardContent side="top" sideOffset={20} className="w-120">
         <div className="flex flex-col ">
-          {translateMutation.isPending && modal.isOpen ? (
-            <Loader2Icon className="animate-spin mb-2" />
-          ) : (
-            <div className="mb-2">
-              <p className="text-2xl">{currentWordTranslate}</p>
-              {currentPhraseTranslate && (
-                <p className="text-sm mt-1">{currentPhraseTranslate}</p>
-              )}
+          <div className="flex justify-between gap-x-2 mb-3">
+            {translateMutation.isPending && modal.isOpen ? (
+              <Loader2Icon className="animate-spin mb-2" />
+            ) : (
+              <div className="mb-2">
+                <p className="text-2xl">{currentWordTranslate}</p>
+                {currentPhraseTranslate && (
+                  <p className="text-sm mt-1">{currentPhraseTranslate}</p>
+                )}
+              </div>
+            )}
+            <div>
+              {renderAddWord({
+                phrase: fullPhrase,
+                original: currentWordTranslate,
+                translation: currentWordTranslate,
+              })}
             </div>
-          )}
+          </div>
           <Button onClick={translateAllPhrase} size="sm" className="w-fit">
             Перевести всю фразу
           </Button>
