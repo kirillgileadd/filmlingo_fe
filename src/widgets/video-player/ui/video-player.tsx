@@ -18,6 +18,7 @@ import { PlayerFullscreenButton } from "./player-fullscreen-button";
 import { PlayerSettings } from "./player-settings";
 import { PlayerTimeDuration } from "./player-time-duration";
 import { AddWordButton } from "@/src/features/add-word";
+import { AuthModal } from "../../auth";
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];
@@ -111,6 +112,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                   phrase={phrase}
                   translation={translation}
                   original={original}
+                  renderAuthForm={(trigger) => <AuthModal trigger={trigger} />}
                 />
               )}
             >

@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 
 import { ForgotPassword } from "@/src/features/forgot-password";
 import { LoginByEmail } from "@/src/features/login-by-email";
@@ -34,9 +34,10 @@ const enum TabsVariants {
 
 type AuthModalProps = {
   className?: string;
+  trigger?: ReactNode;
 };
 
-export const AuthModal: FC<AuthModalProps> = ({ className }) => {
+export const AuthModal: FC<AuthModalProps> = ({ className, trigger }) => {
   const { isAuth } = useAuth();
   const [tabValue, setTabValue] = useState<TabsVariants | string>(
     TabsVariants.LOGIN
@@ -48,7 +49,7 @@ export const AuthModal: FC<AuthModalProps> = ({ className }) => {
     <div className={clsx("", className)}>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>Войти</Button>
+          {trigger ?? <Button>Войти</Button>}
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
