@@ -5,3 +5,15 @@ export type WordT = {
   phrase?: string | null;
   creationAt: string;
 };
+
+export type GetUserWorsParamsT = {
+  page: number;
+  pageSize: number;
+};
+
+export type GetUserWorsResT = {
+  rows: WordT[];
+  totalCount: number;
+  currentPage: number;
+  totalPages: number;
+};

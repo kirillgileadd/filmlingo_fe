@@ -94,7 +94,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
             <div>
               {renderAddWord({
                 phrase: fullPhrase,
-                original: currentWordTranslate,
+                original: debounceWordTranslate,
                 translation: currentWordTranslate,
               })}
             </div>

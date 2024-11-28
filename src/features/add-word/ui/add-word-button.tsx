@@ -31,19 +31,21 @@ export const AddWordButton: FC<AddWordButtonProps> = ({
       <Button
         variant="secondary"
         size="icon"
-        onClick={canAddWord ? handleAddWord : undefined}
+        onClick={handleAddWord}
         className={clsx("", className)}
       >
-        {addWordMutation.isPending && <Loader2 className="animate-spin" />}
-        {addWordMutation.isSuccess && <BookCheckIcon />}
-        {addWordMutation.isIdle && <BookIcon />}
+        {addWordMutation.isPending ? (
+          <Loader2 className="animate-spin" />
+        ) : addWordMutation.isSuccess ? (
+          <BookCheckIcon />
+        ) : (
+          <BookIcon />
+        )}
       </Button>
     );
   }, [
-    addWordMutation.isIdle,
     addWordMutation.isPending,
     addWordMutation.isSuccess,
-    canAddWord,
     className,
     handleAddWord,
   ]);

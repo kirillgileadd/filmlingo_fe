@@ -12,7 +12,8 @@ export const useCanAddWord = () => {
 };
 
 export const useValidateAddWord = () => {
-  const cleanWord = (word: string) => word.replace(/[^a-zA-Zа-яА-ЯёЁ]/g, "");
+  const cleanWord = (word: string) =>
+    word.replace(/[^a-zA-Zа-яА-ЯёЁ]/g, "").toLocaleLowerCase();
 
   return (body: Partial<AddWordBodyT>) => {
     const original = body.original ? cleanWord(body.original) : "";

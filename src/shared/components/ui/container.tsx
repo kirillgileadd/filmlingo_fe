@@ -8,6 +8,7 @@ const containerVariants = cva("", {
   variants: {
     size: {
       default: "px-24",
+      small: "px-24 max-w-7xl",
       sm: "px-3",
       lg: "px-8",
     },
