@@ -12,6 +12,9 @@ import { DictionaryPageError } from "./dictionary-page-error";
 import { DictionaryPageNoAuth } from "./dictionary-page-no-auth";
 import { DictionaryPageSkeleton } from "./dictionary-page-skeleton";
 
+import styles from "./dictionary-page.module.scss";
+import { Button } from "@/src/shared/components/ui/button";
+
 type DictionaryPageProps = {
   className?: string;
 };
@@ -40,22 +43,22 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
   return (
     <div className={clsx("", className)}>
       <Container className="m-auto" size="small">
-        <h3 className="text-3xl mb-4">Мой словарик</h3>
-        <table className="w-full">
+        <div className="flex justify-between mb-4">
+          <h3 className="text-3xl">Мой словарик</h3>
+          <Button size="lg">Тренировать слова</Button>
+        </div>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Слово</th>
               <th>Фраза</th>
+              <th>Дата добавления</th>
               <th>Удалить</th>
             </tr>
           </thead>
           <tbody>
             {wordsQuery.data?.rows.map((word) => (
-              <WordCard
-                key={word.id}
-                word={word}
-                removeUserWord={() => <div>rem</div>}
-              />
+              <WordCard key={word.id} word={word} />
             ))}
           </tbody>
         </table>

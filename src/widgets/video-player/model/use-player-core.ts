@@ -21,7 +21,7 @@ export const usePlayerCore = (
   const [isVideoLoading, setIsVideoLoading] = useState(false);
 
   const src = videoVariant
-    ? process.env.NEXT_PUBLIC_API_URL + videoVariant?.videoPath
+    ? process.env.NEXT_PUBLIC_STATIC + videoVariant?.videoPath
     : null;
 
   useEffect(() => {

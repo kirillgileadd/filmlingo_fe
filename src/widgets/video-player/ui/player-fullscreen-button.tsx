@@ -20,9 +20,9 @@ export const PlayerFullscreenButton: FC<PlayerFullscreenButtonProps> = ({
       aria-label={isFullscreen ? "Exit fullscreen" : "Go fullscreen"}
     >
       {isFullscreen ? (
-        <Minimize className="text-primary" size={24} />
+        <Minimize className="text-foreground" size={24} />
       ) : (
-        <Maximize className="text-primary" size={24} />
+        <Maximize className="text-foreground" size={24} />
       )}
     </button>
   );

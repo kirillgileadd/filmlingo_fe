@@ -1,0 +1,17 @@
+.table {
+  @apply w-full border-separate mb-4;
+
+  th,
+  td {
+    @apply text-left font-normal p-2 border-b;
+  }
+
+  th {
+    @apply font-normal;
+  }
+
+  tr > th:first-child,
+  tr > td:first-child {
+    @apply w-[400px];
+  }
+}

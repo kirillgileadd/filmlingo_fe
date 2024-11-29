@@ -68,7 +68,7 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
   return (
     <Popover open={settingsOpen.isOpen} onOpenChange={settingsOpen.toggleModal}>
       <PopoverTrigger className="p-3">
-        <SettingsIcon className="text-primary" size={24} />
+        <SettingsIcon className="text-foreground" size={24} />
       </PopoverTrigger>
       <PopoverContent sideOffset={10} side="top" className="mr-6 ">
         {menuItem ? (

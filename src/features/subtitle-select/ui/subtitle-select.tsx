@@ -30,7 +30,7 @@ export const SubtitleSelect: FC<SubtitleSelectProps> = ({
   return (
     <Popover open={modal.isOpen} onOpenChange={modal.toggleModal}>
       <PopoverTrigger className="p-3">
-        <SubtitlesIcon className="text-primary" size={28} />
+        <SubtitlesIcon className="text-foreground" size={28} />
       </PopoverTrigger>
       <PopoverContent sideOffset={10} side="top" className="mr-6 ">
         <div>

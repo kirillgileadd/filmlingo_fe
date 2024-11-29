@@ -34,9 +34,9 @@ export const ChangeVolume: FC<ChangeVolumeProps> = ({
             aria-label={isMuted ? "Unmute" : "Mute"}
           >
             {isMuted || volume === 0 ? (
-              <VolumeX className="text-primary" size={24} />
+              <VolumeX className="text-foreground" size={24} />
             ) : (
-              <Volume2 className="text-primary" size={24} />
+              <Volume2 className="text-foreground" size={24} />
             )}
           </button>
         </HoverCardTrigger>

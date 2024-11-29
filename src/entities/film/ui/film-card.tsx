@@ -19,12 +19,12 @@ export const FilmCard: FC<FilmCardProps> = ({ className, film }) => {
       )}
       style={{
         backgroundImage: `url("${
-          process.env.NEXT_PUBLIC_API_URL + film.posterPath
+          process.env.NEXT_PUBLIC_STATIC + film.posterPath
         }")`,
       }}
     >
       <div className="flex items-end bg-[hsl(var(--background)/0.8)] rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300 h-full p-4">
-        <p className="font-medium text-primary">{film.title}</p>
+        <p className="font-medium text-foreground">{film.title}</p>
       </div>
     </Link>
   );

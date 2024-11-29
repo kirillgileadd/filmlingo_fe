@@ -32,8 +32,8 @@ export default function Providers({ children }: { children: ReactNode }) {
         toastOptions={{
           style: {
             border: "hsl(var(--background))",
-            color: "var(--primary)",
-            background: "hsl(var(--primary-foreground))",
+            color: "var(--foreground)",
+            background: "hsl(var(--card))",
           },
         }}
       />

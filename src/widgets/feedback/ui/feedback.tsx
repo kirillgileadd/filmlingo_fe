@@ -15,7 +15,7 @@ export const Feedback: FC<FeedbackProps> = ({ className }) => {
   return (
     <div className={clsx("", className)}>
       <Container>
-        <div className="relative flex justify-between items-center w-full border p-4 rounded-md bg-primary-foreground">
+        <div className="relative flex justify-between items-center w-full border p-4 rounded-md bg-card">
           <div>
             <h4 className="text-xl mb-2 font-semibold">
               Телеграм бот для фитбека

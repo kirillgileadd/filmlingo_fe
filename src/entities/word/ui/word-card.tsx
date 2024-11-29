@@ -1,19 +1,32 @@
-import { FC, ReactNode } from "react";
+import { FC, useMemo } from "react";
 
 import clsx from "clsx";
+import dayjs from "dayjs";
 import { WordT } from "../model/types";
+import { RemoveUserWordButton } from "./remove-user-word-button";
 
 type WordCardProps = {
   className?: string;
   word: WordT;
-  removeUserWord: (wordId: number) => ReactNode;
 };
 
-export const WordCard: FC<WordCardProps> = ({
-  className,
-  word,
-  removeUserWord,
-}) => {
+export const WordCard: FC<WordCardProps> = ({ className, word }) => {
+  const highlightedPhrase = useMemo(() => {
+    const regex = new RegExp(`(${word.original})`, "gi");
+
+    const parts = word.phrase?.split(regex);
+
+    return parts?.map((part, index) =>
+      regex.test(part) ? (
+        <span key={index} className="font-bold text-primary">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  }, [word.phrase, word.original]);
+
   return (
     <tr className={clsx("", className)}>
       <td>
@@ -24,9 +37,11 @@ export const WordCard: FC<WordCardProps> = ({
           </p>
         </div>
       </td>
-      <td className="font-medium">{word.phrase}</td>
-      <td>{word.creationAt}</td>
-      <td>{removeUserWord(word.id)}</td>
+      <td className="font-medium">{highlightedPhrase}</td>
+      <td>{dayjs(word.creationAt).format("DD.MM.YYYY")}</td>
+      <td>
+        <RemoveUserWordButton wordId={word.id} />
+      </td>
     </tr>
   );
 };

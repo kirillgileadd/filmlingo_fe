@@ -12,17 +12,20 @@ export const DictionaryPageSkeleton: FC<DictionaryPageSkeletonProps> = ({
 }) => {
   return (
     <div className={clsx("", className)}>
-      <Container>
+      <Container className="m-auto" size="small">
         <div className="flex flex-col">
-          <Skeleton className="w-[300px] h-[150px] rounded-xl mb-16" />
-          <div className="flex gap-x-4 items-center mb-10">
-            <Skeleton className="h-7 w-[100px]" />
-            <Skeleton className="h-7 w-[100px]" />
-            <Skeleton className="h-7 w-[100px]" />
-            <Skeleton className="h-7 w-[100px]" />
+          <Skeleton className="w-full h-[44px] rounded-xl mb-4" />
+          <div className="flex flex-col gap-y-1">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
           </div>
-          <Skeleton className="h-16 max-w-xl mb-10" />
-          <Skeleton className="h-16 w-[300px]" />
         </div>
       </Container>
     </div>

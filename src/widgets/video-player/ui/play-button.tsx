@@ -20,9 +20,9 @@ export const PlayButton: FC<PlayButtonProps> = ({
       aria-label={isPlaying ? "Pause" : "Play"}
     >
       {isPlaying ? (
-        <Pause className="text-primary" size={24} />
+        <Pause className="text-foreground" size={24} />
       ) : (
-        <PlayIcon className="text-primary" size={24} />
+        <PlayIcon className="text-foreground" size={24} />
       )}
     </button>
   );

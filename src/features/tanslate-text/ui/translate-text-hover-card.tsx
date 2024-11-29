@@ -72,7 +72,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
     >
       <HoverCardTrigger asChild={true}>
         <span
-          className="text-3xl px-1 hover:bg-primary hover:text-secondary rounded inline-block relative"
+          className="text-3xl px-1 hover:bg-foreground hover:text-secondary rounded inline-block relative"
           onMouseEnter={() => handleTranslate(word)}
         >
           {children}

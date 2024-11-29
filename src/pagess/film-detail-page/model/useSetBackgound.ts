@@ -2,9 +2,9 @@ import { useEffect } from "react";
 
 export const useSetBackground = (bigPosterPath?: string) => {
   useEffect(() => {
-    if (!process.env.NEXT_PUBLIC_API_URL || !bigPosterPath) return;
+    if (!process.env.NEXT_PUBLIC_STATIC || !bigPosterPath) return;
 
-    const backgroundImage = process.env.NEXT_PUBLIC_API_URL + bigPosterPath; // Замените на путь к вашему изображению
+    const backgroundImage = process.env.NEXT_PUBLIC_STATIC + bigPosterPath; // Замените на путь к вашему изображению
 
     console.log(backgroundImage, "backgroundImage");
 

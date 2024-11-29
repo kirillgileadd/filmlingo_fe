@@ -18,7 +18,7 @@ export const useGetSubtitlesDataQuery = (subtitles: SubtitleT[]) => {
 
       const promises = subtitles.map(async (sub) => {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}${sub.path}`
+          `${process.env.NEXT_PUBLIC_STATIC}${sub.path}`
         );
 
         return {
