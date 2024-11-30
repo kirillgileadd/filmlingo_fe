@@ -19,6 +19,8 @@ import { DictionaryPageSkeleton } from "./dictionary-page-skeleton";
 
 import styles from "./dictionary-page.module.scss";
 import { Button } from "@/src/shared/components/ui/button";
+import Link from "next/link";
+import { ROUTES } from "@/src/shared/lib/const";
 
 type DictionaryPageProps = {
   className?: string;
@@ -59,7 +61,9 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
           <h3 className="text-3xl">Мой словарик</h3>
           <div className="flex gap-x-4">
             <SortWordsSelect value={sort} onChange={setSort} />
-            <Button>Тренировать слова</Button>
+            <Link href={ROUTES.LEARNING}>
+              <Button>Тренировать слова</Button>
+            </Link>
           </div>
         </div>
         <table className={styles.table}>

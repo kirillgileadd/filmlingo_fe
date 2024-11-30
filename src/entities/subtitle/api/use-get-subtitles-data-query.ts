@@ -4,9 +4,11 @@ import axios, { AxiosError } from "axios";
 import srtParser2 from "srt-parser-2";
 import { SubtitleT } from "../../film/model/types";
 import { ParsedSubtitleT } from "../model/types";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export const useGetSubtitlesDataQuery = (subtitles: SubtitleT[]) => {
-  return useQuery<ParsedSubtitleT[], AxiosError>({
+  const query = useQuery<ParsedSubtitleT[], AxiosError>({
     queryKey: [QUERY_KEYS.SUBTITLE_BY_PATH],
     queryFn: async () => {
       const parser = new srtParser2();
@@ -34,4 +36,12 @@ export const useGetSubtitlesDataQuery = (subtitles: SubtitleT[]) => {
       return result;
     },
   });
+
+  useEffect(() => {
+    if (query.error) {
+      toast.error("Не удалось подгрузить субтитры :(");
+    }
+  }, [query.error]);
+
+  return query;
 };

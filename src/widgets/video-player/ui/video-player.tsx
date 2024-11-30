@@ -1,5 +1,6 @@
 import { SubtitleT, VideoVariantT } from "@/src/entities/film/model/types";
 import { useGetSubtitlesDataQuery } from "@/src/entities/subtitle";
+import { AddWordButton } from "@/src/features/add-word";
 import { useChangeVideoVariant } from "@/src/features/change-video-quality";
 import { SubtitleSelect } from "@/src/features/subtitle-select/ui/subtitle-select";
 import { SubtitlesList } from "@/src/features/subtitles-list";
@@ -7,6 +8,7 @@ import { TranslateTextHoverCard } from "@/src/features/tanslate-text";
 import { Slider } from "@/src/shared/components/ui/slider";
 import { Loader2, XIcon } from "lucide-react";
 import React, { useState } from "react";
+import { AuthModal } from "../../auth";
 import { usePlaerControls } from "../model/use-player-controls";
 import { usePlayerCore } from "../model/use-player-core";
 import { usePlayerKeyboadrControl } from "../model/use-player-keyboadr-control";
@@ -17,8 +19,6 @@ import { PlayerControls } from "./player-controls";
 import { PlayerFullscreenButton } from "./player-fullscreen-button";
 import { PlayerSettings } from "./player-settings";
 import { PlayerTimeDuration } from "./player-time-duration";
-import { AddWordButton } from "@/src/features/add-word";
-import { AuthModal } from "../../auth";
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];

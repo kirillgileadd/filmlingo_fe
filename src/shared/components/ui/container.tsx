@@ -7,8 +7,8 @@ import { cn } from "@/src/shared/lib/utils";
 const containerVariants = cva("", {
   variants: {
     size: {
-      default: "px-24",
-      small: "px-24 max-w-7xl",
+      default: "px-2 sm:px-24",
+      small: "px-2 max-w-7xl sm:px-24",
       sm: "px-3",
       lg: "px-8",
     },
