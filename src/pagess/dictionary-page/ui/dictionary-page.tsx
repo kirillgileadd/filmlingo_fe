@@ -2,7 +2,12 @@
 
 import { FC, useState } from "react";
 
-import { useGetUserWords, WordCard } from "@/src/entities/word";
+import {
+  SORT_WORDS_SELECT_ITEMS,
+  SortWordsSelect,
+  useGetUserWords,
+  WordCard,
+} from "@/src/entities/word";
 import { PaginationCommon } from "@/src/shared/components/common/pagination-common";
 import { Container } from "@/src/shared/components/ui/container";
 import { useAuth } from "@/src/shared/lib/auth";
@@ -20,11 +25,18 @@ type DictionaryPageProps = {
 };
 
 const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
+  const [sort, setSort] = useState(SORT_WORDS_SELECT_ITEMS[0]);
   const [page, setPage] = useState(1);
   const pageSize = 20;
 
   const { isAuth } = useAuth();
-  const wordsQuery = useGetUserWords({ page, pageSize });
+
+  const wordsQuery = useGetUserWords({
+    page,
+    pageSize,
+    order: sort.order,
+    orderValue: sort.value,
+  });
 
   if (!isAuth) {
     return <DictionaryPageNoAuth />;
@@ -41,11 +53,14 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
   if (!wordsQuery.data) return null;
 
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx("pb-10", className)}>
       <Container className="m-auto" size="small">
         <div className="flex justify-between mb-4">
           <h3 className="text-3xl">Мой словарик</h3>
-          <Button size="lg">Тренировать слова</Button>
+          <div className="flex gap-x-4">
+            <SortWordsSelect value={sort} onChange={setSort} />
+            <Button>Тренировать слова</Button>
+          </div>
         </div>
         <table className={styles.table}>
           <thead>

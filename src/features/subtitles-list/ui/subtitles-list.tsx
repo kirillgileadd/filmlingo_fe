@@ -62,9 +62,9 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
           className="pt-20"
         >
           <div className="subtitle py-2 px-4 rounded bg-black bg-opacity-50">
-            {subtitle.text.split(/\s+|\n+/).map((word, index) => (
-              <>{renderSubtitle(word, subtitle.text, index)}</>
-            ))}
+            {subtitle.text
+              .split(/\s+|\n+/)
+              .map((word, index) => renderSubtitle(word, subtitle.text, index))}
           </div>
         </div>
       ))}

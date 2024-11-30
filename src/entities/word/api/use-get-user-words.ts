@@ -6,7 +6,7 @@ import { GetUserWorsParamsT, GetUserWorsResT } from "../model/types";
 
 export const useGetUserWords = (params: GetUserWorsParamsT) => {
   return useQuery<GetUserWorsResT, AxiosError>({
-    queryKey: [QUERY_KEYS.GET_USER_WORDS, params.page],
+    queryKey: [QUERY_KEYS.GET_USER_WORDS, params],
     queryFn: async () => {
       const response = await $api.get("/words/my-words", { params });
 

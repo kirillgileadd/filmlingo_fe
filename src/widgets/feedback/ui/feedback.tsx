@@ -46,6 +46,7 @@ export const Feedback: FC<FeedbackProps> = ({ className }) => {
             src="/images/cat.webp"
             width={150}
             height={150}
+            unoptimized
             alt="cat"
             draggable={false}
           />
