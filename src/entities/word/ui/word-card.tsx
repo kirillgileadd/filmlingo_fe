@@ -38,7 +38,7 @@ export const WordCard: FC<WordCardProps> = ({ className, word }) => {
         </div>
       </td>
       <td className="font-medium">{highlightedPhrase}</td>
-      <td>{dayjs(word.creationAt).format("DD.MM.YYYY")}</td>
+      <td>{dayjs(word.createdAt).format("DD.MM.YYYY")}</td>
       <td>
         <RemoveUserWordButton wordId={word.id} />
       </td>

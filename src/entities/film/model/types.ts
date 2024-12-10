@@ -8,13 +8,10 @@ export type FilmT = {
   updatedAt: string;
 };
 
-export type SubtitleT = {
+export type SubtitleVariantT = {
   id: number;
-  path: string;
   language: string;
   filmId: number;
-  createdAt: string;
-  updatedAt: string;
 };
 
 export type VideoVariantResolutionT = "480p" | "720p" | "1080p";
@@ -42,6 +39,6 @@ export type FilmDetailT = {
   uploadedAt: string;
   createdAt: string;
   updatedAt: string;
-  subtitles: SubtitleT[];
+  subtitles: SubtitleVariantT[];
   videoVariants: VideoVariantT[];
 };

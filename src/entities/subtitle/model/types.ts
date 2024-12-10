@@ -7,6 +7,25 @@ export type SubtitleJST = {
   text: string;
 };
 
+export type SubtitlePhraseT = {
+  original: string;
+  translate: string;
+};
+
+export type SubtitleT = {
+  createdAt: string;
+  endTime: string;
+  filmId: number;
+  id: number;
+  language: string;
+  phrases: SubtitlePhraseT[] | null;
+  startTime: string;
+  text: string;
+  updatedAt: string;
+  startSeconds: number;
+  endSeconds: number;
+};
+
 export interface SubtitleYoutubeT {
   text: string;
   duration: number;

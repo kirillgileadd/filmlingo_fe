@@ -1,5 +1,7 @@
-import { SubtitleT, VideoVariantT } from "@/src/entities/film/model/types";
-import { useGetSubtitlesDataQuery } from "@/src/entities/subtitle";
+import {
+  SubtitleVariantT,
+  VideoVariantT,
+} from "@/src/entities/film/model/types";
 import { AddWordButton } from "@/src/features/add-word";
 import { useChangeVideoVariant } from "@/src/features/change-video-quality";
 import { SubtitleSelect } from "@/src/features/subtitle-select/ui/subtitle-select";
@@ -22,7 +24,7 @@ import { PlayerTimeDuration } from "./player-time-duration";
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];
-  subtitles: SubtitleT[];
+  subtitlesVariants: SubtitleVariantT[];
   onClose: () => void;
   videoId: number;
 }
@@ -30,14 +32,12 @@ interface VideoPlayerProps {
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   videoId,
   onClose,
-  subtitles,
+  subtitlesVariants,
   videoVariants,
 }) => {
-  const [activeSubTrack, setActiveSubsTrack] = useState<number | null>(
-    subtitles[0].id
-  );
+  const [activeSubVariant, setActiveSubsVariant] =
+    useState<SubtitleVariantT | null>(subtitlesVariants[0]);
   const videoVariant = useChangeVideoVariant(videoVariants);
-  const subtitlesQuery = useGetSubtitlesDataQuery(subtitles);
 
   const contorls = usePlaerControls();
   const core = usePlayerCore(videoId, videoVariant.currentVideoVariant);
@@ -57,8 +57,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setCurrentTime: core.setCurrentTime,
   });
 
-  const handleChangeSubtitleTrack = (id: number | null) => {
-    setActiveSubsTrack(id);
+  const handleChangeSubtitleVariant = (id: number | null) => {
+    setActiveSubsVariant(id ? subtitlesVariants[id] : null);
   };
 
   return (
@@ -95,17 +95,18 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </div>
         )}
         <SubtitlesList
+          acitveSubtitle={activeSubVariant}
+          filmId={videoId}
           currentTime={core.currentTime}
-          activeSubTrackId={activeSubTrack ?? 0}
           subtitleListRepository={{
             pauseVideo: core.pauseVideo,
             playVideo: core.playVideo,
           }}
-          subtitles={subtitlesQuery.data ?? []}
-          renderSubtitle={(word, fullPhrase, index) => (
+          renderSubtitle={(word, fullPhrase, index, phrases) => (
             <TranslateTextHoverCard
               key={index}
               word={word}
+              phrases={phrases}
               fullPhrase={fullPhrase}
               renderAddWord={({ phrase, translation, original }) => (
                 <AddWordButton
@@ -146,8 +147,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             />
           </div>
           <SubtitleSelect
-            handleChangeSubtitleTrack={handleChangeSubtitleTrack}
-            subtitles={subtitlesQuery.data ?? []}
+            handleChangeSubtitleVariant={handleChangeSubtitleVariant}
+            subtitlesVarinats={subtitlesVariants ?? []}
           />
           <PlayerSettings
             qualityItems={videoVariants}

@@ -54,6 +54,7 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
 
   if (!wordsQuery.data) return null;
 
+
   return (
     <div className={clsx("pb-10", className)}>
       <Container className="m-auto" size="small">

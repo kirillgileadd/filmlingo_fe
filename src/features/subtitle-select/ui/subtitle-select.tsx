@@ -1,29 +1,29 @@
 import { FC } from "react";
 
-import { ParsedSubtitleT } from "@/src/entities/subtitle";
+import { SubtitleVariantT } from "@/src/entities/film/model/types";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/src/shared/components/ui/popover";
-import { SubtitlesIcon } from "lucide-react";
 import { SettingsItem } from "@/src/shared/components/ui/settings-item";
 import { useModal } from "@/src/shared/lib/useModal";
+import { SubtitlesIcon } from "lucide-react";
 
 type SubtitleSelectProps = {
   className?: string;
-  subtitles: ParsedSubtitleT[];
-  handleChangeSubtitleTrack: (id: number | null) => void;
+  subtitlesVarinats: SubtitleVariantT[];
+  handleChangeSubtitleVariant: (id: number | null) => void;
 };
 
 export const SubtitleSelect: FC<SubtitleSelectProps> = ({
-  subtitles,
-  handleChangeSubtitleTrack,
+  subtitlesVarinats,
+  handleChangeSubtitleVariant,
 }) => {
   const modal = useModal();
 
   const onSelect = (id: null | number) => {
-    handleChangeSubtitleTrack(id);
+    handleChangeSubtitleVariant(id);
     modal.closeModal();
   };
 
@@ -34,11 +34,11 @@ export const SubtitleSelect: FC<SubtitleSelectProps> = ({
       </PopoverTrigger>
       <PopoverContent sideOffset={10} side="top" className="mr-6 ">
         <div>
-          {subtitles.map((sub) => {
+          {subtitlesVarinats.map((sub) => {
             return (
               <SettingsItem
                 key={sub.id}
-                label={sub.languageLabel}
+                label={sub.language}
                 onClick={() => onSelect(sub.id)}
               />
             );

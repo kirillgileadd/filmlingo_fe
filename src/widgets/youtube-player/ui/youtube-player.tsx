@@ -1,9 +1,11 @@
 import { ParsedSubtitleT } from "@/src/entities/subtitle/model/types";
+import { AddWordButton } from "@/src/features/add-word";
 import { SubtitlesList } from "@/src/features/subtitles-list";
 import { TranslateTextHoverCard } from "@/src/features/tanslate-text";
 import { XIcon } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 import YouTube, { YouTubePlayer, YouTubeProps } from "react-youtube";
+import { AuthModal } from "@/src/widgets/auth";
 
 export type YoutubePlayerProps = {
   videoId: string;
@@ -104,6 +106,14 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
               key={index}
               fullPhrase={fullPhrase}
               word={word}
+              renderAddWord={({ phrase, translation, original }) => (
+                <AddWordButton
+                  phrase={phrase}
+                  translation={translation}
+                  original={original}
+                  renderAuthForm={(trigger) => <AuthModal trigger={trigger} />}
+                />
+              )}
             >
               {word}{" "}
             </TranslateTextHoverCard>

@@ -6,14 +6,14 @@ export type WordT = {
   createdAt: string;
 };
 
-export type GetUserWorsParamsT = {
+export type GetUserWordsParamsT = {
   page: number;
   pageSize: number;
   order?: "asc" | "desc";
   orderValue?: keyof WordT;
 };
 
-export type GetUserWorsResT = {
+export type GetUserWordsResT = {
   rows: WordT[];
   totalCount: number;
   currentPage: number;

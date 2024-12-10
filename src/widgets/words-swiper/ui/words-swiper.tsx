@@ -48,7 +48,6 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
   const handleReturnAnimationComplete = () => {};
 
   const handleRotateClick = () => {
-    console.log("rotea");
     setRotate((prev) => !prev); // Переключаем состояние для поворота
   };
 
@@ -89,7 +88,7 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
           onAnimationComplete={handleReturnAnimationComplete}
         >
           <Button
-            className="p-6 ml-auto align-top"
+            className="p-6 ml-auto align-top [&_svg]:w-6 [&_svg]:h-6"
             size="icon"
             variant="outline"
             onClick={handleRotateClick}
@@ -117,13 +116,25 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
             )}
           </motion.div>
           <div className="flex justify-between w-full mt-auto items-center">
-            <Button onClick={() => handleSwipe(card.id, "left")} size="circle">
+            <Button
+              className="[&_svg]:w-8 [&_svg]:h-8"
+              onClick={() => handleSwipe(card.id, "left")}
+              size="circle"
+            >
               <XIcon className="flex-shrink-0" size={30} />
             </Button>
-            <Button size="circle" variant="accent">
+            <Button
+              className="[&_svg]:w-8 [&_svg]:h-8"
+              size="circle"
+              variant="accent"
+            >
               <LightbulbIcon size={30} />
             </Button>
-            <Button onClick={() => handleSwipe(card.id, "right")} size="circle">
+            <Button
+              className="[&_svg]:w-8 [&_svg]:h-8"
+              onClick={() => handleSwipe(card.id, "right")}
+              size="circle"
+            >
               <CheckIcon size={30} />
             </Button>
           </div>

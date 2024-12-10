@@ -24,6 +24,8 @@ export const FilmDetailPage: FC<FilmDetailPageProps> = ({ className }) => {
   const filmDetailQuery = useGetFilmDetailQuery(Number(params?.id));
   const { isOpen, closeModal, openModal } = useModal();
 
+  console.log(filmDetailQuery.data, "data");
+
   useSetBackground(filmDetailQuery.data?.bigPosterPath);
 
   if (filmDetailQuery.isLoading) {
@@ -49,7 +51,7 @@ export const FilmDetailPage: FC<FilmDetailPageProps> = ({ className }) => {
           // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
           videoVariants={filmDetailQuery.data?.videoVariants!}
           // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-          subtitles={filmDetailQuery.data?.subtitles!}
+          subtitlesVariants={filmDetailQuery.data?.subtitles!}
         />
       )}
       <div className={clsx("", className)}>

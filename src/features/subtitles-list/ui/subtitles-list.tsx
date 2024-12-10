@@ -1,51 +1,49 @@
 import { FC, ReactNode } from "react";
 
-import { ParsedSubtitleT } from "@/src/entities/subtitle";
-import { SubtitlesListRepository } from "../model/types";
+import {
+  SubtitlePhraseT,
+  SubtitleT,
+  useGetSubtitlesQuery,
+} from "@/src/entities/subtitle";
 import clsx from "clsx";
+import { SubtitlesListRepository } from "../model/types";
+import { SubtitleVariantT } from "@/src/entities/film/model/types";
+import { Loader2 } from "lucide-react";
 
 type SubtitlesListProps = {
   className?: string;
   renderSubtitle: (
     word: string,
     fullPhrase: string,
-    index: number
+    index: number,
+    phrases?: SubtitlePhraseT[] | null
   ) => ReactNode;
-  subtitles: ParsedSubtitleT[];
-  activeSubTrackId: number;
+  filmId: number;
+  acitveSubtitle: SubtitleVariantT | null;
   currentTime: number;
   subtitleListRepository: SubtitlesListRepository;
 };
 
 export const SubtitlesList: FC<SubtitlesListProps> = ({
   className,
-  subtitles,
-  activeSubTrackId,
   currentTime,
   renderSubtitle,
   subtitleListRepository,
+  acitveSubtitle,
+  filmId,
 }) => {
-  const getCurrentSubtitlesData = (): ParsedSubtitleT | null => {
-    if (!subtitles) return null;
+  const subtitlesQuery = useGetSubtitlesQuery(filmId, acitveSubtitle);
 
-    return subtitles.find((item) => activeSubTrackId === item.id) ?? null;
-  };
-
-  const getCurrentSubtitles = (track: ParsedSubtitleT | null) => {
-    if (!track) return;
-
-    return track.data.filter(
-      (subtitle) =>
+  const getCurrentSubtitles = (track: SubtitleT[]) => {
+    return track?.filter((subtitle) => {
+      return (
         currentTime >= subtitle.startSeconds &&
         currentTime <= subtitle.endSeconds
-    );
+      );
+    });
   };
 
-  const currentTrack = getCurrentSubtitlesData();
-  const currentSubtitles = getCurrentSubtitles(currentTrack);
-
-  if (!currentTrack) return;
-  if (!currentSubtitles) return <></>;
+  const currentSubtitles = getCurrentSubtitles(subtitlesQuery.data ?? []);
 
   return (
     <div
@@ -54,20 +52,28 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
         className
       )}
     >
-      {currentSubtitles.map((subtitle) => (
-        <div
-          onMouseEnter={subtitleListRepository.pauseVideo}
-          onMouseLeave={subtitleListRepository.playVideo}
-          key={subtitle.id}
-          className="pt-20"
-        >
-          <div className="subtitle py-2 px-4 rounded bg-black bg-opacity-50">
-            {subtitle.text
-              .split(/\s+|\n+/)
-              .map((word, index) => renderSubtitle(word, subtitle.text, index))}
-          </div>
+      {subtitlesQuery.isLoading ? (
+        <div>
+          <Loader2 className="animate-spin" />
         </div>
-      ))}
+      ) : (
+        currentSubtitles.map((subtitle) => (
+          <div
+            onMouseEnter={subtitleListRepository.pauseVideo}
+            onMouseLeave={subtitleListRepository.playVideo}
+            key={subtitle.id}
+            className="pt-3"
+          >
+            <div className="subtitle py-2 px-4 rounded bg-black bg-opacity-50">
+              {subtitle.text
+                .split(/\s+|\n+/)
+                .map((word, index) =>
+                  renderSubtitle(word, subtitle.text, index, subtitle?.phrases)
+                )}
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 };
