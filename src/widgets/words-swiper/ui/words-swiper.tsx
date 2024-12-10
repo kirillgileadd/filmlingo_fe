@@ -1,33 +1,46 @@
 "use client";
 
+import { useGetRandomWordsQuery } from "@/src/features/get-random-words";
 import { Button } from "@/src/shared/components/ui/button";
 import { motion, PanInfo } from "framer-motion";
 import { CheckIcon, LanguagesIcon, LightbulbIcon, XIcon } from "lucide-react";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 type Card = {
   id: number;
-  title: string;
-  description: string;
+  word: string;
+  translate: string;
+  phrase?: string | null;
 };
-
-const cards: Card[] = [
-  { id: 1, title: "Card 1", description: "This is card 1" },
-  { id: 2, title: "Card 2", description: "This is card 2" },
-  { id: 3, title: "Card 3", description: "This is card 3" },
-];
 
 type WordsSwiperProps = {
   className?: string;
 };
 
 export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
-  const [cardList, setCardList] = useState(cards);
-  const [rotate, setRotate] = useState<boolean>(false); // Состояние для поворота
+  const [cardList, setCardList] = useState<Card[]>([]);
+  const [rotate, setRotate] = useState<boolean>(false);
+  const [isShowPhrase, setShowPhrase] = useState<boolean>(false);
+
+  const wordsListQuery = useGetRandomWordsQuery();
+
+  useEffect(() => {
+    if (wordsListQuery.isSuccess) {
+      setCardList(
+        wordsListQuery.data.words.map((w) => ({
+          id: w.id,
+          phrase: w.phrase,
+          translate: w.translation,
+          word: w.original,
+        }))
+      );
+    }
+  }, [wordsListQuery.data]);
 
   const handleSwipe = (cardId: number, direction: "left" | "right") => {
     console.log(`Card ${cardId} swiped ${direction}`);
     setRotate(false);
+    setShowPhrase(false);
     setCardList((prev) => prev.filter((card) => card.id !== cardId));
   };
 
@@ -43,13 +56,21 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
     }
   };
 
-  const handleDrag = () => {};
-
-  const handleReturnAnimationComplete = () => {};
+  const handleShowPhrase = () => {
+    setShowPhrase((prev) => !prev);
+  };
 
   const handleRotateClick = () => {
     setRotate((prev) => !prev); // Переключаем состояние для поворота
   };
+
+  if (wordsListQuery.isPending || wordsListQuery.isLoading) {
+    return (
+      <div className="relative flex items-center justify-center h-[500px]">
+        <div className="absolute w-80 h-96 bg-card shadow-lg rounded-xl flex flex-col items-center justify-center p-3 border"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative flex items-center justify-center h-[500px]">
@@ -57,7 +78,7 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
         <motion.div
           key={card.id}
           onDragEnd={(event, info) => handleDragEnd(event, info, card.id)}
-          onDrag={() => handleDrag()}
+          onDrag={() => console.log("on drag")}
           initial={{ scale: 1, rotateY: 0, x: 0 }}
           style={{
             zIndex: cardList.length - index,
@@ -85,7 +106,6 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
             x: { type: "spring", stiffness: 300, damping: 30 },
           }}
           className="absolute w-80 h-96 bg-card shadow-lg rounded-xl flex flex-col items-center justify-center p-3 border"
-          onAnimationComplete={handleReturnAnimationComplete}
         >
           <Button
             className="p-6 ml-auto align-top [&_svg]:w-6 [&_svg]:h-6"
@@ -95,26 +115,28 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
           >
             <LanguagesIcon />
           </Button>
-          <motion.div
-            className="absolute flex justify-center items-center p-3"
-            style={{
-              transform:
-                rotate && index === 0 ? "rotateY(360deg)" : "rotateY(0deg)", // Анимация поворота
-              transition: "transform 0.5s",
-            }}
-          >
-            {rotate && index === 0 ? (
-              <p className="text-2xl font-bold text-foreground">
-                {card.description}
-              </p>
-            ) : (
-              <div className="text-center">
-                <h2 className="text-2xl font-bold text-foreground">
-                  {card.title}
-                </h2>
-              </div>
-            )}
-          </motion.div>
+          <div className="absolute flex justify-center items-center p-3 flex-col">
+            <motion.div
+              style={{
+                transform:
+                  rotate && index === 0 ? "rotateY(360deg)" : "rotateY(0deg)", // Анимация поворота
+                transition: "transform 0.5s",
+              }}
+            >
+              {rotate && index === 0 ? (
+                <p className="text-2xl font-bold text-foreground">
+                  {card.translate}
+                </p>
+              ) : (
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold text-foreground">
+                    {card.word}
+                  </h2>
+                </div>
+              )}
+            </motion.div>
+            {isShowPhrase && card.phrase && index === 0 && <p>{card.phrase}</p>}
+          </div>
           <div className="flex justify-between w-full mt-auto items-center">
             <Button
               className="[&_svg]:w-8 [&_svg]:h-8"
@@ -125,6 +147,7 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
             </Button>
             <Button
               className="[&_svg]:w-8 [&_svg]:h-8"
+              onClick={handleShowPhrase}
               size="circle"
               variant="accent"
             >
@@ -140,7 +163,12 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
           </div>
         </motion.div>
       ))}
-      <div>Конец, ералаш</div>
+      {wordsListQuery.data && (
+        <div className="absolute w-80 h-96 bg-card shadow-lg rounded-xl flex flex-col items-center justify-center p-3 border">
+          <p className="text-lg mb-2">Конец, ералаш</p>
+          <Button onClick={() => wordsListQuery.refetch()}>Учить еще</Button>
+        </div>
+      )}
     </div>
   );
 };

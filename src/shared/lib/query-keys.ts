@@ -5,4 +5,5 @@ export const QUERY_KEYS = {
   GET_CURRENT_USER: "get-current-user",
   GET_USER_WORDS: "get-user-words",
   SUBTITLES: "subtitles",
+  RANDOM_WORDS: "random-words",
 };
