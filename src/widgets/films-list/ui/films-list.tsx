@@ -31,7 +31,7 @@ export const FilmsList: FC<FilmsListProps> = ({ className }) => {
   return (
     <div className={clsx("", className)}>
       <Container>
-        <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(200px,1fr))] w-full">
+        <div className="grid gap-4 w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
           {filmsQuery.data?.map((film) => (
             <FilmCard key={film.id} film={film} />
           ))}

@@ -72,6 +72,29 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
     );
   }
 
+  if (wordsListQuery.error) {
+    return (
+      <div className="relative flex items-center justify-center h-[500px]">
+        <div className="absolute w-80 h-96 bg-card shadow-lg rounded-xl flex flex-col items-center justify-center p-3 border">
+          Не удалось подгрузить слова
+        </div>
+      </div>
+    );
+  }
+
+  if (
+    wordsListQuery.data.totalCount &&
+    Number(wordsListQuery?.data?.totalCount) === 0
+  ) {
+    return (
+      <div className="relative flex items-center justify-center h-[500px]">
+        <div className="absolute w-80 h-96 bg-card shadow-lg rounded-xl flex flex-col items-center justify-center p-3 border">
+          Добавьте слова в словарик для дальнейшего изучения
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative flex items-center justify-center h-[500px]">
       {cardList.map((card, index) => (

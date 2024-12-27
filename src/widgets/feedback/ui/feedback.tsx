@@ -15,7 +15,7 @@ export const Feedback: FC<FeedbackProps> = ({ className }) => {
   return (
     <div className={clsx("", className)}>
       <Container>
-        <div className="relative flex justify-between items-center w-full border p-4 rounded-md bg-card">
+        <div className="relative flex flex-wrap gap-4 justify-between items-center w-full border p-4 rounded-md bg-card">
           <div>
             <h4 className="text-xl mb-2 font-semibold">
               Телеграм бот для фитбека
@@ -42,7 +42,7 @@ export const Feedback: FC<FeedbackProps> = ({ className }) => {
             Связаться
           </Button>
           <Image
-            className="absolute left-3/4 bottom-5 -rotate-12"
+            className="absolute right-4 sm:right-[140px]  top-0 -translate-y-[86px] -rotate-12 select-none pointer-events-none"
             src="/images/cat.webp"
             width={150}
             height={150}

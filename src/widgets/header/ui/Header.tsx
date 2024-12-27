@@ -14,11 +14,11 @@ type HeaderProps = {
 export const Header: FC<HeaderProps> = ({ className, actions }) => {
   return (
     <header className={clsx("py-6 mb-12", className)}>
-      <Container className="flex gap-x-28 h-11 items-center">
+      <Container className="flex lg:gap-x-28 gap-x-12  h-11 items-center">
         <Link href={"/"}>
           <h1 className="text-3xl font-bold">Filmlingo</h1>
         </Link>
-        <nav className="flex gap-x-12">
+        <nav className="hidden sm:flex gap-x-12">
           <Link href="/youtube">
             <p className="text-lg font-medium">YouTube плеер</p>
           </Link>
