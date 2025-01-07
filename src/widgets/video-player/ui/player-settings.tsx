@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 
-import { VideoVariantT } from "@/src/entities/film/model/types";
-import { QualitySelect } from "@/src/features/change-video-quality";
+import { VideoVariantT } from '@/src/entities/film/model/types';
+import { QualitySelect } from '@/src/features/change-video-quality';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/src/shared/components/ui/popover";
-import { SettingsItem } from "@/src/shared/components/ui/settings-item";
-import { useModal } from "@/src/shared/lib/useModal";
+} from '@/src/shared/components/ui/popover';
+import { SettingsItem } from '@/src/shared/components/ui/settings-item';
+import { useModal } from '@/src/shared/lib/useModal';
 import {
   ChevronLeftIcon,
   SettingsIcon,
   SlidersHorizontalIcon,
   SubtitlesIcon,
-} from "lucide-react";
+} from 'lucide-react';
 
 type PlayerSettingsProps = {
   className?: string;
@@ -26,8 +26,8 @@ type PlayerSettingsProps = {
 };
 
 enum MenuItemEnum {
-  SUBTITLES = "subtitles",
-  QUALITY = "quality",
+  SUBTITLES = 'subtitles',
+  QUALITY = 'quality',
 }
 
 export const PlayerSettings: FC<PlayerSettingsProps> = ({
@@ -49,7 +49,7 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
   };
 
   const MENU_ITEMS = [
-    { label: "Cубтитры", value: MenuItemEnum.SUBTITLES, icon: SubtitlesIcon },
+    { label: 'Cубтитры', value: MenuItemEnum.SUBTITLES, icon: SubtitlesIcon },
     {
       label: `Качетство (${currentQualityLabel})`,
       value: MenuItemEnum.QUALITY,

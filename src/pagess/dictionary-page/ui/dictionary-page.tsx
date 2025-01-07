@@ -40,6 +40,8 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
     orderValue: sort.value,
   });
 
+  console.log(wordsQuery.data);
+
   if (!isAuth) {
     return <DictionaryPageNoAuth />;
   }
@@ -52,8 +54,17 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
     return <DictionaryPageError />;
   }
 
-  if (!wordsQuery.data) return null;
+  if (wordsQuery.data?.rows.length === 0) {
+    return (
+      <div className={clsx("pb-10", className)}>
+        <p></p>
+        Вы еще не добавили слова в словарик
+        <Button>Начать смотреть !</Button>
+      </div>
+    );
+  }
 
+  if (!wordsQuery.data) return null;
 
   return (
     <div className={clsx("pb-10", className)}>
@@ -81,12 +92,12 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
               <WordCard key={word.id} word={word} />
             ))}
           </tbody>
+          <PaginationCommon
+            currentPage={page}
+            onPageChange={setPage}
+            totalPages={wordsQuery.data.totalPages}
+          />
         </table>
-        <PaginationCommon
-          currentPage={page}
-          onPageChange={setPage}
-          totalPages={wordsQuery.data.totalPages}
-        />
       </Container>
     </div>
   );

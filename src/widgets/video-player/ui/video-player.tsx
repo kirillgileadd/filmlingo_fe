@@ -21,6 +21,7 @@ import { PlayerControls } from "./player-controls";
 import { PlayerFullscreenButton } from "./player-fullscreen-button";
 import { PlayerSettings } from "./player-settings";
 import { PlayerTimeDuration } from "./player-time-duration";
+import { useGetSubtitlesQuery } from "@/src/entities/subtitle";
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];
@@ -38,6 +39,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [activeSubVariant, setActiveSubsVariant] =
     useState<SubtitleVariantT | null>(subtitlesVariants[0]);
   const videoVariant = useChangeVideoVariant(videoVariants);
+  const subtitlesQuery = useGetSubtitlesQuery(videoId, activeSubVariant);
 
   const contorls = usePlaerControls();
   const core = usePlayerCore(videoId, videoVariant.currentVideoVariant);
@@ -95,8 +97,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </div>
         )}
         <SubtitlesList
-          acitveSubtitle={activeSubVariant}
-          filmId={videoId}
+          subtitles={subtitlesQuery.data ?? []}
           currentTime={core.currentTime}
           subtitleListRepository={{
             pauseVideo: core.pauseVideo,

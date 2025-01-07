@@ -1,43 +1,27 @@
-export type SubtitleJST = {
-  endSeconds: number;
-  endTime: string;
-  id: string;
-  startSeconds: number;
-  startTime: string;
-  text: string;
-};
-
 export type SubtitlePhraseT = {
   original: string;
   translate: string;
 };
 
 export type SubtitleT = {
-  createdAt: string;
-  endTime: string;
+  createdAt: string | null;
+  endTime: string | null;
   filmId: number;
   id: number;
   language: string;
   phrases: SubtitlePhraseT[] | null;
-  startTime: string;
+  startTime: string | null;
   text: string;
-  updatedAt: string;
+  updatedAt: string | null;
   startSeconds: number;
   endSeconds: number;
 };
 
 export interface SubtitleYoutubeT {
-  text: string;
   duration: number;
-  offset: number;
   endSeconds: number;
-  startSeconds: number;
   lang?: string;
+  offset: number;
+  startSeconds: number;
+  text: string;
 }
-
-export type ParsedSubtitleT = {
-  id: number;
-  data: SubtitleJST[];
-  language: string;
-  languageLabel: string;
-};

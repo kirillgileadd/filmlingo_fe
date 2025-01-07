@@ -17,19 +17,20 @@ type YoutubePageProps = {
 export const YoutubePage: FC<YoutubePageProps> = () => {
   const { isOpen, closeModal, openModal } = useModal();
   const [videoUrl, setVideoUrl] = useState("");
+  console.log(videoUrl, "url");
   const [videoId, setVideoId] = useState<string | null>(null);
 
   const subtitlesQuery = useGetYoutubeSubtitleQuery(videoId);
-
+  console.log(subtitlesQuery, "subs q");
   useEffect(() => {
     openModal();
   }, [subtitlesQuery.isSuccess]);
 
   const handleGetSubtitles = () => {
-    if (subtitlesQuery.data && videoId) {
-      openModal();
-      return;
-    }
+    // if (subtitlesQuery.data && videoId) {
+    //   openModal();
+    //   return;
+    // }
     const newVideoId = getYouTubeVideoId(videoUrl);
     setVideoId(newVideoId);
   };

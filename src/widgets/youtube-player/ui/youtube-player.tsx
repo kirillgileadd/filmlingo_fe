@@ -1,16 +1,17 @@
-import { ParsedSubtitleT } from "@/src/entities/subtitle/model/types";
-import { AddWordButton } from "@/src/features/add-word";
-import { SubtitlesList } from "@/src/features/subtitles-list";
-import { TranslateTextHoverCard } from "@/src/features/tanslate-text";
-import { XIcon } from "lucide-react";
-import { FC, useEffect, useState } from "react";
-import YouTube, { YouTubePlayer, YouTubeProps } from "react-youtube";
-import { AuthModal } from "@/src/widgets/auth";
+import { AddWordButton } from '@/src/features/add-word';
+import { SubtitlesList } from '@/src/features/subtitles-list';
+import { TranslateTextHoverCard } from '@/src/features/tanslate-text';
+import { XIcon } from 'lucide-react';
+import { FC, useEffect, useState } from 'react';
+import YouTube, { YouTubePlayer, YouTubeProps } from 'react-youtube';
+import { AuthModal } from '@/src/widgets/auth';
+import { SubtitleT } from '@/src/entities/subtitle';
+import { YoutubePlayerSettings } from '@/src/widgets/youtube-player/ui/youtube-player-settings';
 
 export type YoutubePlayerProps = {
   videoId: string;
   onClose: () => void;
-  youtubeSubtitles: ParsedSubtitleT[];
+  youtubeSubtitles: SubtitleT[];
 };
 
 export const YoutubePlayer: FC<YoutubePlayerProps> = ({
@@ -21,7 +22,7 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
   const [player, setPlayer] = useState<YouTubePlayer | null>(null);
   const [currentTime, setCurrentTime] = useState<number>(0);
 
-  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
     const playerInstance = event.target;
     setPlayer(playerInstance);
     setCurrentTime(playerInstance.getCurrentTime());
@@ -39,9 +40,9 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
     }
   };
 
-  const opts: YouTubeProps["opts"] = {
-    height: "100%",
-    width: "100%",
+  const opts: YouTubeProps['opts'] = {
+    height: '100%',
+    width: '100%',
     playerVars: {
       // controls: 0, // Убирает элементы управления
       autoplay: 1, // Автозапуск видео
@@ -50,12 +51,12 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
   };
 
   // Обработчик изменения состояния плеера
-  const onPlayerStateChange: YouTubeProps["onStateChange"] = (event) => {
+  const onPlayerStateChange: YouTubeProps['onStateChange'] = (event) => {
     if (event.data === window.YT?.PlayerState.PLAYING) {
-      console.log("Video is playing");
+      console.log('Video is playing');
       console.log(window.YT);
     } else if (event.data === window.YT?.PlayerState.PAUSED) {
-      console.log("Video is paused");
+      console.log('Video is paused');
     }
 
     if (player) {
@@ -89,16 +90,15 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
           onReady={onPlayerReady}
           onStateChange={onPlayerStateChange}
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
-            width: "100vw",
-            height: "100vh",
+            width: '100vw',
+            height: '100vh',
           }}
         />
         <SubtitlesList
           currentTime={currentTime}
-          activeSubTrackId={0}
           subtitleListRepository={{ pauseVideo, playVideo }}
           subtitles={youtubeSubtitles ?? []}
           renderSubtitle={(word, fullPhrase, index) => (
@@ -115,10 +115,11 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
                 />
               )}
             >
-              {word}{" "}
+              {word}{' '}
             </TranslateTextHoverCard>
           )}
         />
+        <YoutubePlayerSettings />
       </div>
     </div>
   );

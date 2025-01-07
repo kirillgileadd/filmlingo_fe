@@ -1,13 +1,8 @@
 import { FC, ReactNode } from "react";
 
-import {
-  SubtitlePhraseT,
-  SubtitleT,
-  useGetSubtitlesQuery,
-} from "@/src/entities/subtitle";
+import { SubtitlePhraseT, SubtitleT } from "@/src/entities/subtitle";
 import clsx from "clsx";
 import { SubtitlesListRepository } from "../model/types";
-import { SubtitleVariantT } from "@/src/entities/film/model/types";
 import { Loader2 } from "lucide-react";
 
 type SubtitlesListProps = {
@@ -16,12 +11,11 @@ type SubtitlesListProps = {
     word: string,
     fullPhrase: string,
     index: number,
-    phrases?: SubtitlePhraseT[] | null
+    phrases?: SubtitlePhraseT[] | null,
   ) => ReactNode;
-  filmId: number;
-  acitveSubtitle: SubtitleVariantT | null;
   currentTime: number;
   subtitleListRepository: SubtitlesListRepository;
+  subtitles: SubtitleT[];
 };
 
 export const SubtitlesList: FC<SubtitlesListProps> = ({
@@ -29,11 +23,8 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
   currentTime,
   renderSubtitle,
   subtitleListRepository,
-  acitveSubtitle,
-  filmId,
+  subtitles,
 }) => {
-  const subtitlesQuery = useGetSubtitlesQuery(filmId, acitveSubtitle);
-
   const getCurrentSubtitles = (track: SubtitleT[]) => {
     return track?.filter((subtitle) => {
       return (
@@ -43,16 +34,16 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
     });
   };
 
-  const currentSubtitles = getCurrentSubtitles(subtitlesQuery.data ?? []);
+  const currentSubtitles = getCurrentSubtitles(subtitles);
 
   return (
     <div
       className={clsx(
         "absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10 text-white",
-        className
+        className,
       )}
     >
-      {subtitlesQuery.isLoading ? (
+      {!subtitles ? (
         <div>
           <Loader2 className="animate-spin" />
         </div>
@@ -68,7 +59,7 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
               {subtitle.text
                 .split(/\s+|\n+/)
                 .map((word, index) =>
-                  renderSubtitle(word, subtitle.text, index, subtitle?.phrases)
+                  renderSubtitle(word, subtitle.text, index, subtitle?.phrases),
                 )}
             </div>
           </div>

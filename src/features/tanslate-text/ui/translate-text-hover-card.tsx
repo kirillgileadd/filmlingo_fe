@@ -1,16 +1,16 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from 'react';
 
-import { Button } from "@/src/shared/components/ui/button";
+import { Button } from '@/src/shared/components/ui/button';
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/src/shared/components/ui/hover-card";
-import { useDebounce } from "@/src/shared/lib/useDebounce";
-import { useModal } from "@/src/shared/lib/useModal";
-import { Loader2Icon } from "lucide-react";
-import { useTranslateTextMutation } from "../api/use-translate-text-mutation";
-import { SubtitlePhraseT } from "@/src/entities/subtitle";
+} from '@/src/shared/components/ui/hover-card';
+import { useDebounce } from '@/src/shared/lib/useDebounce';
+import { useModal } from '@/src/shared/lib/useModal';
+import { Loader2Icon } from 'lucide-react';
+import { useTranslateTextMutation } from '../api/use-translate-text-mutation';
+import { SubtitlePhraseT } from '@/src/entities/subtitle';
 
 type TranslateTextHoverCardProps = {
   word: string;
@@ -32,24 +32,24 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   phrases,
 }) => {
   const modal = useModal();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const debounceWordTranslate = useDebounce(value, 500);
   const translateMutation = useTranslateTextMutation();
-  const [currentWordTranslate, setCurrentWordTranslate] = useState("");
-  const [currentPhraseTranslate, setCurrentPhraseTranslate] = useState("");
+  const [currentWordTranslate, setCurrentWordTranslate] = useState('');
+  const [currentPhraseTranslate, setCurrentPhraseTranslate] = useState('');
   const [
     currentHighlightedPhraseTranslate,
     setCurrentHighlightedPhraseTranslate,
-  ] = useState<string | null>("");
+  ] = useState<string | null>('');
   const [highlightedPhrase, setHighlightedPhrase] = useState<string | null>(
-    null
+    null,
   );
 
   useEffect(() => {
     const translate = async () => {
       if (debounceWordTranslate) {
         const data = await translateMutation.mutateAsync({
-          targetLang: "ru",
+          targetLang: 'ru',
           text: debounceWordTranslate,
         });
 
@@ -62,7 +62,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
 
   const translateAllPhrase = async () => {
     const data = await translateMutation.mutateAsync({
-      targetLang: "ru",
+      targetLang: 'ru',
       text: fullPhrase,
     });
 
@@ -76,7 +76,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const handleHighlightPhrase = async (word: string) => {
     if (phrases) {
       const matchedPhrase = phrases.find((phrase) =>
-        phrase.original.includes(word)
+        phrase.original.includes(word),
       );
       if (matchedPhrase) {
         setHighlightedPhrase(matchedPhrase.original);
@@ -92,8 +92,8 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
     <HoverCard
       open={modal.isOpen}
       onOpenChange={modal.toggleModal}
-      openDelay={500}
-      closeDelay={500}
+      openDelay={200}
+      closeDelay={200}
     >
       <HoverCardTrigger asChild={true}>
         <span
@@ -131,7 +131,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
             <div className="flex justify-between gap-6 items-center">
               <div className="mb-2">
                 <p className="text-lg">
-                  <span className="font-bold">{highlightedPhrase}</span> -{" "}
+                  <span className="font-bold">{highlightedPhrase}</span> -{' '}
                   <span>{currentHighlightedPhraseTranslate}</span>
                 </p>
               </div>
