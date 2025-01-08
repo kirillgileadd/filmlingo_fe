@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 
-import clsx from "clsx";
-import { AuthModal } from "@/src/widgets/auth";
-import { UserMenu } from "@/src/widgets/user-menu";
-import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
-import { ConfirmEmail } from "@/src/features/confirm-email";
-import { MobileMenu } from "@/src/widgets/mobile-menu";
-import { Header } from '@/src/widgets/header/ui/header';
+import clsx from 'clsx';
+import { AuthModal } from '@/src/widgets/auth';
+import { UserMenu } from '@/src/widgets/user-menu';
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import { ConfirmEmail } from '@/src/features/confirm-email';
+import { MobileMenu } from '@/src/widgets/mobile-menu';
+import { Header } from '@/src/widgets/header';
 
 type MainLayoutProps = {
   className?: string;
@@ -17,7 +17,7 @@ type MainLayoutProps = {
 
 export const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
   return (
-    <div className={clsx("relative min-h-screen", className)}>
+    <div className={clsx('relative min-h-screen', className)}>
       <ConfirmEmail />
       <Header
         actions={
