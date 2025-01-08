@@ -8,7 +8,7 @@ import { UserMenu } from "@/src/widgets/user-menu";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { ConfirmEmail } from "@/src/features/confirm-email";
 import { MobileMenu } from "@/src/widgets/mobile-menu";
-import { Header } from "@/src/widgets/header/ui/Header";
+import { Header } from '@/src/widgets/header/ui/header';
 
 type MainLayoutProps = {
   className?: string;
