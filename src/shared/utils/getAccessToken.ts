@@ -1,10 +1,5 @@
-import cookie from "cookie";
-import { ACCESS_TOKEN } from "../lib/const";
+import Cookies from 'js-cookie';
 
 export const getAccessToken = () => {
-  if (typeof window !== "undefined") {
-    const cookies = cookie.parse(document.cookie);
-    return cookies[ACCESS_TOKEN];
-  }
-  return null;
+  return Cookies.get('key') ?? null;
 };

@@ -19,9 +19,9 @@ export type SubtitleT = {
 
 export interface SubtitleYoutubeT {
   duration: number;
-  endSeconds: number;
+  endSeconds: string;
   lang?: string;
   offset: number;
-  startSeconds: number;
+  startSeconds: string;
   text: string;
 }
