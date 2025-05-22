@@ -1,6 +1,8 @@
-import { FC } from "react";
+'use client';
 
-import clsx from "clsx";
+import { FC } from 'react';
+
+import clsx from 'clsx';
 
 type SettingsItemProps = {
   className?: string;
@@ -18,8 +20,8 @@ export const SettingsItem: FC<SettingsItemProps> = ({
     <div
       {...props}
       className={clsx(
-        "p-3 flex items-center gap-x-2 hover:bg-muted cursor-pointer",
-        className
+        'p-3 flex items-center gap-x-2 hover:bg-muted cursor-pointer',
+        className,
       )}
     >
       {Icon && <Icon />} <p>{label}</p>

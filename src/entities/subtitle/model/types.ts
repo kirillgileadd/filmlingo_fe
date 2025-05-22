@@ -1,6 +1,10 @@
 export type SubtitlePhraseT = {
+  id: number;
   original: string;
-  translate: string;
+  translation: string;
+  type: 'idiom' | 'phrasal_verb';
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type SubtitleT = {

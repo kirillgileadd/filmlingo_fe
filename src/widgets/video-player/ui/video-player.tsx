@@ -1,27 +1,27 @@
 import {
   SubtitleVariantT,
   VideoVariantT,
-} from "@/src/entities/film/model/types";
-import { AddWordButton } from "@/src/features/add-word";
-import { useChangeVideoVariant } from "@/src/features/change-video-quality";
-import { SubtitleSelect } from "@/src/features/subtitle-select/ui/subtitle-select";
-import { SubtitlesList } from "@/src/features/subtitles-list";
-import { TranslateTextHoverCard } from "@/src/features/tanslate-text";
-import { Slider } from "@/src/shared/components/ui/slider";
-import { Loader2, XIcon } from "lucide-react";
-import React, { useState } from "react";
-import { AuthModal } from "../../auth";
-import { usePlaerControls } from "../model/use-player-controls";
-import { usePlayerCore } from "../model/use-player-core";
-import { usePlayerKeyboadrControl } from "../model/use-player-keyboadr-control";
-import { useSetTimeToStorage } from "../model/use-set-time-to-storage";
-import { ChangeVolume } from "./change-volume";
-import { PlayButton } from "./play-button";
-import { PlayerControls } from "./player-controls";
-import { PlayerFullscreenButton } from "./player-fullscreen-button";
-import { PlayerSettings } from "./player-settings";
-import { PlayerTimeDuration } from "./player-time-duration";
-import { useGetSubtitlesQuery } from "@/src/entities/subtitle";
+} from '@/src/entities/film/model/types';
+import { AddWordButton } from '@/src/features/add-word';
+import { useChangeVideoVariant } from '@/src/features/change-video-quality';
+import { SubtitleSelect } from '@/src/features/subtitle-select/ui/subtitle-select';
+import { SubtitlesList } from '@/src/features/subtitles-list';
+import { TranslateTextHoverCard } from '@/src/features/tanslate-text';
+import { Slider } from '@/src/shared/components/ui/slider';
+import { Loader2, XIcon } from 'lucide-react';
+import React, { useState } from 'react';
+import { AuthModal } from '../../auth';
+import { usePlaerControls } from '../model/use-player-controls';
+import { usePlayerCore } from '../model/use-player-core';
+import { usePlayerKeyboadrControl } from '../model/use-player-keyboadr-control';
+import { useSetTimeToStorage } from '../model/use-set-time-to-storage';
+import { ChangeVolume } from './change-volume';
+import { PlayButton } from './play-button';
+import { PlayerControls } from './player-controls';
+import { PlayerFullscreenButton } from './player-fullscreen-button';
+import { PlayerSettings } from './player-settings';
+import { PlayerTimeDuration } from './player-time-duration';
+import { useGetSubtitlesQuery } from '@/src/entities/subtitle';
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];
@@ -66,7 +66,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50 ${
-        contorls.showControls ? "cursor-auto" : "cursor-none"
+        contorls.showControls ? 'cursor-auto' : 'cursor-none'
       }`}
     >
       <div
@@ -77,8 +77,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onClick={onClose}
           className={`absolute top-4 right-4 text-white text-3xl z-10 transition-opacity duration-300 ${
             contorls.showControls
-              ? "opacity-100"
-              : "opacity-0 pointer-events-none"
+              ? 'opacity-100'
+              : 'opacity-0 pointer-events-none'
           }`}
           aria-label="Close modal"
         >
@@ -103,12 +103,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             pauseVideo: core.pauseVideo,
             playVideo: core.playVideo,
           }}
-          renderSubtitle={(word, fullPhrase, index, phrases) => (
+          renderSubtitle={(word, fullSubtitle, index, phrases) => (
             <TranslateTextHoverCard
               key={index}
               word={word}
               phrases={phrases}
-              fullPhrase={fullPhrase}
+              fullSubtitle={fullSubtitle}
               renderAddWord={({ phrase, translation, original }) => (
                 <AddWordButton
                   phrase={phrase}
@@ -118,7 +118,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 />
               )}
             >
-              {word}{" "}
+              {word}{' '}
             </TranslateTextHoverCard>
           )}
         />
@@ -143,7 +143,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               max={core.duration}
               onValueChange={core.handleSeek}
               trackClassName="h-1 bg-gray-700 group-hover:h-2 cursor-pointer transition-all duration-100"
-              style={{ position: "relative", zIndex: 10 }}
+              style={{ position: 'relative', zIndex: 10 }}
               loadedPercentage={core.loadedPercentage}
             />
           </div>

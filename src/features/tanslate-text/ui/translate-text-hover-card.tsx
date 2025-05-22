@@ -14,7 +14,7 @@ import { SubtitlePhraseT } from '@/src/entities/subtitle';
 
 type TranslateTextHoverCardProps = {
   word: string;
-  fullPhrase: string;
+  fullSubtitle: string;
   phrases?: SubtitlePhraseT[] | null;
   children: ReactNode;
   renderAddWord: (params: {
@@ -26,7 +26,7 @@ type TranslateTextHoverCardProps = {
 
 export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   word,
-  fullPhrase,
+  fullSubtitle,
   children,
   renderAddWord,
   phrases,
@@ -36,14 +36,8 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const debounceWordTranslate = useDebounce(value, 500);
   const translateMutation = useTranslateTextMutation();
   const [currentWordTranslate, setCurrentWordTranslate] = useState('');
-  const [currentPhraseTranslate, setCurrentPhraseTranslate] = useState('');
-  const [
-    currentHighlightedPhraseTranslate,
-    setCurrentHighlightedPhraseTranslate,
-  ] = useState<string | null>('');
-  const [highlightedPhrase, setHighlightedPhrase] = useState<string | null>(
-    null,
-  );
+  const [currentPhraseTranslate, setSubtitleTranslate] = useState('');
+  const [phrase, setPhrase] = useState<SubtitlePhraseT | null>(null);
 
   useEffect(() => {
     const translate = async () => {
@@ -60,13 +54,13 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
     translate();
   }, [debounceWordTranslate]);
 
-  const translateAllPhrase = async () => {
+  const translateSubtitle = async () => {
     const data = await translateMutation.mutateAsync({
       targetLang: 'ru',
-      text: fullPhrase,
+      text: fullSubtitle,
     });
 
-    setCurrentPhraseTranslate(data);
+    setSubtitleTranslate(data);
   };
 
   const handleTranslate = (value: string) => {
@@ -78,13 +72,23 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
       const matchedPhrase = phrases.find((phrase) =>
         phrase.original.includes(word),
       );
+      console.log(matchedPhrase, 'matchedPhrase');
+
       if (matchedPhrase) {
-        setHighlightedPhrase(matchedPhrase.original);
-        setCurrentHighlightedPhraseTranslate(matchedPhrase.translate);
+        setPhrase(matchedPhrase);
       } else {
-        setHighlightedPhrase(null);
-        setCurrentHighlightedPhraseTranslate(null);
+        setPhrase(null);
       }
+    }
+  };
+
+  const getPhaseTypeLabel = (type: 'idiom' | 'phrasal_verb') => {
+    if (type === 'idiom') {
+      return 'Слово используется как часть идиомы';
+    }
+
+    if (type === 'phrasal_verb') {
+      return 'Слово используется как часть фразового глагола';
     }
   };
 
@@ -107,46 +111,54 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
         </span>
       </HoverCardTrigger>
       <HoverCardContent side="top" sideOffset={20} className="w-120">
-        <div className="flex flex-col ">
-          <div className="flex justify-between gap-x-6 mb-3">
+        <div className="flex flex-col">
+          <div className="flex justify-between gap-x-6 mb-1.5">
             {translateMutation.isPending && modal.isOpen ? (
               <Loader2Icon className="animate-spin mb-2" />
             ) : (
               <div className="mb-2">
-                <p className="text-2xl">{currentWordTranslate}</p>
-                {currentPhraseTranslate && (
-                  <p className="text-sm mt-1">{currentPhraseTranslate}</p>
-                )}
+                <p className="text-2xl">{word}</p>
+                <p className="text-md text-gray-400">{currentWordTranslate}</p>
               </div>
             )}
             <div>
               {renderAddWord({
-                phrase: fullPhrase,
+                phrase: fullSubtitle,
                 original: debounceWordTranslate,
                 translation: currentWordTranslate,
               })}
             </div>
           </div>
-          {highlightedPhrase && currentHighlightedPhraseTranslate && (
-            <div className="flex justify-between gap-6 items-center">
-              <div className="mb-2">
-                <p className="text-lg">
-                  <span className="font-bold">{highlightedPhrase}</span> -{' '}
-                  <span>{currentHighlightedPhraseTranslate}</span>
-                </p>
-              </div>
-              <div>
-                {renderAddWord({
-                  phrase: fullPhrase,
-                  original: highlightedPhrase,
-                  translation: currentHighlightedPhraseTranslate,
-                })}
+          {phrase && (
+            <div className="border-t pt-3 mb-3">
+              <p className="text-xs text-gray-400 mb-2">
+                {getPhaseTypeLabel(phrase.type)}
+              </p>
+
+              <div className="flex justify-between gap-6 items-center">
+                <div>
+                  <p className="text-2xl">{phrase.original}</p>
+                  <p className="text-md text-gray-400">{phrase.translation}</p>
+                </div>
+                <div>
+                  {/*{renderAddWord({*/}
+                  {/*  phrase: fullPhrase,*/}
+                  {/*  original: highlightedPhrase,*/}
+                  {/*  translation: currentHighlightedPhraseTranslate,*/}
+                  {/*})}*/}
+                </div>
               </div>
             </div>
           )}
-          <Button onClick={translateAllPhrase} size="sm" className="w-fit">
-            Перевести всю фразу
-          </Button>
+          {currentPhraseTranslate ? (
+            <div className="border-t pt-3 mb-3">
+              <p className="text-md text-gray-400">{currentPhraseTranslate}</p>
+            </div>
+          ) : (
+            <Button onClick={translateSubtitle} size="sm" className="w-fit">
+              Перевести весь субтитр
+            </Button>
+          )}
         </div>
       </HoverCardContent>
     </HoverCard>

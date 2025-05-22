@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-remove-user-phrase.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/model/const.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/model/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/ui/remove-user-phrase-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/ui/sort-phrases-select.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/phrase/ui/word-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/utils/getAccessToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/getAccessToken.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/auth/ui/auth-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/auth/ui/auth-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/header/ui/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/subtitle/model/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/subtitle/model/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/subtitles-list/ui/subtitles-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/subtitles-list/ui/subtitles-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/ui/settings-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/ui/settings-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/query-keys.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/query-keys.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/auth/ui/auth-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/auth/ui/auth-modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/films-list/ui/films-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/films-list/ui/films-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/user-menu/ui/user-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/user-menu/ui/user-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/kirillgileadd/filmlingo_fe.git&quot;,
-    &quot;accountId&quot;: &quot;f64b1832-8528-4d01-be35-3aefb61f8988&quot;
+    &quot;accountId&quot;: &quot;5f1f5dc1-06ad-44ac-be7b-99846f143024&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -44,7 +59,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/deeplay/pokermetrix_be&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/web2/oidc-client&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -52,14 +67,19 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\web2\\filmlingo-fe\\node_modules\\prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/kirillgai/Desktop/web/filmlingo_fe/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\web2\\filmlingo-fe\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web2\filmlingo-fe\src\entities" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.120" />
       </set>
     </attachedChunks>
   </component>
@@ -89,6 +109,12 @@
       <workItem from="1745961025830" duration="1989000" />
       <workItem from="1746806164315" duration="628000" />
       <workItem from="1746863426515" duration="597000" />
+      <workItem from="1747034865142" duration="1985000" />
+      <workItem from="1747307363575" duration="7107000" />
+      <workItem from="1747900819820" duration="61000" />
+      <workItem from="1747901198129" duration="16000" />
+      <workItem from="1747908186143" duration="1679000" />
+      <workItem from="1747942173778" duration="7000" />
     </task>
     <servers />
   </component>

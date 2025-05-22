@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState } from 'react';
 
-import { ForgotPassword } from "@/src/features/forgot-password";
-import { LoginByEmail } from "@/src/features/login-by-email";
-import { LoginByGithub } from "@/src/features/login-by-github";
-import { LoginByGoogle } from "@/src/features/login-by-google";
-import { LoginByYandex } from "@/src/features/login-by-yandex";
-import { RegistrerUser } from "@/src/features/register-user";
-import { Button } from "@/src/shared/components/ui/button";
+import { ForgotPassword } from '@/src/features/forgot-password';
+import { LoginByEmail } from '@/src/features/login-by-email';
+import { LoginByGithub } from '@/src/features/login-by-github';
+import { LoginByGoogle } from '@/src/features/login-by-google';
+import { LoginByYandex } from '@/src/features/login-by-yandex';
+import { RegistrerUser } from '@/src/features/register-user';
+import { Button } from '@/src/shared/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -16,20 +16,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/src/shared/components/ui/dialog";
+} from '@/src/shared/components/ui/dialog';
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/src/shared/components/ui/tabs";
-import { useAuth } from "@/src/shared/lib/auth";
-import clsx from "clsx";
+} from '@/src/shared/components/ui/tabs';
+import { useAuth } from '@/src/shared/lib/auth';
+import clsx from 'clsx';
 
 const enum TabsVariants {
-  LOGIN = "login",
-  REGISTRATION = "registraton",
-  FORGOT = "forgot",
+  LOGIN = 'login',
+  REGISTRATION = 'registraton',
+  FORGOT = 'forgot',
 }
 
 type AuthModalProps = {
@@ -40,13 +40,13 @@ type AuthModalProps = {
 export const AuthModal: FC<AuthModalProps> = ({ className, trigger }) => {
   const { isAuth } = useAuth();
   const [tabValue, setTabValue] = useState<TabsVariants | string>(
-    TabsVariants.LOGIN
+    TabsVariants.LOGIN,
   );
 
-  if (typeof window === "undefined" || isAuth) return null;
+  if (isAuth) return null;
 
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx('', className)}>
       <Dialog>
         <DialogTrigger asChild>
           {trigger ?? <Button>Войти</Button>}
@@ -72,7 +72,7 @@ export const AuthModal: FC<AuthModalProps> = ({ className, trigger }) => {
               <LoginByEmail
                 resetPassword={() => (
                   <p className="text-sm mb-2 text-muted-foreground">
-                    Забыли пароль?{" "}
+                    Забыли пароль?{' '}
                     <span
                       className="hover:underline cursor-pointer text-primary"
                       onClick={() => setTabValue(TabsVariants.FORGOT)}

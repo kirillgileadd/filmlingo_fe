@@ -1,15 +1,15 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 
-import { SubtitlePhraseT, SubtitleT } from "@/src/entities/subtitle";
-import clsx from "clsx";
-import { SubtitlesListRepository } from "../model/types";
-import { Loader2 } from "lucide-react";
+import { SubtitlePhraseT, SubtitleT } from '@/src/entities/subtitle';
+import clsx from 'clsx';
+import { SubtitlesListRepository } from '../model/types';
+import { Loader2 } from 'lucide-react';
 
 type SubtitlesListProps = {
   className?: string;
   renderSubtitle: (
     word: string,
-    fullPhrase: string,
+    fullSubtitle: string,
     index: number,
     phrases?: SubtitlePhraseT[] | null,
   ) => ReactNode;
@@ -39,7 +39,7 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
   return (
     <div
       className={clsx(
-        "absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10 text-white",
+        'absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10 text-white',
         className,
       )}
     >
@@ -51,7 +51,7 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
         currentSubtitles.map((subtitle) => (
           <div
             onMouseEnter={subtitleListRepository.pauseVideo}
-            onMouseLeave={subtitleListRepository.playVideo}
+            // onMouseLeave={subtitleListRepository.playVideo}
             key={subtitle.id}
             className="pt-3"
           >

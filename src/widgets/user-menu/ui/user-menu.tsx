@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import { useGetCurrentUser } from "@/src/entities/user";
-import { useLogoutUser } from "@/src/features/user-logout";
+import { useGetCurrentUser } from '@/src/entities/user';
+import { useLogoutUser } from '@/src/features/user-logout';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/src/shared/components/ui/popover";
-import { SettingsItem } from "@/src/shared/components/ui/settings-item";
-import { UserAvatar } from "@/src/shared/components/ui/user-avatar";
-import { useAuth } from "@/src/shared/lib/auth";
-import { useModal } from "@/src/shared/lib/useModal";
-import { BookIcon, Loader2, LogOut, Youtube } from "lucide-react";
-import Link from "next/link";
+} from '@/src/shared/components/ui/popover';
+import { SettingsItem } from '@/src/shared/components/ui/settings-item';
+import { UserAvatar } from '@/src/shared/components/ui/user-avatar';
+import { useAuth } from '@/src/shared/lib/auth';
+import { useModal } from '@/src/shared/lib/useModal';
+import { BookIcon, Loader2, LogOut, Youtube } from 'lucide-react';
+import Link from 'next/link';
 
 export const UserMenu: FC = ({}) => {
   const modal = useModal();
@@ -31,7 +31,7 @@ export const UserMenu: FC = ({}) => {
 
   return (
     <Popover open={modal.isOpen} onOpenChange={modal.toggleModal}>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <UserAvatar photo={currentUserQuery.data?.photo} />
       </PopoverTrigger>
       <PopoverContent side="bottom" align="end" className="overflow-hidden">
@@ -39,7 +39,7 @@ export const UserMenu: FC = ({}) => {
           <UserAvatar photo={currentUserQuery.data?.photo} />
           <div>
             <p className="font-medium">
-              {currentUserQuery.data?.username ?? "Пользователь"}
+              {currentUserQuery.data?.username ?? 'Пользователь'}
             </p>
             <p className="text-sm text-muted-foreground">
               {currentUserQuery.data?.email}
