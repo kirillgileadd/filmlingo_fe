@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-remove-user-phrase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/model/const.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/model/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/ui/remove-user-phrase-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/ui/sort-phrases-select.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/phrase/ui/word-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/subtitle/model/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/subtitle/model/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/subtitles-list/ui/subtitles-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/subtitles-list/ui/subtitles-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/subtitle-select/ui/subtitle-select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/subtitle-select/ui/subtitle-select.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/ui/settings-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/ui/settings-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/query-keys.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/query-keys.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/auth/ui/auth-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/auth/ui/auth-modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/films-list/ui/films-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/films-list/ui/films-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/user-menu/ui/user-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/user-menu/ui/user-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/useDebounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/useDebounce.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +99,8 @@
       <workItem from="1747900819820" duration="61000" />
       <workItem from="1747901198129" duration="16000" />
       <workItem from="1747908186143" duration="1679000" />
-      <workItem from="1747942173778" duration="7000" />
+      <workItem from="1747942173778" duration="50000" />
+      <workItem from="1747984904300" duration="6450000" />
     </task>
     <servers />
   </component>

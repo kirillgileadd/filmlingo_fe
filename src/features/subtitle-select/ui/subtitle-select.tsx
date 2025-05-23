@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { SubtitleVariantT } from "@/src/entities/film/model/types";
+import { SubtitleVariantT } from '@/src/entities/film/model/types';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/src/shared/components/ui/popover";
-import { SettingsItem } from "@/src/shared/components/ui/settings-item";
-import { useModal } from "@/src/shared/lib/useModal";
-import { SubtitlesIcon } from "lucide-react";
+} from '@/src/shared/components/ui/popover';
+import { SettingsItem } from '@/src/shared/components/ui/settings-item';
+import { useModal } from '@/src/shared/lib/useModal';
+import { SubtitlesIcon } from 'lucide-react';
 
 type SubtitleSelectProps = {
   className?: string;
@@ -34,15 +34,13 @@ export const SubtitleSelect: FC<SubtitleSelectProps> = ({
       </PopoverTrigger>
       <PopoverContent sideOffset={10} side="top" className="mr-6 ">
         <div>
-          {subtitlesVarinats.map((sub) => {
-            return (
-              <SettingsItem
-                key={sub.id}
-                label={sub.language}
-                onClick={() => onSelect(sub.id)}
-              />
-            );
-          })}
+          {subtitlesVarinats.map((sub) => (
+            <SettingsItem
+              key={sub.id}
+              label={sub.language}
+              onClick={() => onSelect(sub.id)}
+            />
+          ))}
           <SettingsItem label="Отключить" onClick={() => onSelect(null)} />
         </div>
       </PopoverContent>

@@ -6,7 +6,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from '@/src/shared/components/ui/hover-card';
-import { useDebounce } from '@/src/shared/lib/useDebounce';
+import { useDebouncedCallback } from '@/src/shared/lib/useDebounce';
 import { useModal } from '@/src/shared/lib/useModal';
 import { Loader2Icon } from 'lucide-react';
 import { useTranslateTextMutation } from '../api/use-translate-text-mutation';
@@ -33,7 +33,6 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
 }) => {
   const modal = useModal();
   const [value, setValue] = useState('');
-  const debounceWordTranslate = useDebounce(value, 500);
   const translateMutation = useTranslateTextMutation();
   const [currentWordTranslate, setCurrentWordTranslate] = useState('');
   const [currentPhraseTranslate, setSubtitleTranslate] = useState('');
@@ -41,10 +40,10 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
 
   useEffect(() => {
     const translate = async () => {
-      if (debounceWordTranslate) {
+      if (value) {
         const data = await translateMutation.mutateAsync({
           targetLang: 'ru',
-          text: debounceWordTranslate,
+          text: value,
         });
 
         setCurrentWordTranslate(data);
@@ -52,7 +51,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
     };
 
     translate();
-  }, [debounceWordTranslate]);
+  }, [value]);
 
   const translateSubtitle = async () => {
     const data = await translateMutation.mutateAsync({
@@ -66,6 +65,11 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const handleTranslate = (value: string) => {
     setValue(value);
   };
+
+  const [debouncedTranslate, cancelTranslate] = useDebouncedCallback(
+    handleTranslate,
+    200,
+  );
 
   const handleHighlightPhrase = async (word: string) => {
     if (phrases) {
@@ -103,9 +107,10 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
         <span
           className="text-3xl px-1 hover:bg-foreground hover:text-secondary rounded inline-block relative"
           onMouseEnter={() => {
-            handleTranslate(word);
+            debouncedTranslate(word);
             handleHighlightPhrase(word);
           }}
+          onMouseLeave={cancelTranslate}
         >
           {children}
         </span>
@@ -124,7 +129,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
             <div>
               {renderAddWord({
                 phrase: fullSubtitle,
-                original: debounceWordTranslate,
+                original: value,
                 translation: currentWordTranslate,
               })}
             </div>
