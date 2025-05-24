@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
-import { Button } from "@/src/shared/components/ui/button";
-import { Container } from "@/src/shared/components/ui/container";
-import Image from "next/image";
+import clsx from 'clsx';
+import { Button } from '@/src/shared/components/ui/button';
+import { Container } from '@/src/shared/components/ui/container';
+import Image from 'next/image';
 
 type FeedbackProps = {
   className?: string;
@@ -13,12 +13,12 @@ type FeedbackProps = {
 
 export const Feedback: FC<FeedbackProps> = ({ className }) => {
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx('', className)}>
       <Container>
         <div className="relative flex flex-wrap gap-4 justify-between items-center w-full border p-4 rounded-md bg-card">
           <div>
             <h4 className="text-xl mb-2 font-semibold">
-              Телеграм бот для фитбека
+              Телеграм бот для фидбека
             </h4>
             <p className="text-xs">Кидайте баг репорты и предложения :D</p>
           </div>

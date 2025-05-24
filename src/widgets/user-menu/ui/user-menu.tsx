@@ -31,7 +31,7 @@ export const UserMenu: FC = ({}) => {
 
   return (
     <Popover open={modal.isOpen} onOpenChange={modal.toggleModal}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger>
         <UserAvatar photo={currentUserQuery.data?.photo} />
       </PopoverTrigger>
       <PopoverContent side="bottom" align="end" className="overflow-hidden">
