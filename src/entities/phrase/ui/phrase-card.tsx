@@ -7,14 +7,14 @@ import { RemoveUserPhraseButton } from './remove-user-phrase-button';
 
 type PhraseCardProps = {
   className?: string;
-  word: PhraseT;
+  phrase: PhraseT;
 };
 
-export const PhraseCard: FC<PhraseCardProps> = ({ className, word }) => {
+export const PhraseCard: FC<PhraseCardProps> = ({ className, phrase }) => {
   const highlightedPhrase = useMemo(() => {
-    const regex = new RegExp(`(${word.original})`, 'gi');
+    const regex = new RegExp(`(${phrase.original})`, 'gi');
 
-    const parts = word.phrase?.split(regex);
+    const parts = phrase.sourceContext?.split(regex);
 
     return parts?.map((part, index) =>
       regex.test(part) ? (
@@ -25,22 +25,22 @@ export const PhraseCard: FC<PhraseCardProps> = ({ className, word }) => {
         part
       ),
     );
-  }, [word.phrase, word.original]);
+  }, [phrase.sourceContext, phrase.original]);
 
   return (
     <tr className={clsx('', className)}>
       <td>
         <div>
-          <p className="text-lg font-medium">{word.original.toLowerCase()}</p>
+          <p className="text-lg font-medium">{phrase.original.toLowerCase()}</p>
           <p className="text-sm text-gray-400">
-            {word.translation.toLowerCase()}
+            {phrase.translation.toLowerCase()}
           </p>
         </div>
       </td>
       <td className="font-medium">{highlightedPhrase}</td>
-      <td>{dayjs(word.createdAt).format('DD.MM.YYYY')}</td>
+      <td>{dayjs(phrase.createdAt).format('DD.MM.YYYY')}</td>
       <td>
-        <RemoveUserPhraseButton wordId={word.id} />
+        <RemoveUserPhraseButton phraseId={phrase.id} />
       </td>
     </tr>
   );

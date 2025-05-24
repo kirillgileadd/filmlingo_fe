@@ -2,14 +2,14 @@ export type WordT = {
   id: number;
   original: string;
   translation: string;
-  phrase?: string | null;
+  sourceContext?: string | null;
   createdAt: string;
 };
 
 export type GetUserWordsParamsT = {
   page: number;
   pageSize: number;
-  order?: "asc" | "desc";
+  order?: 'asc' | 'desc';
   orderValue?: keyof WordT;
 };
 
@@ -23,6 +23,6 @@ export type GetUserWordsResT = {
 export type WordSortSelectItemT = {
   id: number;
   label: string;
-  order: "asc" | "desc";
+  order: 'asc' | 'desc';
   value: keyof WordT;
 };

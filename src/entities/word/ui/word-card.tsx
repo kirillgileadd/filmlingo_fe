@@ -1,9 +1,9 @@
-import { FC, useMemo } from "react";
+import { FC, useMemo } from 'react';
 
-import clsx from "clsx";
-import dayjs from "dayjs";
-import { WordT } from "../model/types";
-import { RemoveUserWordButton } from "./remove-user-word-button";
+import clsx from 'clsx';
+import dayjs from 'dayjs';
+import { WordT } from '../model/types';
+import { RemoveUserWordButton } from './remove-user-word-button';
 
 type WordCardProps = {
   className?: string;
@@ -12,9 +12,9 @@ type WordCardProps = {
 
 export const WordCard: FC<WordCardProps> = ({ className, word }) => {
   const highlightedPhrase = useMemo(() => {
-    const regex = new RegExp(`(${word.original})`, "gi");
+    const regex = new RegExp(`(${word.original})`, 'gi');
 
-    const parts = word.phrase?.split(regex);
+    const parts = word.sourceContext?.split(regex);
 
     return parts?.map((part, index) =>
       regex.test(part) ? (
@@ -23,12 +23,12 @@ export const WordCard: FC<WordCardProps> = ({ className, word }) => {
         </span>
       ) : (
         part
-      )
+      ),
     );
-  }, [word.phrase, word.original]);
+  }, [word.sourceContext, word.original]);
 
   return (
-    <tr className={clsx("", className)}>
+    <tr className={clsx('', className)}>
       <td>
         <div>
           <p className="text-lg font-medium">{word.original.toLowerCase()}</p>
@@ -38,7 +38,7 @@ export const WordCard: FC<WordCardProps> = ({ className, word }) => {
         </div>
       </td>
       <td className="font-medium">{highlightedPhrase}</td>
-      <td>{dayjs(word.createdAt).format("DD.MM.YYYY")}</td>
+      <td>{dayjs(word.createdAt).format('DD.MM.YYYY')}</td>
       <td>
         <RemoveUserWordButton wordId={word.id} />
       </td>

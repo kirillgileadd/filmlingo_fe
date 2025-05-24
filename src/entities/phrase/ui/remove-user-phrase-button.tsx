@@ -7,17 +7,17 @@ import { Loader2, Trash2Icon } from 'lucide-react';
 
 type RemoveUserPhraseButtonProps = {
   className?: string;
-  wordId: number;
+  phraseId: number;
 };
 
 export const RemoveUserPhraseButton: FC<RemoveUserPhraseButtonProps> = ({
   className,
-  wordId,
+  phraseId,
 }) => {
   const removeUserPhraseMutation = useRemoveUserPhrase();
 
   const handleRemove = () => {
-    removeUserPhraseMutation.mutate(wordId);
+    removeUserPhraseMutation.mutate(phraseId);
   };
 
   return (

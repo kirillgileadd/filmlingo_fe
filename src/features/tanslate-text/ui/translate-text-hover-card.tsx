@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@/src/shared/components/ui/button';
 import {
@@ -14,19 +14,19 @@ import { SubtitlePhraseT } from '@/src/entities/subtitle';
 
 type TranslateTextHoverCardProps = {
   word: string;
-  fullSubtitle: string;
+  sourceContext: string;
   phrases?: SubtitlePhraseT[] | null;
   children: ReactNode;
   renderAddWord: (params: {
     original: string;
-    phrase: string;
+    sourceContext: string;
     translation: string;
   }) => ReactNode;
 };
 
 export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   word,
-  fullSubtitle,
+  sourceContext,
   children,
   renderAddWord,
   phrases,
@@ -37,6 +37,12 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const [currentWordTranslate, setCurrentWordTranslate] = useState('');
   const [currentPhraseTranslate, setSubtitleTranslate] = useState('');
   const [phrase, setPhrase] = useState<SubtitlePhraseT | null>(null);
+
+  const parsedWord = useMemo(() => {
+    return word.replace(/[^\p{L}\p{N}'-]+/gu, '');
+  }, [word]);
+
+  console.log(parsedWord, 'parsedWord');
 
   useEffect(() => {
     const translate = async () => {
@@ -56,7 +62,7 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const translateSubtitle = async () => {
     const data = await translateMutation.mutateAsync({
       targetLang: 'ru',
-      text: fullSubtitle,
+      text: sourceContext,
     });
 
     setSubtitleTranslate(data);
@@ -107,8 +113,8 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
         <span
           className="text-3xl px-1 hover:bg-foreground hover:text-secondary rounded inline-block relative"
           onMouseEnter={() => {
-            debouncedTranslate(word);
-            handleHighlightPhrase(word);
+            debouncedTranslate(parsedWord);
+            handleHighlightPhrase(parsedWord);
           }}
           onMouseLeave={cancelTranslate}
         >
@@ -122,13 +128,13 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
               <Loader2Icon className="animate-spin mb-2" />
             ) : (
               <div className="mb-2">
-                <p className="text-2xl">{word}</p>
+                <p className="text-2xl">{parsedWord}</p>
                 <p className="text-md text-gray-400">{currentWordTranslate}</p>
               </div>
             )}
             <div>
               {renderAddWord({
-                phrase: fullSubtitle,
+                sourceContext: sourceContext,
                 original: value,
                 translation: currentWordTranslate,
               })}

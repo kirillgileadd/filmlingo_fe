@@ -1,32 +1,32 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 
 import {
   SORT_WORDS_SELECT_ITEMS,
   SortWordsSelect,
   useGetUserWords,
   WordCard,
-} from "@/src/entities/word";
-import { PaginationCommon } from "@/src/shared/components/common/pagination-common";
-import { Container } from "@/src/shared/components/ui/container";
-import { useAuth } from "@/src/shared/lib/auth";
-import { withClientOnly } from "@/src/shared/lib/withClientOnly";
-import clsx from "clsx";
-import { DictionaryPageError } from "./dictionary-page-error";
-import { DictionaryPageNoAuth } from "./dictionary-page-no-auth";
-import { DictionaryPageSkeleton } from "./dictionary-page-skeleton";
+} from '@/src/entities/word';
+import { PaginationCommon } from '@/src/shared/components/common/pagination-common';
+import { Container } from '@/src/shared/components/ui/container';
+import { useAuth } from '@/src/shared/lib/auth';
+import { withClientOnly } from '@/src/shared/lib/withClientOnly';
+import clsx from 'clsx';
+import { DictionaryPageError } from './dictionary-page-error';
+import { DictionaryPageNoAuth } from './dictionary-page-no-auth';
+import { DictionaryPageSkeleton } from './dictionary-page-skeleton';
 
-import styles from "./dictionary-page.module.scss";
-import { Button } from "@/src/shared/components/ui/button";
-import Link from "next/link";
-import { ROUTES } from "@/src/shared/lib/const";
+import styles from './dictionary-page.module.scss';
+import { Button } from '@/src/shared/components/ui/button';
+import Link from 'next/link';
+import { ROUTES } from '@/src/shared/lib/const';
 
 type DictionaryPageProps = {
   className?: string;
 };
 
-const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
+const DictionaryPageComponent: FC<DictionaryPageProps> = ({ className }) => {
   const [sort, setSort] = useState(SORT_WORDS_SELECT_ITEMS[0]);
   const [page, setPage] = useState(1);
   const pageSize = 20;
@@ -39,8 +39,6 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
     order: sort.order,
     orderValue: sort.value,
   });
-
-  console.log(wordsQuery.data);
 
   if (!isAuth) {
     return <DictionaryPageNoAuth />;
@@ -56,7 +54,7 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
 
   if (wordsQuery.data?.rows.length === 0) {
     return (
-      <div className={clsx("pb-10", className)}>
+      <div className={clsx('pb-10', className)}>
         <p></p>
         Вы еще не добавили слова в словарик
         <Button>Начать смотреть !</Button>
@@ -67,7 +65,7 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
   if (!wordsQuery.data) return null;
 
   return (
-    <div className={clsx("pb-10", className)}>
+    <div className={clsx('pb-10', className)}>
       <Container className="m-auto" size="small">
         <div className="flex justify-between mb-4">
           <h3 className="text-3xl">Мой словарик</h3>
@@ -103,4 +101,4 @@ const DictionaryPageConponent: FC<DictionaryPageProps> = ({ className }) => {
   );
 };
 
-export const DictionaryPage = withClientOnly(DictionaryPageConponent);
+export const DictionaryPage = withClientOnly(DictionaryPageComponent);

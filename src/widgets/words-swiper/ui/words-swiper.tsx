@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useGetRandomWordsQuery } from "@/src/features/get-random-words";
-import { Button } from "@/src/shared/components/ui/button";
-import { motion, PanInfo } from "framer-motion";
-import { CheckIcon, LanguagesIcon, LightbulbIcon, XIcon } from "lucide-react";
-import { FC, useEffect, useState } from "react";
+import { useGetRandomWordsQuery } from '@/src/features/get-random-words';
+import { Button } from '@/src/shared/components/ui/button';
+import { motion, PanInfo } from 'framer-motion';
+import { CheckIcon, LanguagesIcon, LightbulbIcon, XIcon } from 'lucide-react';
+import { FC, useEffect, useState } from 'react';
 
 type Card = {
   id: number;
@@ -29,15 +29,15 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
       setCardList(
         wordsListQuery.data.words.map((w) => ({
           id: w.id,
-          phrase: w.phrase,
+          phrase: w.sourceContext,
           translate: w.translation,
           word: w.original,
-        }))
+        })),
       );
     }
   }, [wordsListQuery.data]);
 
-  const handleSwipe = (cardId: number, direction: "left" | "right") => {
+  const handleSwipe = (cardId: number, direction: 'left' | 'right') => {
     console.log(`Card ${cardId} swiped ${direction}`);
     setRotate(false);
     setShowPhrase(false);
@@ -47,12 +47,12 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo,
-    cardId: number
+    cardId: number,
   ) => {
     if (info.offset.x > 150) {
-      handleSwipe(cardId, "right");
+      handleSwipe(cardId, 'right');
     } else if (info.offset.x < -150) {
-      handleSwipe(cardId, "left");
+      handleSwipe(cardId, 'left');
     }
   };
 
@@ -101,7 +101,7 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
         <motion.div
           key={card.id}
           onDragEnd={(event, info) => handleDragEnd(event, info, card.id)}
-          onDrag={() => console.log("on drag")}
+          onDrag={() => console.log('on drag')}
           initial={{ scale: 1, rotateY: 0, x: 0 }}
           style={{
             zIndex: cardList.length - index,
@@ -123,10 +123,10 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
             x: 0,
           }}
           transition={{
-            rotateY: { type: "spring", stiffness: 300, damping: 20 },
+            rotateY: { type: 'spring', stiffness: 300, damping: 20 },
             opacity: { duration: 0.3 },
             scale: { duration: 0.3 },
-            x: { type: "spring", stiffness: 300, damping: 30 },
+            x: { type: 'spring', stiffness: 300, damping: 30 },
           }}
           className="absolute w-80 h-96 bg-card shadow-lg rounded-xl flex flex-col items-center justify-center p-3 border"
         >
@@ -142,8 +142,8 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
             <motion.div
               style={{
                 transform:
-                  rotate && index === 0 ? "rotateY(360deg)" : "rotateY(0deg)", // Анимация поворота
-                transition: "transform 0.5s",
+                  rotate && index === 0 ? 'rotateY(360deg)' : 'rotateY(0deg)', // Анимация поворота
+                transition: 'transform 0.5s',
               }}
             >
               {rotate && index === 0 ? (
@@ -163,7 +163,7 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
           <div className="flex justify-between w-full mt-auto items-center">
             <Button
               className="[&_svg]:w-8 [&_svg]:h-8"
-              onClick={() => handleSwipe(card.id, "left")}
+              onClick={() => handleSwipe(card.id, 'left')}
               size="circle"
             >
               <XIcon className="flex-shrink-0" size={30} />
@@ -178,7 +178,7 @@ export const WordsSwiper: FC<WordsSwiperProps> = ({}) => {
             </Button>
             <Button
               className="[&_svg]:w-8 [&_svg]:h-8"
-              onClick={() => handleSwipe(card.id, "right")}
+              onClick={() => handleSwipe(card.id, 'right')}
               size="circle"
             >
               <CheckIcon size={30} />

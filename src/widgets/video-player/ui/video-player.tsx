@@ -103,15 +103,15 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             pauseVideo: core.pauseVideo,
             playVideo: core.playVideo,
           }}
-          renderSubtitle={(word, fullSubtitle, index, phrases) => (
+          renderSubtitle={(word, sourceContext, index, phrases) => (
             <TranslateTextHoverCard
               key={index}
               word={word}
               phrases={phrases}
-              fullSubtitle={fullSubtitle}
-              renderAddWord={({ phrase, translation, original }) => (
+              sourceContext={sourceContext}
+              renderAddWord={({ sourceContext, translation, original }) => (
                 <AddWordButton
-                  phrase={phrase}
+                  sourceContext={sourceContext}
                   translation={translation}
                   original={original}
                   renderAuthForm={(trigger) => <AuthModal trigger={trigger} />}

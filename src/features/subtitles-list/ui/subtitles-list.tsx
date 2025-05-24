@@ -9,7 +9,7 @@ type SubtitlesListProps = {
   className?: string;
   renderSubtitle: (
     word: string,
-    fullSubtitle: string,
+    sourceContext: string,
     index: number,
     phrases?: SubtitlePhraseT[] | null,
   ) => ReactNode;

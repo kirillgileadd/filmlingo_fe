@@ -1,11 +1,11 @@
-import { FC, ReactNode, useCallback, useMemo } from "react";
+import { FC, ReactNode, useCallback, useMemo } from 'react';
 
-import { Button } from "@/src/shared/components/ui/button";
-import clsx from "clsx";
-import { BookCheckIcon, BookIcon, Loader2 } from "lucide-react";
-import { useAddWord } from "../api/use-add-word";
-import { AddWordBodyT } from "../model/types";
-import { useCanAddWord } from "../model/use-can-add-word";
+import { Button } from '@/src/shared/components/ui/button';
+import clsx from 'clsx';
+import { BookCheckIcon, BookIcon, Loader2 } from 'lucide-react';
+import { useAddWord } from '../api/use-add-word';
+import { AddWordBodyT } from '../model/types';
+import { useCanAddWord } from '../model/use-can-add-word';
 
 type AddWordButtonProps = {
   className?: string;
@@ -15,7 +15,7 @@ type AddWordButtonProps = {
 export const AddWordButton: FC<AddWordButtonProps> = ({
   className,
   original,
-  phrase,
+  sourceContext,
   translation,
   renderAuthForm,
 }) => {
@@ -23,8 +23,8 @@ export const AddWordButton: FC<AddWordButtonProps> = ({
   const addWordMutation = useAddWord();
 
   const handleAddWord = useCallback(async () => {
-    await addWordMutation.mutateAsync({ original, phrase, translation });
-  }, [addWordMutation, original, phrase, translation]);
+    await addWordMutation.mutateAsync({ original, sourceContext, translation });
+  }, [addWordMutation, original, sourceContext, translation]);
 
   const renderButton = useMemo(() => {
     return (
@@ -32,7 +32,7 @@ export const AddWordButton: FC<AddWordButtonProps> = ({
         variant="secondary"
         size="icon"
         onClick={handleAddWord}
-        className={clsx("", className)}
+        className={clsx('', className)}
       >
         {addWordMutation.isPending ? (
           <Loader2 className="animate-spin" />

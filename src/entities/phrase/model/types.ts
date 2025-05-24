@@ -5,6 +5,7 @@ export type PhraseT = {
   type: 'idiom' | 'phrasal_verb';
   createdAt: string;
   updatedAt: string;
+  sourceContext?: string;
 };
 
 export type GetUserPhrasesParamsT = {

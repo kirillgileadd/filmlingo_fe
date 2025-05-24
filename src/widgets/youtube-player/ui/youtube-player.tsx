@@ -101,14 +101,14 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
           currentTime={currentTime}
           subtitleListRepository={{ pauseVideo, playVideo }}
           subtitles={youtubeSubtitles ?? []}
-          renderSubtitle={(word, fullSubtitle, index) => (
+          renderSubtitle={(word, sourceContext, index) => (
             <TranslateTextHoverCard
               key={index}
-              fullSubtitle={fullSubtitle}
+              sourceContext={sourceContext}
               word={word}
-              renderAddWord={({ phrase, translation, original }) => (
+              renderAddWord={({ sourceContext, translation, original }) => (
                 <AddWordButton
-                  phrase={phrase}
+                  sourceContext={sourceContext}
                   translation={translation}
                   original={original}
                   renderAuthForm={(trigger) => <AuthModal trigger={trigger} />}

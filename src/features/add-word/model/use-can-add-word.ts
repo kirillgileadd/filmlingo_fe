@@ -1,6 +1,6 @@
-import { useAuth } from "@/src/shared/lib/auth";
-import { AddWordBodyT } from "./types";
-import toast from "react-hot-toast";
+import { useAuth } from '@/src/shared/lib/auth';
+import { AddWordBodyT } from './types';
+import toast from 'react-hot-toast';
 
 export const canAddWord = (isAuth?: boolean) => {
   return isAuth;
@@ -13,14 +13,14 @@ export const useCanAddWord = () => {
 
 export const useValidateAddWord = () => {
   const cleanWord = (word: string) =>
-    word.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, "").toLocaleLowerCase();
+    word.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '').toLocaleLowerCase();
 
   return (body: Partial<AddWordBodyT>) => {
-    const original = body.original ? cleanWord(body.original) : "";
-    const translation = body.translation ? cleanWord(body.translation) : "";
+    const original = body.original ? cleanWord(body.original) : '';
+    const translation = body.translation ? cleanWord(body.translation) : '';
 
-    if (!original || !body.phrase || !translation) {
-      toast.error("Не удалось добавить слово :(");
+    if (!original || !body.sourceContext || !translation) {
+      toast.error('Не удалось добавить слово :(');
       return false;
     }
 
