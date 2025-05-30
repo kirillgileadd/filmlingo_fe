@@ -1,6 +1,11 @@
-# Stage 1: Build application
 FROM node:22 AS builder
 WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
 
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
@@ -8,22 +13,19 @@ ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ARG NEXT_PUBLIC_STATIC
 ENV NEXT_PUBLIC_STATIC=$NEXT_PUBLIC_STATIC
 
-# Копируем package.json и устанавливаем зависимости
-COPY package*.json ./
-RUN npm install
-
-# Копируем исходный код и билдим проект
-COPY . .
 RUN npm run build
 
-# Stage 2: Runtime
 FROM node:22
 WORKDIR /app
 
-# Копируем собранное приложение из Stage 1
-COPY --from=builder /app ./
+COPY package*.json ./
+RUN npm install --omit=dev
 
-# Указываем порт и стартуем сервер Next.js
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
 ENV PORT=3000
 EXPOSE 3000
 CMD ["npm", "run", "start"]

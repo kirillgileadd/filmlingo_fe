@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
-import { UserIcon } from "lucide-react";
-import Image from "next/image";
+import clsx from 'clsx';
+import { UserIcon } from 'lucide-react';
+import Image from 'next/image';
 
 type UserAvatarProps = {
   className?: string;
@@ -18,12 +18,10 @@ export const UserAvatar: FC<UserAvatarProps> = ({
   size = 36,
 }) => {
   return (
-    <div
-      className={clsx("bg-primary-foreground rounded-full border", className)}
-    >
+    <div className={clsx('bg-background rounded-full border', className)}>
       {!!photo ? (
         <Image
-          src={photo ?? ""}
+          src={photo ?? ''}
           width={size}
           height={size}
           alt="Avatar"

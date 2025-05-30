@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
-import { RegisterUserForm } from "./register-user-form";
-import { useRegisterUser } from "../api/use-register-user";
-import { useStepper } from "@/src/shared/lib/useStepper";
-import { RegisterUserReq } from "../model/types";
-import { ConfirmEmail } from "./confirm-email";
+import clsx from 'clsx';
+import { RegisterUserForm } from './register-user-form';
+import { useRegisterUser } from '../api/use-register-user';
+import { useStepper } from '@/src/shared/lib/useStepper';
+import { RegisterUserReq } from '../model/types';
+import { ConfirmEmail } from './confirm-email';
 
 type RegistrerUserProps = {
   className?: string;
@@ -21,7 +21,7 @@ export const RegistrerUser: FC<RegistrerUserProps> = ({ className }) => {
   };
 
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx('', className)}>
       {active === 0 && (
         <RegisterUserForm
           onSubmit={handleRegister}

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import cookie from "cookie";
-import { ACCESS_TOKEN } from "../lib/const";
-import { getAccessToken } from "../utils/getAccessToken";
+import axios from 'axios';
+import { ACCESS_TOKEN } from '../lib/const';
+import { getAccessToken } from '../utils/getAccessToken';
+import Cookies from 'js-cookie';
 
 const $api = axios.create({
   withCredentials: true,
@@ -34,23 +34,19 @@ $api.interceptors.response.use(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`,
           {
             withCredentials: true,
-          }
+          },
         );
-        document.cookie = cookie.serialize(
-          ACCESS_TOKEN,
-          response.data.accessToken,
-          {
-            maxAge: 60 * 60,
-            secure: false,
-          }
-        );
+        Cookies.set(ACCESS_TOKEN, response.data.accessToken, {
+          expires: 1 / 24,
+          secure: process.env.NODE_ENV === 'production',
+        });
         return await $api.request(request);
       } catch (e) {
         console.log(e);
       }
     }
     throw error;
-  }
+  },
 );
 
 export default $api;

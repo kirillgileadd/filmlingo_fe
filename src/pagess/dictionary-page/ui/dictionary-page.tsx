@@ -55,9 +55,14 @@ const DictionaryPageComponent: FC<DictionaryPageProps> = ({ className }) => {
   if (wordsQuery.data?.rows.length === 0) {
     return (
       <div className={clsx('pb-10', className)}>
-        <p></p>
-        Вы еще не добавили слова в словарик
-        <Button>Начать смотреть !</Button>
+        <Container className="m-auto">
+          <div>
+            <p className="text-xl mb-4">Вы еще не добавили слова в словарик</p>
+            <Link href={ROUTES.HOME}>
+              <Button>Начать смотреть !</Button>
+            </Link>
+          </div>
+        </Container>
       </div>
     );
   }
