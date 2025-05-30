@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/confirm-email/ui/confirm-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/confirm-email/ui/confirm-email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/login-by-email/api/use-login-by-email.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/login-by-email/api/use-login-by-email.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/login-by-email/ui/login-by-email-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/login-by-email/ui/login-by-email-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/register-user/api/use-register-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/register-user/api/use-register-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/register-user/ui/confirm-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/register-user/ui/confirm-email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/register-user/ui/registrer-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/register-user/ui/registrer-user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/ui/user-avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/ui/user-avatar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/deply.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +100,7 @@
       <workItem from="1747984904300" duration="9447000" />
       <workItem from="1748076499751" duration="15555000" />
       <workItem from="1748159003987" duration="3367000" />
+      <workItem from="1748609528782" duration="205000" />
     </task>
     <servers />
   </component>

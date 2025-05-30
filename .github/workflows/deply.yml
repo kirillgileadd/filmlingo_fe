@@ -1,0 +1,42 @@
+name: Build and Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            --build-arg NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} \
+            --build-arg NEXT_PUBLIC_STATIC=${{ secrets.NEXT_PUBLIC_STATIC }} \
+            -t ${{ secrets.DOCKER_USERNAME }}/filmlingo_fe:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/filmlingo_fe:latest
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+        shell: bash
+
+      - name: SSH and deploy frontend
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << EOF
+            docker pull ${{ secrets.DOCKER_USERNAME }}/filmlingo_fe:latest
+            cd /path/to/frontend/project
+            docker compose down
+            docker compose up -d
+          EOF
