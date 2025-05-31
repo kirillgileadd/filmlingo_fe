@@ -19,9 +19,11 @@ import { appSessionStore } from '@/src/shared/session';
 export const UserMenu: FC = ({}) => {
   const modal = useModal();
   const session = appSessionStore.useSession();
-  console.log(session);
+
   const currentUserQuery = useGetCurrentUser(!!session);
   const logoutMutation = useLogoutUser();
+
+  console.log(currentUserQuery, 'sd');
 
   const handleLogout = async () => {
     await logoutMutation.mutateAsync();
