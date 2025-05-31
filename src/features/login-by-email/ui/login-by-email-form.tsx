@@ -45,7 +45,13 @@ export const LoginByEmailForm: FC<LoginByEmailFormProps> = ({
       <Input
         error={errors.email?.message}
         placeholder="Email"
-        {...register('email', { required: 'Обязательное поле' })}
+        {...register('email', {
+          required: 'Обязательное поле',
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: 'Некорректный email',
+          },
+        })}
       />
       <PasswordInput
         error={errors.password?.message}
@@ -54,7 +60,7 @@ export const LoginByEmailForm: FC<LoginByEmailFormProps> = ({
       />
       {resetPassword()}
       {loginMutate.error && (
-        <p className="text-sm mb-2 bg-primary-foreground text-destructive rounded-md border-destructive p-2 border">
+        <p className="text-sm mb-2 bg-card text-destructive rounded-md p-2 border">
           {loginMutate.error.response?.data.message}
         </p>
       )}

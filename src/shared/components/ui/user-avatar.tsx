@@ -28,7 +28,7 @@ export const UserAvatar: FC<UserAvatarProps> = ({
           className="rounded-full"
         />
       ) : (
-        <UserIcon className="p-1" width={size} height={size} />
+        <UserIcon className="p-1.5" width={size} height={size} />
       )}
     </div>
   );
