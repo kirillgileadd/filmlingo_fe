@@ -1,14 +1,14 @@
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { TranslateBodyT } from "../model/types";
+import { useMutation } from '@tanstack/react-query';
+import { TranslateBodyT } from '../model/types';
+import { publicApiClient } from '@/src/shared/api/client';
 
 export const useTranslateTextMutation = () => {
   return useMutation({
-    mutationKey: ["translate-word"],
+    mutationKey: ['translate-word'],
     mutationFn: async (body: TranslateBodyT) => {
-      const response = await axios.post(
+      const response = await publicApiClient.post(
         `${process.env.NEXT_PUBLIC_API_URL}/translate/`,
-        body
+        body,
       );
 
       return response.data;

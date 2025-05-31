@@ -1,10 +1,10 @@
-import $api from "@/src/shared/lib/api";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 import {
   ForgotPasswordBody,
   ForgotPasswordError,
   ForgotPasswordRes,
-} from "../model/types";
+} from '../model/types';
+import { publicApiClient } from '@/src/shared/api/client';
 
 export const useForgotPassword = () => {
   return useMutation<
@@ -13,7 +13,10 @@ export const useForgotPassword = () => {
     ForgotPasswordBody
   >({
     mutationFn: async (body) => {
-      const response = await $api.post("/auth/forgot-password", body);
+      const response = await publicApiClient.post(
+        '/auth/forgot-password',
+        body,
+      );
 
       return response.data;
     },

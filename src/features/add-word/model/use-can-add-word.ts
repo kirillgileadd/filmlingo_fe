@@ -1,13 +1,13 @@
-import { useAuth } from '@/src/shared/lib/auth';
 import { AddWordBodyT } from './types';
 import toast from 'react-hot-toast';
+import { appSessionStore } from '@/src/shared/session';
 
 export const canAddWord = (isAuth?: boolean) => {
   return isAuth;
 };
 
 export const useCanAddWord = () => {
-  const { isAuth } = useAuth();
+  const isAuth = !!appSessionStore.getSession();
   return canAddWord(isAuth);
 };
 

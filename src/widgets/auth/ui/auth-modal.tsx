@@ -23,8 +23,8 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/src/shared/components/ui/tabs';
-import { useAuth } from '@/src/shared/lib/auth';
 import clsx from 'clsx';
+import { appSessionStore } from '@/src/shared/session';
 
 const enum TabsVariants {
   LOGIN = 'login',
@@ -38,12 +38,14 @@ type AuthModalProps = {
 };
 
 export const AuthModal: FC<AuthModalProps> = ({ className, trigger }) => {
-  const { isAuth } = useAuth();
+  const session = appSessionStore.useSession();
   const [tabValue, setTabValue] = useState<TabsVariants | string>(
     TabsVariants.LOGIN,
   );
 
-  if (isAuth) return null;
+  console.log(session, 'session Auth');
+
+  if (session) return null;
 
   return (
     <div className={clsx('', className)}>

@@ -10,7 +10,6 @@ import {
 } from '@/src/entities/word';
 import { PaginationCommon } from '@/src/shared/components/common/pagination-common';
 import { Container } from '@/src/shared/components/ui/container';
-import { useAuth } from '@/src/shared/lib/auth';
 import { withClientOnly } from '@/src/shared/lib/withClientOnly';
 import clsx from 'clsx';
 import { DictionaryPageError } from './dictionary-page-error';
@@ -21,6 +20,7 @@ import styles from './dictionary-page.module.scss';
 import { Button } from '@/src/shared/components/ui/button';
 import Link from 'next/link';
 import { ROUTES } from '@/src/shared/lib/const';
+import { appSessionStore } from '@/src/shared/session';
 
 type DictionaryPageProps = {
   className?: string;
@@ -31,16 +31,19 @@ const DictionaryPageComponent: FC<DictionaryPageProps> = ({ className }) => {
   const [page, setPage] = useState(1);
   const pageSize = 20;
 
-  const { isAuth } = useAuth();
+  const session = appSessionStore.useSession();
 
-  const wordsQuery = useGetUserWords({
-    page,
-    pageSize,
-    order: sort.order,
-    orderValue: sort.value,
-  });
+  const wordsQuery = useGetUserWords(
+    {
+      page,
+      pageSize,
+      order: sort.order,
+      orderValue: sort.value,
+    },
+    !!session,
+  );
 
-  if (!isAuth) {
+  if (!session) {
     return <DictionaryPageNoAuth />;
   }
 

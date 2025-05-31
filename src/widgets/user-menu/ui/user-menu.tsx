@@ -11,15 +11,16 @@ import {
 } from '@/src/shared/components/ui/popover';
 import { SettingsItem } from '@/src/shared/components/ui/settings-item';
 import { UserAvatar } from '@/src/shared/components/ui/user-avatar';
-import { useAuth } from '@/src/shared/lib/auth';
 import { useModal } from '@/src/shared/lib/useModal';
 import { BookIcon, Loader2, LogOut, Youtube } from 'lucide-react';
 import Link from 'next/link';
+import { appSessionStore } from '@/src/shared/session';
 
 export const UserMenu: FC = ({}) => {
   const modal = useModal();
-  const { isAuth } = useAuth();
-  const currentUserQuery = useGetCurrentUser(!!isAuth);
+  const session = appSessionStore.useSession();
+  console.log(session);
+  const currentUserQuery = useGetCurrentUser(!!session);
   const logoutMutation = useLogoutUser();
 
   const handleLogout = async () => {
@@ -27,7 +28,7 @@ export const UserMenu: FC = ({}) => {
     modal.closeModal();
   };
 
-  if (!isAuth) return null;
+  if (!session) return null;
 
   return (
     <Popover open={modal.isOpen} onOpenChange={modal.toggleModal}>

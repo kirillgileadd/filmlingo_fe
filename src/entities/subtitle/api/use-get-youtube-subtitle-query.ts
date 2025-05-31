@@ -2,16 +2,16 @@ import { QUERY_KEYS } from '@/src/shared/lib/query-keys';
 import { useQuery } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 import { SubtitleT, SubtitleYoutubeT } from '../model/types';
+import { publicApiClient } from '@/src/shared/api/client';
 
 export const useGetYoutubeSubtitleQuery = (videoId: string | null) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return useQuery<any, AxiosError, SubtitleT[]>({
     queryKey: [QUERY_KEYS.YOUTUBE_SUBTITLE_BY_VIDEO_ID, videoId],
     queryFn: async () => {
-      const response = await axios.get<{ subtitles: SubtitleYoutubeT[] }>(
-        `${process.env.NEXT_PUBLIC_API_URL}/subtitles/youtube/${videoId}`,
-      );
-      console.log(response.data.subtitles, 'sub in response');
+      const response = await publicApiClient.get<{
+        subtitles: SubtitleYoutubeT[];
+      }>(`${process.env.NEXT_PUBLIC_API_URL}/subtitles/youtube/${videoId}`);
       return response.data.subtitles.map((sub) => ({
         createdAt: null,
         endTime: null,

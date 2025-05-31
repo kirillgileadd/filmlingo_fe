@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
 import clsx from 'clsx';
-import { useAuth } from '@/src/shared/lib/auth';
 import { useGetCurrentUser } from '@/src/entities/user';
 import { Container } from '@/src/shared/components/ui/container';
 import { Button } from '@/src/shared/components/ui/button';
 import { useModal } from '@/src/shared/lib/useModal';
+import { appSessionStore } from '@/src/shared/session';
 
 type ConfirmEmailProps = {
   className?: string;
@@ -13,8 +13,8 @@ type ConfirmEmailProps = {
 
 export const ConfirmEmail: FC<ConfirmEmailProps> = ({ className }) => {
   const modal = useModal(true);
-  const { isAuth } = useAuth();
-  const userQuery = useGetCurrentUser(!!isAuth);
+  const session = appSessionStore.getSession();
+  const userQuery = useGetCurrentUser(!!session);
 
   if (userQuery.data && !userQuery.data?.isActivated && modal.isOpen)
     return (

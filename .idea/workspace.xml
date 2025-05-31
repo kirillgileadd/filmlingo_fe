@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="" />
+    <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/shared/api/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/lib/boardcast-events.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/lib/jwt.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/session.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layouts/main-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layouts/main-layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/film/api/use-get-film-detail-query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/film/api/use-get-film-detail-query.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/film/api/use-get-films-query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/film/api/use-get-films-query.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/phrase/api/use-remove-user-phrase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-remove-user-phrase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/subtitle/api/use-get-sbutitles-query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/subtitle/api/use-get-sbutitles-query.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/subtitle/api/use-get-youtube-subtitle-query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/subtitle/api/use-get-youtube-subtitle-query.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/api/use-get-current-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/api/use-get-current-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/word/api/use-get-user-words.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/word/api/use-get-user-words.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/word/api/use-remove-user-word.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/word/api/use-remove-user-word.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/add-word/api/use-add-word.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/add-word/api/use-add-word.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/add-word/model/use-can-add-word.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/add-word/model/use-can-add-word.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/confirm-email/ui/confirm-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/confirm-email/ui/confirm-email.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/forgot-password/api/use-forgot-password.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/forgot-password/api/use-forgot-password.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/get-random-words/api/use-get-random-words-query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/get-random-words/api/use-get-random-words-query.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/login-by-email/api/use-login-by-email.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/login-by-email/api/use-login-by-email.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/login-by-github/ui/login-by-github.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/login-by-github/ui/login-by-github.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/register-user/api/use-register-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/register-user/api/use-register-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reset-password/api/use-reset-password.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reset-password/api/use-reset-password.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/api/use-translate-text-mutation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/api/use-translate-text-mutation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/user-logout/api/use-logout-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/user-logout/api/use-logout-user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pagess/film-detail-page/ui/film-detail-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/film-detail-page/ui/film-detail-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/auth/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/auth/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/auth/ui/auth-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/auth/ui/auth-modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/auth/ui/auth-provider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/user-menu/ui/user-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/user-menu/ui/user-menu.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,25 +70,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/web2/oidc-client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\web2\\filmlingo-fe\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\web2\\filmlingo-fe\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/web2/filmlingo-fe/src/shared",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "D:\\web2\\filmlingo-fe\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "D:\\web2\\filmlingo-fe\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web2\filmlingo-fe\src\shared" />
+      <recent name="D:\web2\filmlingo-fe\src\shared\lib" />
       <recent name="D:\web2\filmlingo-fe\src\entities" />
     </key>
   </component>
@@ -98,7 +136,7 @@
       <workItem from="1747984904300" duration="9447000" />
       <workItem from="1748076499751" duration="15555000" />
       <workItem from="1748159003987" duration="3367000" />
-      <workItem from="1748609528782" duration="423000" />
+      <workItem from="1748609528782" duration="8776000" />
     </task>
     <servers />
   </component>
