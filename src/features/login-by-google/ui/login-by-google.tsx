@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 
-import clsx from "clsx";
-import { Button } from "@/src/shared/components/ui/button";
-import Image from "next/image";
-import { Loader2 } from "lucide-react";
+import clsx from 'clsx';
+import { Button } from '@/src/shared/components/ui/button';
+import Image from 'next/image';
+import { Loader2 } from 'lucide-react';
 
 type LoginByGoogleProps = {
   className?: string;
@@ -13,14 +13,15 @@ type LoginByGoogleProps = {
 
 export const LoginByGoogle: FC<LoginByGoogleProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const handleLogin = () => {
     setIsLoading(true);
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/github`;
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
   };
 
   return (
     <Button
-      className={clsx("", className)}
+      className={clsx('', className)}
       variant="secondary"
       onClick={handleLogin}
     >

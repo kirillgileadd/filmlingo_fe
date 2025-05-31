@@ -43,8 +43,6 @@ export const AuthModal: FC<AuthModalProps> = ({ className, trigger }) => {
     TabsVariants.LOGIN,
   );
 
-  console.log(session, 'session Auth');
-
   if (session) return null;
 
   return (

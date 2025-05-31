@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 
-import clsx from "clsx";
-import { Button } from "@/src/shared/components/ui/button";
-import Image from "next/image";
-import { Loader2 } from "lucide-react";
+import clsx from 'clsx';
+import { Button } from '@/src/shared/components/ui/button';
+import Image from 'next/image';
+import { Loader2 } from 'lucide-react';
 
 type LoginByYandexProps = {
   className?: string;
@@ -15,12 +15,12 @@ export const LoginByYandex: FC<LoginByYandexProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
   const handleLogin = () => {
     setIsLoading(true);
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/github`;
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/yandex`;
   };
 
   return (
     <Button
-      className={clsx("", className)}
+      className={clsx('', className)}
       variant="secondary"
       onClick={handleLogin}
     >
