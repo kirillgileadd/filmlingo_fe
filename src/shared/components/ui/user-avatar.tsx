@@ -21,7 +21,7 @@ export const UserAvatar: FC<UserAvatarProps> = ({
     <div className={clsx('bg-background rounded-full border', className)}>
       {!!photo ? (
         <Image
-          src={photo}
+          src={photo?.split('?')[0]}
           width={size}
           height={size}
           alt="Avatar"
