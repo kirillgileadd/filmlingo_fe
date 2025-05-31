@@ -1,6 +1,6 @@
 import { QUERY_KEYS } from '@/src/shared/lib/query-keys';
 import { useQuery } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { SubtitleT, SubtitleYoutubeT } from '../model/types';
 import { publicApiClient } from '@/src/shared/api/client';
 

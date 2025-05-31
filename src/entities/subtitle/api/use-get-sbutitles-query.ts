@@ -1,6 +1,6 @@
 import { QUERY_KEYS } from '@/src/shared/lib/query-keys';
 import { useQuery } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { SubtitleT } from '../model/types';
