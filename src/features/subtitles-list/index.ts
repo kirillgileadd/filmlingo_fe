@@ -1,3 +1,3 @@
-export type { SubtitlesListRepository } from "./model/types";
+export type { SubtitlesListRepository } from './model/types';
 
-export { SubtitlesList } from "./ui/subtitles-list";
+export { SubtitlesList } from './ui/subtitles-list';

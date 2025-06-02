@@ -6,6 +6,9 @@ import clsx from 'clsx';
 import { Button } from '@/src/shared/components/ui/button';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
+import Cookies from 'js-cookie';
+import { ACCESS_TOKEN } from '@/src/shared/lib/const';
+import { appSessionStore } from '@/src/shared/session';
 
 type LoginByYandexProps = {
   className?: string;
@@ -13,9 +16,23 @@ type LoginByYandexProps = {
 
 export const LoginByYandex: FC<LoginByYandexProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const handleLogin = () => {
-    setIsLoading(true);
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/yandex`;
+    const popup = window.open(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/yandex`,
+      'Yandex Login',
+      'width=500,height=600',
+    );
+
+    const checkPopupClosed = setInterval(() => {
+      if (popup?.closed) {
+        clearInterval(checkPopupClosed);
+        if (Cookies?.get(ACCESS_TOKEN)) {
+          appSessionStore.setSessionToken(Cookies.get(ACCESS_TOKEN)!);
+          setIsLoading(false);
+        }
+      }
+    }, 500);
   };
 
   return (

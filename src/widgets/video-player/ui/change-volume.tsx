@@ -1,13 +1,13 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
+import clsx from 'clsx';
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/src/shared/components/ui/hover-card";
-import { Slider } from "@/src/shared/components/ui/slider";
-import { Volume2, VolumeX } from "lucide-react";
+} from '@/src/shared/components/ui/hover-card';
+import { Slider } from '@/src/shared/components/ui/slider';
+import { Volume2, VolumeX } from 'lucide-react';
 
 type ChangeVolumeProps = {
   className?: string;
@@ -25,13 +25,13 @@ export const ChangeVolume: FC<ChangeVolumeProps> = ({
   isMuted,
 }) => {
   return (
-    <div className={clsx("relative", className)}>
+    <div className={clsx('relative', className)}>
       <HoverCard openDelay={0}>
         <HoverCardTrigger asChild>
           <button
             onClick={toggleMute}
             className="p-3"
-            aria-label={isMuted ? "Unmute" : "Mute"}
+            aria-label={isMuted ? 'Unmute' : 'Mute'}
           >
             {isMuted || volume === 0 ? (
               <VolumeX className="text-foreground" size={24} />

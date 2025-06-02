@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import * as SliderPrimitive from "@radix-ui/react-slider";
+import * as React from 'react';
+import * as SliderPrimitive from '@radix-ui/react-slider';
 
-import { cn } from "@/src/shared/lib/utils";
+import { cn } from '@/src/shared/lib/utils';
 
 export interface SliderProps
   extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
@@ -18,15 +18,15 @@ const Slider = React.forwardRef<
   <SliderPrimitive.Root
     ref={ref}
     className={cn(
-      "relative flex w-full touch-none select-none items-center",
-      className
+      'relative flex w-full touch-none select-none items-center',
+      className,
     )}
     {...props}
   >
     <SliderPrimitive.Track
       className={cn(
-        "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary",
-        trackClassName
+        'relative h-2 w-full grow overflow-hidden rounded-full bg-secondary',
+        trackClassName,
       )}
     >
       {loadedPercentage && (

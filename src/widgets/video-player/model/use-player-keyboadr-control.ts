@@ -1,33 +1,33 @@
-import { useEffect } from "react";
-import { PlayerKeyboadrControlRepository } from "./types";
+import { useEffect } from 'react';
+import { PlayerKeyboadrControlRepository } from './types';
 
 export const usePlayerKeyboadrControl = (
-  repository: PlayerKeyboadrControlRepository
+  repository: PlayerKeyboadrControlRepository,
 ) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!repository.videoRef.current) return;
 
       switch (event.key) {
-        case "ArrowRight":
+        case 'ArrowRight':
           const newTimeForward = Math.min(
             repository.videoRef.current.currentTime + 10,
-            repository.videoRef.current.duration
+            repository.videoRef.current.duration,
           );
           repository.videoRef.current.currentTime = newTimeForward;
           repository.setCurrentTime(newTimeForward);
           break;
 
-        case "ArrowLeft":
+        case 'ArrowLeft':
           const newTimeBackward = Math.max(
             repository.videoRef.current.currentTime - 10,
-            0
+            0,
           );
           repository.videoRef.current.currentTime = newTimeBackward;
           repository.setCurrentTime(newTimeBackward);
           break;
 
-        case "ArrowDown":
+        case 'ArrowDown':
           const newVolumeDown =
             repository.videoRef.current.volume > 0.1
               ? repository.videoRef.current.volume - 0.1
@@ -36,7 +36,7 @@ export const usePlayerKeyboadrControl = (
           repository.setVolume(newVolumeDown);
           break;
 
-        case "ArrowUp":
+        case 'ArrowUp':
           const newVolumeUp =
             repository.videoRef.current.volume < 0.9
               ? repository.videoRef.current.volume + 0.1
@@ -45,7 +45,7 @@ export const usePlayerKeyboadrControl = (
           repository.setVolume(newVolumeUp);
           break;
 
-        case " ":
+        case ' ':
           event.preventDefault();
           if (repository.videoRef.current.paused) {
             repository.videoRef.current.play();
@@ -62,10 +62,15 @@ export const usePlayerKeyboadrControl = (
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [repository.setIsPlaying, repository.setCurrentTime, repository.videoRef, repository]);
+  }, [
+    repository.setIsPlaying,
+    repository.setCurrentTime,
+    repository.videoRef,
+    repository,
+  ]);
 };

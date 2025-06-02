@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { Button } from "@/src/shared/components/ui/button";
-import clsx from "clsx";
-import Image from "next/image";
+import { Button } from '@/src/shared/components/ui/button';
+import clsx from 'clsx';
+import Image from 'next/image';
 
 type LearningInTgBannerProps = {
   className?: string;
@@ -12,7 +12,7 @@ export const LearningInTgBanner: FC<LearningInTgBannerProps> = ({
   className,
 }) => {
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx('', className)}>
       <div className="relative flex justify-between items-center w-full border p-4 rounded-md bg-card">
         <div>
           <h4 className="text-xl mb-2 font-semibold">

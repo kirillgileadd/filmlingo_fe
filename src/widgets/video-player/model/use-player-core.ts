@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { MouseEvent, useEffect, useRef, useState } from "react";
-import Hls from "hls.js";
-import { CURRENT_VIDEO_TIME } from "./const";
-import { VideoVariantT } from "@/src/entities/film";
+import { MouseEvent, useEffect, useRef, useState } from 'react';
+import Hls from 'hls.js';
+import { CURRENT_VIDEO_TIME } from './const';
+import { VideoVariantT } from '@/src/entities/film';
 
 export const usePlayerCore = (
   videoId: number,
-  videoVariant?: VideoVariantT
+  videoVariant?: VideoVariantT,
 ) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -55,7 +55,7 @@ export const usePlayerCore = (
             videoId === currentVideoTimeObj.id &&
             videoRef.current
           ) {
-            console.log("quality changed", currentVideoTimeObj.currentTime);
+            console.log('quality changed', currentVideoTimeObj.currentTime);
             setCurrentTime(currentVideoTimeObj.currentTime);
             videoRef.current.currentTime = currentVideoTimeObj.currentTime;
           }
@@ -68,10 +68,10 @@ export const usePlayerCore = (
           setIsLoaded(false);
         };
       } else if (
-        videoRef.current.canPlayType("application/vnd.apple.mpegurl")
+        videoRef.current.canPlayType('application/vnd.apple.mpegurl')
       ) {
         videoRef.current.src = src;
-        videoRef.current.addEventListener("loadedmetadata", () => {
+        videoRef.current.addEventListener('loadedmetadata', () => {
           // Устанавливаем длительность для стандартных HLS потоков //TODO
           setDuration(videoRef.current?.duration || 0); // Для Safari
           videoRef.current?.play();
@@ -92,10 +92,10 @@ export const usePlayerCore = (
       }
     };
 
-    video?.addEventListener("progress", updateLoadedPercentage);
+    video?.addEventListener('progress', updateLoadedPercentage);
 
     return () => {
-      video?.removeEventListener("progress", updateLoadedPercentage);
+      video?.removeEventListener('progress', updateLoadedPercentage);
     };
   }, [duration]);
 
@@ -135,8 +135,8 @@ export const usePlayerCore = (
   const togglePlayPause = (event: MouseEvent<HTMLElement>) => {
     if (event.target instanceof Element) {
       const isControlsClick =
-        event.target.closest(".controls") &&
-        !event.target.closest(".play-button");
+        event.target.closest('.controls') &&
+        !event.target.closest('.play-button');
       if (isControlsClick) return;
 
       event.stopPropagation();

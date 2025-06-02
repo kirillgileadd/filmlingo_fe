@@ -39,10 +39,8 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const [phrase, setPhrase] = useState<SubtitlePhraseT | null>(null);
 
   const parsedWord = useMemo(() => {
-    return word.replace(/[^\p{L}\p{N}'-]+/gu, '');
+    return word.replace(/[^\p{L}\p{N}'-]+/gu, '').toLowerCase();
   }, [word]);
-
-  console.log(parsedWord, 'parsedWord');
 
   useEffect(() => {
     const translate = async () => {
@@ -80,9 +78,8 @@ export const TranslateTextHoverCard: FC<TranslateTextHoverCardProps> = ({
   const handleHighlightPhrase = async (word: string) => {
     if (phrases) {
       const matchedPhrase = phrases.find((phrase) =>
-        phrase.original.includes(word),
+        phrase.original.toLowerCase().includes(word),
       );
-      console.log(matchedPhrase, 'matchedPhrase');
 
       if (matchedPhrase) {
         setPhrase(matchedPhrase);

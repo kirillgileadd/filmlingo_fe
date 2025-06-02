@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
-import { useRemoveUserWord } from "../api/use-remove-user-word";
-import { Button } from "@/src/shared/components/ui/button";
-import { Loader2, Trash2Icon } from "lucide-react";
+import clsx from 'clsx';
+import { useRemoveUserWord } from '../api/use-remove-user-word';
+import { Button } from '@/src/shared/components/ui/button';
+import { Loader2, Trash2Icon } from 'lucide-react';
 
 type RemoveUserWordButtonProps = {
   className?: string;
@@ -24,7 +24,7 @@ export const RemoveUserWordButton: FC<RemoveUserWordButtonProps> = ({
     <Button
       size="icon"
       variant="outline"
-      className={clsx("", className)}
+      className={clsx('', className)}
       onClick={handleRemove}
     >
       {removeUserWordMutation.isPending ? (

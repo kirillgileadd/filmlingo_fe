@@ -14,11 +14,13 @@ type SubtitleSelectProps = {
   className?: string;
   subtitlesVarinats: SubtitleVariantT[];
   handleChangeSubtitleVariant: (id: number | null) => void;
+  modalRef: HTMLDivElement | null;
 };
 
 export const SubtitleSelect: FC<SubtitleSelectProps> = ({
   subtitlesVarinats,
   handleChangeSubtitleVariant,
+  modalRef,
 }) => {
   const modal = useModal();
 
@@ -32,7 +34,12 @@ export const SubtitleSelect: FC<SubtitleSelectProps> = ({
       <PopoverTrigger className="p-3">
         <SubtitlesIcon className="text-foreground" size={28} />
       </PopoverTrigger>
-      <PopoverContent sideOffset={10} side="top" className="mr-6 ">
+      <PopoverContent
+        container={modalRef}
+        sideOffset={10}
+        side="top"
+        className="mr-6 "
+      >
         <div>
           {subtitlesVarinats.map((sub) => (
             <SettingsItem

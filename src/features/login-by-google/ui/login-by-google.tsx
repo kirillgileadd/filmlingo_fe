@@ -6,6 +6,9 @@ import clsx from 'clsx';
 import { Button } from '@/src/shared/components/ui/button';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
+import Cookies from 'js-cookie';
+import { ACCESS_TOKEN } from '@/src/shared/lib/const';
+import { appSessionStore } from '@/src/shared/session';
 
 type LoginByGoogleProps = {
   className?: string;
@@ -15,8 +18,21 @@ export const LoginByGoogle: FC<LoginByGoogleProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-    setIsLoading(true);
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
+    const popup = window.open(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/google`,
+      'Google Login',
+      'width=500,height=600',
+    );
+
+    const checkPopupClosed = setInterval(() => {
+      if (popup?.closed) {
+        clearInterval(checkPopupClosed);
+        if (Cookies?.get(ACCESS_TOKEN)) {
+          appSessionStore.setSessionToken(Cookies.get(ACCESS_TOKEN)!);
+          setIsLoading(false);
+        }
+      }
+    }, 500);
   };
 
   return (

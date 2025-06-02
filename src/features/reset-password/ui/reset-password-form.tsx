@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import { Button } from "@/src/shared/components/ui/button";
-import { PasswordInput } from "@/src/shared/components/ui/password-input";
-import clsx from "clsx";
-import { useParams } from "next/navigation";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { useResetPassword } from "../api/use-reset-password";
-import { ResetPasswordFormDataT } from "../model/types";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { Button } from '@/src/shared/components/ui/button';
+import { PasswordInput } from '@/src/shared/components/ui/password-input';
+import clsx from 'clsx';
+import { useParams } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useResetPassword } from '../api/use-reset-password';
+import { ResetPasswordFormDataT } from '../model/types';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 type ResetPasswordFormProps = {
   className?: string;
@@ -30,12 +30,12 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
     watch,
     formState: { errors },
   } = useForm<ResetPasswordFormDataT>({
-    defaultValues: { password: "", repeatPassword: "" },
+    defaultValues: { password: '', repeatPassword: '' },
   });
 
   const onSubmit = async ({ password }: ResetPasswordFormDataT) => {
     if (!params.token) {
-      toast.error("Некорректный token для смены пароля");
+      toast.error('Некорректный token для смены пароля');
       return;
     }
 
@@ -43,21 +43,21 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
       { password, token: params.token as string },
       {
         onError: (error) => {
-          toast.error(error.response?.data?.message ?? "Что-то пошло не так");
+          toast.error(error.response?.data?.message ?? 'Что-то пошло не так');
         },
         onSuccess: () => {
-          toast.success("Пароль успешно обновлен");
-          router.push("/");
+          toast.success('Пароль успешно обновлен');
+          router.push('/');
         },
-      }
+      },
     );
   };
 
-  const password = watch("password");
+  const password = watch('password');
 
   return (
     <form
-      className={clsx("max-w-lg", className)}
+      className={clsx('max-w-lg', className)}
       onSubmit={handleSubmit(onSubmit)}
     >
       <h3 className="text-lg font-bold mb-2">Введите новый пароль</h3>
@@ -65,11 +65,11 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         className="mb-2"
         error={errors.password?.message}
         placeholder="Пароль"
-        {...register("password", {
-          required: "Обязательное поле",
+        {...register('password', {
+          required: 'Обязательное поле',
           minLength: {
             value: 6,
-            message: "Пароль должен быть не менее 6 символов",
+            message: 'Пароль должен быть не менее 6 символов',
           },
         })}
       />
@@ -77,9 +77,9 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         className="mb-2"
         error={errors.repeatPassword?.message}
         placeholder="Повторите пароль"
-        {...register("repeatPassword", {
-          required: "Обязательное поле",
-          validate: (value) => value === password || "Пароли должны совпадать",
+        {...register('repeatPassword', {
+          required: 'Обязательное поле',
+          validate: (value) => value === password || 'Пароли должны совпадать',
         })}
       />
       <Button

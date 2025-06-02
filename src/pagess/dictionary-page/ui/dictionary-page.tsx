@@ -10,7 +10,6 @@ import {
 } from '@/src/entities/word';
 import { PaginationCommon } from '@/src/shared/components/common/pagination-common';
 import { Container } from '@/src/shared/components/ui/container';
-import { withClientOnly } from '@/src/shared/lib/withClientOnly';
 import clsx from 'clsx';
 import { DictionaryPageError } from './dictionary-page-error';
 import { DictionaryPageNoAuth } from './dictionary-page-no-auth';
@@ -26,7 +25,7 @@ type DictionaryPageProps = {
   className?: string;
 };
 
-const DictionaryPageComponent: FC<DictionaryPageProps> = ({ className }) => {
+const DictionaryPage: FC<DictionaryPageProps> = ({ className }) => {
   const [sort, setSort] = useState(SORT_WORDS_SELECT_ITEMS[0]);
   const [page, setPage] = useState(1);
   const pageSize = 20;
@@ -43,12 +42,12 @@ const DictionaryPageComponent: FC<DictionaryPageProps> = ({ className }) => {
     !!session,
   );
 
-  if (!session) {
-    return <DictionaryPageNoAuth />;
-  }
-
   if (wordsQuery.isLoading) {
     return <DictionaryPageSkeleton className={className} />;
+  }
+
+  if (!session) {
+    return <DictionaryPageNoAuth />;
   }
 
   if (wordsQuery.error) {
@@ -98,15 +97,15 @@ const DictionaryPageComponent: FC<DictionaryPageProps> = ({ className }) => {
               <WordCard key={word.id} word={word} />
             ))}
           </tbody>
-          <PaginationCommon
-            currentPage={page}
-            onPageChange={setPage}
-            totalPages={wordsQuery.data.totalPages}
-          />
         </table>
+        <PaginationCommon
+          currentPage={page}
+          onPageChange={setPage}
+          totalPages={wordsQuery.data.totalPages}
+        />
       </Container>
     </div>
   );
 };
 
-export const DictionaryPage = withClientOnly(DictionaryPageComponent);
+export default DictionaryPage;

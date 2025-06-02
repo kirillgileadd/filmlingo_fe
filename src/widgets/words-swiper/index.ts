@@ -1,1 +1,1 @@
-export { WordsSwiper } from "./ui/words-swiper";
+export { WordsSwiper } from './ui/words-swiper';

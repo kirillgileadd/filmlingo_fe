@@ -1,9 +1,9 @@
-import { useCallback, useEffect } from "react";
-import { CURRENT_VIDEO_TIME } from "./const";
-import { PlayerSaveTimeToStorageRepository } from "./types";
+import { useCallback, useEffect } from 'react';
+import { CURRENT_VIDEO_TIME } from './const';
+import { PlayerSaveTimeToStorageRepository } from './types';
 
 export const useSetTimeToStorage = (
-  repository: PlayerSaveTimeToStorageRepository
+  repository: PlayerSaveTimeToStorageRepository,
 ) => {
   const handleSetCurrentTimeToStorage = useCallback(
     (currentTime: number) => {
@@ -14,7 +14,7 @@ export const useSetTimeToStorage = (
 
       localStorage.setItem(CURRENT_VIDEO_TIME, JSON.stringify(storageObj));
     },
-    [repository.videoId]
+    [repository.videoId],
   );
 
   useEffect(() => {
@@ -29,10 +29,10 @@ export const useSetTimeToStorage = (
       handleSetCurrentTimeToStorage(video.currentTime);
     };
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener('timeupdate', handleTimeUpdate);
 
     return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener('timeupdate', handleTimeUpdate);
     };
   }, [handleSetCurrentTimeToStorage, repository, repository.isLoaded]);
 };

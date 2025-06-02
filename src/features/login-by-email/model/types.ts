@@ -1,4 +1,4 @@
-import { UserT } from "@/src/entities/user";
+import { UserT } from '@/src/entities/user';
 
 export type LoginByEmailReqData = {
   email: string;

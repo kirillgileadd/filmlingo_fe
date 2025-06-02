@@ -1,7 +1,7 @@
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes } from 'react';
 
-import clsx from "clsx";
-import { Maximize, Minimize } from "lucide-react";
+import clsx from 'clsx';
+import { Maximize, Minimize } from 'lucide-react';
 
 type PlayerFullscreenButtonProps = {
   className?: string;
@@ -16,8 +16,8 @@ export const PlayerFullscreenButton: FC<PlayerFullscreenButtonProps> = ({
   return (
     <button
       {...props}
-      className={clsx("p-3", className)}
-      aria-label={isFullscreen ? "Exit fullscreen" : "Go fullscreen"}
+      className={clsx('p-3', className)}
+      aria-label={isFullscreen ? 'Exit fullscreen' : 'Go fullscreen'}
     >
       {isFullscreen ? (
         <Minimize className="text-foreground" size={24} />

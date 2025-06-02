@@ -1,3 +1,3 @@
-export { useTranslateTextMutation } from "./api/use-translate-text-mutation";
+export { useTranslateTextMutation } from './api/use-translate-text-mutation';
 
-export { TranslateTextHoverCard } from "./ui/translate-text-hover-card";
+export { TranslateTextHoverCard } from './ui/translate-text-hover-card';

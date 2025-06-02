@@ -1,1 +1,1 @@
-export { LearningWordsPage } from "./ui/learning-words-page";
+export { LearningWordsPage } from './ui/learning-words-page';

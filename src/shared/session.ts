@@ -18,9 +18,9 @@ class SessionStore {
     | { type: 'remove' }
   >(ACCESS_TOKEN);
 
-  getSessionToken = () => {
+  getSessionToken() {
     return Cookies.get(ACCESS_TOKEN) ?? null;
-  };
+  }
 
   setSessionToken(token: string) {
     Cookies.set(ACCESS_TOKEN, token, {

@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
+import clsx from 'clsx';
 import {
   Select,
   SelectContent,
@@ -8,9 +8,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/shared/components/ui/select";
-import { SORT_WORDS_SELECT_ITEMS } from "../model/const";
-import { WordSortSelectItemT } from "../model/types";
+} from '@/src/shared/components/ui/select';
+import { SORT_WORDS_SELECT_ITEMS } from '../model/const';
+import { WordSortSelectItemT } from '../model/types';
 
 type SortWordsSelectProps = {
   className?: string;
@@ -24,9 +24,9 @@ export const SortWordsSelect: FC<SortWordsSelectProps> = ({
   onChange,
 }) => {
   const handleChange = (value: string) => {
-    const [field, order] = value.split(":");
+    const [field, order] = value.split(':');
     const newItem = SORT_WORDS_SELECT_ITEMS.find(
-      (item) => item.value === field && item.order === order
+      (item) => item.value === field && item.order === order,
     );
     if (newItem) {
       onChange(newItem);
@@ -34,9 +34,9 @@ export const SortWordsSelect: FC<SortWordsSelectProps> = ({
   };
 
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx('', className)}>
       <Select
-        value={value ? `${value.value}:${value.order}` : ""}
+        value={value ? `${value.value}:${value.order}` : ''}
         onValueChange={handleChange}
       >
         <SelectTrigger className="w-[200px]">
@@ -49,7 +49,7 @@ export const SortWordsSelect: FC<SortWordsSelectProps> = ({
           <SelectGroup>
             {SORT_WORDS_SELECT_ITEMS.map((item) => (
               <SelectItem
-                key={item.value + ":" + item.order}
+                key={item.value + ':' + item.order}
                 value={`${item.value}:${item.order}`}
               >
                 {item.label}

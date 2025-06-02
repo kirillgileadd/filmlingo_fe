@@ -4,9 +4,9 @@ import { TranslateTextHoverCard } from '@/src/features/tanslate-text';
 import { XIcon } from 'lucide-react';
 import { FC, useEffect, useState } from 'react';
 import YouTube, { YouTubePlayer, YouTubeProps } from 'react-youtube';
-import { AuthModal } from '@/src/widgets/auth';
 import { SubtitleT } from '@/src/entities/subtitle';
 import { YoutubePlayerSettings } from '@/src/widgets/youtube-player/ui/youtube-player-settings';
+import { useAuthModal } from '@/src/widgets/auth';
 
 export type YoutubePlayerProps = {
   videoId: string;
@@ -19,6 +19,7 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
   onClose,
   youtubeSubtitles,
 }) => {
+  const authModal = useAuthModal();
   const [player, setPlayer] = useState<YouTubePlayer | null>(null);
   const [currentTime, setCurrentTime] = useState<number>(0);
 
@@ -111,7 +112,9 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
                   sourceContext={sourceContext}
                   translation={translation}
                   original={original}
-                  renderAuthForm={(trigger) => <AuthModal trigger={trigger} />}
+                  renderAuthForm={(trigger) => (
+                    <div onClick={authModal.openAuth}>{trigger}</div>
+                  )}
                 />
               )}
             >

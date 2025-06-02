@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const breakpoints = {
   sm: 640,
   md: 768,
   lg: 1024,
   xl: 1280,
-  "2xl": 1536,
+  '2xl': 1536,
 };
 
 type Breakpoints = {
@@ -13,7 +13,7 @@ type Breakpoints = {
   md: boolean;
   lg: boolean;
   xl: boolean;
-  "2xl": boolean;
+  '2xl': boolean;
 };
 
 export const useBreakpoint = (): Breakpoints => {
@@ -22,7 +22,7 @@ export const useBreakpoint = (): Breakpoints => {
     md: false,
     lg: false,
     xl: false,
-    "2xl": false,
+    '2xl': false,
   });
 
   useEffect(() => {
@@ -34,15 +34,15 @@ export const useBreakpoint = (): Breakpoints => {
         md: width > breakpoints.sm && width <= breakpoints.md,
         lg: width > breakpoints.md && width <= breakpoints.lg,
         xl: width > breakpoints.lg && width <= breakpoints.xl,
-        "2xl": width > breakpoints.xl,
+        '2xl': width > breakpoints.xl,
       };
 
       setBreakpointState(newState);
     };
 
     updateBreakpoints();
-    window.addEventListener("resize", updateBreakpoints);
-    return () => window.removeEventListener("resize", updateBreakpoints);
+    window.addEventListener('resize', updateBreakpoints);
+    return () => window.removeEventListener('resize', updateBreakpoints);
   }, []);
 
   return breakpointState;

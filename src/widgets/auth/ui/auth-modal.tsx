@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, ReactNode, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { ForgotPassword } from '@/src/features/forgot-password';
 import { LoginByEmail } from '@/src/features/login-by-email';
@@ -8,14 +8,12 @@ import { LoginByGithub } from '@/src/features/login-by-github';
 import { LoginByGoogle } from '@/src/features/login-by-google';
 import { LoginByYandex } from '@/src/features/login-by-yandex';
 import { RegistrerUser } from '@/src/features/register-user';
-import { Button } from '@/src/shared/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/src/shared/components/ui/dialog';
 import {
   Tabs,
@@ -24,33 +22,35 @@ import {
   TabsTrigger,
 } from '@/src/shared/components/ui/tabs';
 import clsx from 'clsx';
-import { appSessionStore } from '@/src/shared/session';
+// import { appSessionStore } from '@/src/shared/session';
 
 const enum TabsVariants {
   LOGIN = 'login',
-  REGISTRATION = 'registraton',
+  REGISTRATION = 'registration',
   FORGOT = 'forgot',
 }
 
 type AuthModalProps = {
   className?: string;
-  trigger?: ReactNode;
+  onClose: () => void;
 };
 
-export const AuthModal: FC<AuthModalProps> = ({ className, trigger }) => {
-  const session = appSessionStore.useSession();
+export const AuthModal: FC<AuthModalProps> = ({ className, onClose }) => {
+  // const session = appSessionStore.useSession();
+
   const [tabValue, setTabValue] = useState<TabsVariants | string>(
     TabsVariants.LOGIN,
   );
 
-  if (session) return null;
+  const handleClose = (open: boolean) => {
+    if (!open) onClose();
+  };
+
+  // if (session) return null;
 
   return (
     <div className={clsx('', className)}>
-      <Dialog>
-        <DialogTrigger asChild>
-          {trigger ?? <Button>Войти</Button>}
-        </DialogTrigger>
+      <Dialog open onOpenChange={handleClose}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Filmlingo</DialogTitle>

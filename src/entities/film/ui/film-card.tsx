@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
-import { FilmT } from "../model/types";
-import Link from "next/link";
+import clsx from 'clsx';
+import { FilmT } from '../model/types';
+import Link from 'next/link';
 
 type FilmCardProps = {
   className?: string;
@@ -14,8 +14,8 @@ export const FilmCard: FC<FilmCardProps> = ({ className, film }) => {
     <Link
       href={`films/${film.id}`}
       className={clsx(
-        "min-w-[100px] sm:min-w-[200px] aspect-[2/3] bg-cover bg-center rounded-lg shadow border cursor-pointer hover:scale-105 hover:border-foreground duration-300",
-        className
+        'min-w-[100px] sm:min-w-[200px] aspect-[2/3] bg-cover bg-center rounded-lg shadow border cursor-pointer hover:scale-105 hover:border-foreground duration-300',
+        className,
       )}
       style={{
         backgroundImage: `url("${

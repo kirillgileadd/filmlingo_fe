@@ -1,9 +1,9 @@
-import { VideoVariantT } from "@/src/entities/film/model/types";
-import { useState } from "react";
+import { VideoVariantT } from '@/src/entities/film/model/types';
+import { useState } from 'react';
 
 export const useChangeVideoVariant = (videoVariants: VideoVariantT[]) => {
   const [currentVideoVariant, setCurrentVideoVariant] = useState(
-    videoVariants[0]
+    videoVariants[0],
   );
 
   const handleChangeQuality = (id: number) => {

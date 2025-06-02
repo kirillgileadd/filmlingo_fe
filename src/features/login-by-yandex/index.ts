@@ -1,1 +1,1 @@
-export { LoginByYandex } from "./ui/login-by-yandex";
+export { LoginByYandex } from './ui/login-by-yandex';

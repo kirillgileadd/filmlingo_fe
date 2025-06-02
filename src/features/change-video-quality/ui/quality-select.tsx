@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { VideoVariantT } from "@/src/entities/film/model/types";
-import { SettingsItem } from "@/src/shared/components/ui/settings-item";
+import { VideoVariantT } from '@/src/entities/film/model/types';
+import { SettingsItem } from '@/src/shared/components/ui/settings-item';
 
 type QualitySelectProps = {
   qualityItems: VideoVariantT[];

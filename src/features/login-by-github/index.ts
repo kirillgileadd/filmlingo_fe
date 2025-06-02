@@ -1,1 +1,1 @@
-export { LoginByGithub } from "./ui/login-by-github";
+export { LoginByGithub } from './ui/login-by-github';

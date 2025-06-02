@@ -1,4 +1,4 @@
-import { WordT } from "@/src/entities/word";
+import { WordT } from '@/src/entities/word';
 
 export type GetRandomWordRes = {
   words: WordT[];

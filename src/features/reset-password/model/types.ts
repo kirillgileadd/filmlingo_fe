@@ -1,5 +1,5 @@
-import { UserT } from "@/src/entities/user";
-import { AxiosError } from "axios";
+import { UserT } from '@/src/entities/user';
+import { AxiosError } from 'axios';
 
 export type ResetPasswordFormDataT = {
   repeatPassword: string;

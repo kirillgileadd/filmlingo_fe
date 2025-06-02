@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import clsx from "clsx";
-import { Skeleton } from "@/src/shared/components/ui/skeleton";
-import { Container } from "@/src/shared/components/ui/container";
+import clsx from 'clsx';
+import { Skeleton } from '@/src/shared/components/ui/skeleton';
+import { Container } from '@/src/shared/components/ui/container';
 
 type FilmDetailPageSkeletonProps = {
   className?: string;
@@ -12,7 +12,7 @@ export const FilmDetailPageSkeleton: FC<FilmDetailPageSkeletonProps> = ({
   className,
 }) => {
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx('', className)}>
       <Container>
         <div className="flex flex-col">
           <Skeleton className="w-[300px] h-[150px] rounded-xl mb-16" />

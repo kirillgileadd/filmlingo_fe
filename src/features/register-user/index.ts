@@ -1,1 +1,1 @@
-export { RegistrerUser } from "./ui/registrer-user";
+export { RegistrerUser } from './ui/registrer-user';

@@ -7,7 +7,7 @@ export const canAddWord = (isAuth?: boolean) => {
 };
 
 export const useCanAddWord = () => {
-  const isAuth = !!appSessionStore.getSession();
+  const isAuth = !!appSessionStore.useSession();
   return canAddWord(isAuth);
 };
 

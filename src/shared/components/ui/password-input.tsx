@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { cn } from "@/src/shared/lib/utils";
-import { Eye, EyeOff } from "lucide-react";
+import { cn } from '@/src/shared/lib/utils';
+import { Eye, EyeOff } from 'lucide-react';
 
 export interface PasswordInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,15 +9,15 @@ export interface PasswordInputProps
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ className, type: _type = "password", error, ...props }, ref) => {
+  ({ className, type: _type = 'password', error, ...props }, ref) => {
     const [type, setType] = React.useState(_type);
 
     const handleShowPassword = () => {
-      setType((prevType) => (prevType === "password" ? "text" : "password"));
+      setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
     };
 
     return (
-      <div className={cn("", className)}>
+      <div className={cn('', className)}>
         <div className="flex h-10 w-full rounded-md border border-input bg-background text-base focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background">
           <input
             type={type}
@@ -30,15 +30,15 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
             className="px-3 bg-background rounded-r-md border-l"
             onClick={handleShowPassword}
           >
-            {type === "password" && <Eye />}
-            {type === "text" && <EyeOff />}
+            {type === 'password' && <Eye />}
+            {type === 'text' && <EyeOff />}
           </button>
         </div>
         {error && <p className="text-xs text-destructive mt-1">{error}</p>}
       </div>
     );
-  }
+  },
 );
-PasswordInput.displayName = "PasswordInput";
+PasswordInput.displayName = 'PasswordInput';
 
 export { PasswordInput };

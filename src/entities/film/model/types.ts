@@ -14,7 +14,7 @@ export type SubtitleVariantT = {
   filmId: number;
 };
 
-export type VideoVariantResolutionT = "480p" | "720p" | "1080p";
+export type VideoVariantResolutionT = '480p' | '720p' | '1080p';
 
 export type VideoVariantT = {
   id: number;

@@ -1,1 +1,1 @@
-export { YoutubePage } from "./ui/youtube-page";
+export { YoutubePage } from './ui/youtube-page';

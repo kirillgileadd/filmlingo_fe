@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { ChangeEvent, FC, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 
-import { YoutubePlayer } from "@/src/widgets/youtube-player";
-import { useModal } from "@/src/shared/lib/useModal";
-import { Button } from "@/src/shared/components/ui/button";
-import { useGetYoutubeSubtitleQuery } from "@/src/entities/subtitle";
-import { Input } from "@/src/shared/components/ui/input";
-import { Container } from "@/src/shared/components/ui/container";
-import { Loader2 } from "lucide-react";
+import { YoutubePlayer } from '@/src/widgets/youtube-player';
+import { useModal } from '@/src/shared/lib/useModal';
+import { Button } from '@/src/shared/components/ui/button';
+import { useGetYoutubeSubtitleQuery } from '@/src/entities/subtitle';
+import { Input } from '@/src/shared/components/ui/input';
+import { Container } from '@/src/shared/components/ui/container';
+import { Loader2 } from 'lucide-react';
 
 type YoutubePageProps = {
   className?: string;
@@ -16,12 +16,12 @@ type YoutubePageProps = {
 
 export const YoutubePage: FC<YoutubePageProps> = () => {
   const { isOpen, closeModal, openModal } = useModal();
-  const [videoUrl, setVideoUrl] = useState("");
-  console.log(videoUrl, "url");
+  const [videoUrl, setVideoUrl] = useState('');
+  console.log(videoUrl, 'url');
   const [videoId, setVideoId] = useState<string | null>(null);
 
   const subtitlesQuery = useGetYoutubeSubtitleQuery(videoId);
-  console.log(subtitlesQuery, "subs q");
+  console.log(subtitlesQuery, 'subs q');
   useEffect(() => {
     openModal();
   }, [subtitlesQuery.isSuccess]);

@@ -1,1 +1,1 @@
-export { YoutubePlayer } from "./ui/youtube-player";
+export { YoutubePlayer } from './ui/youtube-player';

@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { Button } from "@/src/shared/components/ui/button";
+import { Button } from '@/src/shared/components/ui/button';
 
 export const ErrorPage: FC<{ error: Error; reset: () => void }> = ({
   error,

@@ -4,7 +4,7 @@ import {
   useCallback,
   useContext,
   useState,
-} from "react";
+} from 'react';
 
 export type StepperState<TState> = {
   active: number;
@@ -21,7 +21,7 @@ export type StepperState<TState> = {
 
 export const useStepper = <TState,>(
   max: number,
-  defaultState: TState
+  defaultState: TState,
 ): StepperState<TState> => {
   const [active, set] = useState(0);
   const [state, setState] = useState(defaultState);
@@ -41,12 +41,11 @@ export const useStepper = <TState,>(
     }));
   }, []);
   const reset = useCallback(
-
     (newState?: TState) => {
       set(0);
       setState(newState ?? defaultState);
     },
-    [defaultState]
+    [defaultState],
   );
 
   const hasNextStep = active + 1 < max;
@@ -87,7 +86,7 @@ export const StepperProvider = <TState,>({
 export const useStepperContext = <TState,>(): StepperState<TState> => {
   const context = useContext(stepperContext);
   if (!context) {
-    throw new Error("useStepperContext must be used within a StepperProvider");
+    throw new Error('useStepperContext must be used within a StepperProvider');
   }
 
   return context as StepperState<TState>;

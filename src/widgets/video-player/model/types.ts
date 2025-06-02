@@ -1,4 +1,4 @@
-import { MutableRefObject } from "react";
+import { MutableRefObject } from 'react';
 
 export interface PlayerKeyboadrControlRepository {
   videoRef: MutableRefObject<HTMLVideoElement | null>;

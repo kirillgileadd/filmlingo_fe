@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Pagination,
   PaginationContent,
@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../ui/pagination";
+} from '../ui/pagination';
 
 interface PaginationCommonProps {
   currentPage: number;
@@ -27,24 +27,25 @@ export const PaginationCommon: React.FC<PaginationCommonProps> = ({
 
   const pageNumbers = [];
 
+  //TODO fix this
   if (totalPages <= 5) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
   } else {
     if (currentPage <= 3) {
-      pageNumbers.push(1, 2, 3, "...", totalPages);
+      pageNumbers.push(1, 2, 3, '...', totalPages);
     } else if (currentPage >= totalPages - 2) {
-      pageNumbers.push(1, "...", totalPages - 2, totalPages - 1, totalPages);
+      pageNumbers.push(1, '...', totalPages - 2, totalPages - 1, totalPages);
     } else {
       pageNumbers.push(
         1,
-        "...",
+        '...',
         currentPage - 1,
         currentPage,
         currentPage + 1,
-        "...",
-        totalPages
+        '...',
+        totalPages,
       );
     }
   }
@@ -58,7 +59,7 @@ export const PaginationCommon: React.FC<PaginationCommonProps> = ({
           />
         </PaginationItem>
         {pageNumbers.map((page, index) => {
-          if (page === "...") {
+          if (page === '...') {
             return (
               <div
                 className="flex w-10 h-10 justify-center items-center"
@@ -72,9 +73,9 @@ export const PaginationCommon: React.FC<PaginationCommonProps> = ({
           return (
             <PaginationLink
               key={index}
-              onClick={() => page !== "..." && handlePageChange(Number(page))}
+              onClick={() => page !== '...' && handlePageChange(Number(page))}
               isActive={currentPage === page}
-              disabled={page === "..."}
+              disabled={page === '...'}
             >
               {page}
             </PaginationLink>

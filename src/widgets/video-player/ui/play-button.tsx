@@ -1,7 +1,7 @@
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes } from 'react';
 
-import clsx from "clsx";
-import { Pause, PlayIcon } from "lucide-react";
+import clsx from 'clsx';
+import { Pause, PlayIcon } from 'lucide-react';
 
 type PlayButtonProps = {
   className?: string;
@@ -16,8 +16,8 @@ export const PlayButton: FC<PlayButtonProps> = ({
   return (
     <button
       {...props}
-      className={clsx("p-3 play-button", className)}
-      aria-label={isPlaying ? "Pause" : "Play"}
+      className={clsx('p-3 play-button', className)}
+      aria-label={isPlaying ? 'Pause' : 'Play'}
     >
       {isPlaying ? (
         <Pause className="text-foreground" size={24} />

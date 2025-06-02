@@ -10,7 +10,7 @@ import { TranslateTextHoverCard } from '@/src/features/tanslate-text';
 import { Slider } from '@/src/shared/components/ui/slider';
 import { Loader2, XIcon } from 'lucide-react';
 import React, { useState } from 'react';
-import { AuthModal } from '../../auth';
+import { useAuthModal } from '../../auth';
 import { usePlaerControls } from '../model/use-player-controls';
 import { usePlayerCore } from '../model/use-player-core';
 import { usePlayerKeyboadrControl } from '../model/use-player-keyboadr-control';
@@ -36,6 +36,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   subtitlesVariants,
   videoVariants,
 }) => {
+  const authModal = useAuthModal();
   const [activeSubVariant, setActiveSubsVariant] =
     useState<SubtitleVariantT | null>(subtitlesVariants[0]);
   const videoVariant = useChangeVideoVariant(videoVariants);
@@ -114,7 +115,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                   sourceContext={sourceContext}
                   translation={translation}
                   original={original}
-                  renderAuthForm={(trigger) => <AuthModal trigger={trigger} />}
+                  renderAuthForm={(trigger) => (
+                    <div onClick={authModal.openAuth}>{trigger}</div>
+                  )}
                 />
               )}
             >
@@ -148,10 +151,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             />
           </div>
           <SubtitleSelect
+            modalRef={core.modalRef.current ?? null}
             handleChangeSubtitleVariant={handleChangeSubtitleVariant}
             subtitlesVarinats={subtitlesVariants ?? []}
           />
           <PlayerSettings
+            modalRef={core.modalRef.current ?? null}
             qualityItems={videoVariants}
             handleChangeQuality={videoVariant.handleChangeQuality}
             currentQualityLabel={videoVariant.currentVideoVariant.resolution}

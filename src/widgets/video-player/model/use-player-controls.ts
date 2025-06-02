@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const usePlaerControls = () => {
   const [showControls, setShowControls] = useState(true);
@@ -7,11 +7,11 @@ export const usePlaerControls = () => {
   useEffect(() => {
     const handleMouseMove = () => resetHideControlsTimeout();
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
     resetHideControlsTimeout();
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
       if (hideControlsTimeout) clearTimeout(hideControlsTimeout);
     };
   }, []);

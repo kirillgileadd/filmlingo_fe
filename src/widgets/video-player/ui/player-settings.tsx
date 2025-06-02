@@ -23,6 +23,7 @@ type PlayerSettingsProps = {
   qualityItems: VideoVariantT[];
   currentQualityLabel: string;
   handleChangeQuality: (id: number) => void;
+  modalRef: HTMLDivElement | null;
 };
 
 enum MenuItemEnum {
@@ -34,6 +35,7 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
   qualityItems,
   currentQualityLabel,
   handleChangeQuality,
+  modalRef,
 }) => {
   const settingsOpen = useModal();
   const [menuItem, setMenuItem] = useState<MenuItemEnum | null>(null);
@@ -70,7 +72,12 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
       <PopoverTrigger className="p-3">
         <SettingsIcon className="text-foreground" size={24} />
       </PopoverTrigger>
-      <PopoverContent sideOffset={10} side="top" className="mr-6 ">
+      <PopoverContent
+        container={modalRef}
+        sideOffset={10}
+        side="top"
+        className="mr-6 "
+      >
         {menuItem ? (
           <div>
             <div className="p-3 border-b flex gap-x-2 items-center">

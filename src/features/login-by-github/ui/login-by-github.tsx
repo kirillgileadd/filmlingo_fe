@@ -6,6 +6,9 @@ import { Button } from '@/src/shared/components/ui/button';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
+import { appSessionStore } from '@/src/shared/session';
+import { ACCESS_TOKEN } from '@/src/shared/lib/const';
+import Cookies from 'js-cookie';
 
 type LoginByGithubProps = {
   className?: string;
@@ -15,8 +18,21 @@ export const LoginByGithub: FC<LoginByGithubProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-    setIsLoading(true);
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/github`;
+    const popup = window.open(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/github`,
+      'GitHub Login',
+      'width=500,height=600',
+    );
+
+    const checkPopupClosed = setInterval(() => {
+      if (popup?.closed) {
+        clearInterval(checkPopupClosed);
+        if (Cookies?.get(ACCESS_TOKEN)) {
+          appSessionStore.setSessionToken(Cookies.get(ACCESS_TOKEN)!);
+          setIsLoading(false);
+        }
+      }
+    }, 500);
   };
 
   return (

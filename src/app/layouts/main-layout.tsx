@@ -3,27 +3,38 @@
 import { FC, ReactNode } from 'react';
 
 import clsx from 'clsx';
-import { AuthModal } from '@/src/widgets/auth';
+import { useAuthModal } from '@/src/widgets/auth';
 import { UserMenu } from '@/src/widgets/user-menu';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { ConfirmEmail } from '@/src/features/confirm-email';
 import { MobileMenu } from '@/src/widgets/mobile-menu';
 import { Header } from '@/src/widgets/header';
 import { appSessionStore } from '@/src/shared/session';
+import { Button } from '@/src/shared/components/ui/button';
 
 type MainLayoutProps = {
   className?: string;
   children: ReactNode;
 };
 
-export const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
+const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
   const session = appSessionStore.useSession();
+  const authModal = useAuthModal();
 
-  console.log(session, 'session in lay');
   return (
     <div className={clsx('relative min-h-screen', className)}>
       <ConfirmEmail />
-      <Header actions={<>{session ? <UserMenu /> : <AuthModal />}</>} />
+      <Header
+        actions={
+          <>
+            {session ? (
+              <UserMenu />
+            ) : (
+              <Button onClick={authModal.openAuth}>Войти</Button>
+            )}
+          </>
+        }
+      />
       <ProgressBar
         height="2px"
         color="white"
@@ -35,3 +46,5 @@ export const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
     </div>
   );
 };
+
+export default MainLayout;
