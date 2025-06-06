@@ -25,7 +25,7 @@ type DictionaryPageProps = {
   className?: string;
 };
 
-const DictionaryPage: FC<DictionaryPageProps> = ({ className }) => {
+export const DictionaryPage: FC<DictionaryPageProps> = ({ className }) => {
   const [sort, setSort] = useState(SORT_WORDS_SELECT_ITEMS[0]);
   const [page, setPage] = useState(1);
   const pageSize = 20;
@@ -107,5 +107,3 @@ const DictionaryPage: FC<DictionaryPageProps> = ({ className }) => {
     </div>
   );
 };
-
-export default DictionaryPage;

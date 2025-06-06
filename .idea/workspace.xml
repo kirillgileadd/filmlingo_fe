@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/web2/filmlingo-fe/src/shared&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/web2/avito-parser&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,7 +107,12 @@
       <workItem from="1748076499751" duration="15555000" />
       <workItem from="1748159003987" duration="3367000" />
       <workItem from="1748609528782" duration="21083000" />
-      <workItem from="1748855654160" duration="11567000" />
+      <workItem from="1748855654160" duration="12914000" />
+      <workItem from="1748962204151" duration="7879000" />
+      <workItem from="1748970233360" duration="2138000" />
+      <workItem from="1749014261344" duration="6653000" />
+      <workItem from="1749104055459" duration="7917000" />
+      <workItem from="1749203717460" duration="6194000" />
     </task>
     <servers />
   </component>

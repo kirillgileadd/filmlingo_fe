@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { useAuthModal } from '../../auth';
 import { usePlaerControls } from '../model/use-player-controls';
 import { usePlayerCore } from '../model/use-player-core';
-import { usePlayerKeyboadrControl } from '../model/use-player-keyboadr-control';
+import { usePlayerKeyboardControl } from '../model/use-player-keyboadr-control';
 import { useSetTimeToStorage } from '../model/use-set-time-to-storage';
 import { ChangeVolume } from './change-volume';
 import { PlayButton } from './play-button';
@@ -42,7 +42,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const videoVariant = useChangeVideoVariant(videoVariants);
   const subtitlesQuery = useGetSubtitlesQuery(videoId, activeSubVariant);
 
-  const contorls = usePlaerControls();
+  const controls = usePlaerControls();
   const core = usePlayerCore(videoId, videoVariant.currentVideoVariant);
 
   useSetTimeToStorage({
@@ -52,22 +52,27 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setCurrentTime: core.setCurrentTime,
   });
 
-  usePlayerKeyboadrControl({
+  usePlayerKeyboardControl({
     videoRef: core.videoRef,
     setVolume: core.setVolume,
     setIsPlaying: core.setIsPlaying,
-    hideControls: contorls.resetHideControlsTimeout,
+    hideControls: controls.resetHideControlsTimeout,
     setCurrentTime: core.setCurrentTime,
+    subtitlesQuery: subtitlesQuery.data ?? null,
   });
 
-  const handleChangeSubtitleVariant = (id: number | null) => {
-    setActiveSubsVariant(id ? subtitlesVariants[id] : null);
+  const handleChangeSubtitleVariant = (language: string | null) => {
+    const activeVariant = subtitlesVariants.find(
+      (v) => v.language === language,
+    );
+
+    setActiveSubsVariant(activeVariant ?? null);
   };
 
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50 ${
-        contorls.showControls ? 'cursor-auto' : 'cursor-none'
+        controls.showControls ? 'cursor-auto' : 'cursor-none'
       }`}
     >
       <div
@@ -77,7 +82,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         <button
           onClick={onClose}
           className={`absolute top-4 right-4 text-white text-3xl z-10 transition-opacity duration-300 ${
-            contorls.showControls
+            controls.showControls
               ? 'opacity-100'
               : 'opacity-0 pointer-events-none'
           }`}
@@ -102,13 +107,30 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           currentTime={core.currentTime}
           subtitleListRepository={{
             pauseVideo: core.pauseVideo,
-            playVideo: core.playVideo,
+            playVideo: () => {
+              if (!authModal.opened) {
+                core.playVideo();
+              }
+            },
           }}
-          renderSubtitle={(word, sourceContext, index, phrases) => (
+          renderSubtitle={(
+            word,
+            sourceContext,
+            index,
+            translate,
+            ai_translate,
+            ai_translate_comment,
+            language,
+            phrases,
+          ) => (
             <TranslateTextHoverCard
               key={index}
               word={word}
               phrases={phrases}
+              language={language}
+              translate={translate}
+              ai_translate={ai_translate}
+              ai_translate_comment={ai_translate_comment}
               sourceContext={sourceContext}
               renderAddWord={({ sourceContext, translation, original }) => (
                 <AddWordButton
@@ -125,7 +147,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             </TranslateTextHoverCard>
           )}
         />
-        <PlayerControls showControls={contorls.showControls}>
+        <PlayerControls showControls={controls.showControls}>
           <PlayButton
             isPlaying={core.isPlaying}
             onClick={core.togglePlayPause}
@@ -153,7 +175,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           <SubtitleSelect
             modalRef={core.modalRef.current ?? null}
             handleChangeSubtitleVariant={handleChangeSubtitleVariant}
-            subtitlesVarinats={subtitlesVariants ?? []}
+            subtitlesVariants={subtitlesVariants ?? []}
           />
           <PlayerSettings
             modalRef={core.modalRef.current ?? null}

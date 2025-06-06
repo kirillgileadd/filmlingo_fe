@@ -7,11 +7,7 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 import { ErrorPage } from '@/src/pagess/error-page';
 import { Toaster } from 'react-hot-toast';
 import { AuthModalProvider } from '@/src/widgets/auth/ui/auth-modal-provider';
-import dynamic from 'next/dynamic';
-
-const MainLayout = dynamic(() => import('@/src/app/layouts/main-layout'), {
-  ssr: false,
-});
+import { MainLayout } from '@/src/app/layouts/main-layout';
 
 export default function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());

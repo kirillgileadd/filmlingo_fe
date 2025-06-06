@@ -1,11 +1,13 @@
 import { MutableRefObject } from 'react';
+import { SubtitleT } from '@/src/entities/subtitle';
 
-export interface PlayerKeyboadrControlRepository {
+export interface PlayerKeyboardControlRepository {
   videoRef: MutableRefObject<HTMLVideoElement | null>;
   setCurrentTime: (time: number) => void;
   hideControls: () => void;
-  setVolume: (voulme: number) => void;
+  setVolume: (volume: number) => void;
   setIsPlaying: (value: boolean) => void;
+  subtitlesQuery: SubtitleT[] | null;
 }
 
 export interface PlayerSaveTimeToStorageRepository {

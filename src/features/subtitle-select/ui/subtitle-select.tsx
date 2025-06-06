@@ -12,20 +12,20 @@ import { SubtitlesIcon } from 'lucide-react';
 
 type SubtitleSelectProps = {
   className?: string;
-  subtitlesVarinats: SubtitleVariantT[];
-  handleChangeSubtitleVariant: (id: number | null) => void;
+  subtitlesVariants: SubtitleVariantT[];
+  handleChangeSubtitleVariant: (language: string | null) => void;
   modalRef: HTMLDivElement | null;
 };
 
 export const SubtitleSelect: FC<SubtitleSelectProps> = ({
-  subtitlesVarinats,
+  subtitlesVariants,
   handleChangeSubtitleVariant,
   modalRef,
 }) => {
   const modal = useModal();
 
-  const onSelect = (id: null | number) => {
-    handleChangeSubtitleVariant(id);
+  const onSelect = (language: string | null) => {
+    handleChangeSubtitleVariant(language);
     modal.closeModal();
   };
 
@@ -41,11 +41,11 @@ export const SubtitleSelect: FC<SubtitleSelectProps> = ({
         className="mr-6 "
       >
         <div>
-          {subtitlesVarinats.map((sub) => (
+          {subtitlesVariants.map((sub) => (
             <SettingsItem
-              key={sub.id}
-              label={sub.language}
-              onClick={() => onSelect(sub.id)}
+              key={sub.language}
+              label={LABELS[sub.language as keyof typeof LABELS] ?? ''}
+              onClick={() => onSelect(sub.language)}
             />
           ))}
           <SettingsItem label="Отключить" onClick={() => onSelect(null)} />
@@ -54,3 +54,8 @@ export const SubtitleSelect: FC<SubtitleSelectProps> = ({
     </Popover>
   );
 };
+
+const LABELS = {
+  en: 'Английский',
+  ru: 'Русский',
+} as const;

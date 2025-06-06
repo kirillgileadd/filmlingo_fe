@@ -1,9 +1,33 @@
 import { useEffect } from 'react';
-import { PlayerKeyboadrControlRepository } from './types';
+import { PlayerKeyboardControlRepository } from './types';
+import { SubtitleT } from '@/src/entities/subtitle';
 
-export const usePlayerKeyboadrControl = (
-  repository: PlayerKeyboadrControlRepository,
+export const usePlayerKeyboardControl = (
+  repository: PlayerKeyboardControlRepository,
 ) => {
+  function findClosestSubtitle(
+    subtitles: SubtitleT[],
+    currentTime: number,
+  ): SubtitleT | null {
+    const active = subtitles.find(
+      (sub) => sub.startSeconds <= currentTime && currentTime <= sub.endSeconds,
+    );
+
+    if (active) return active;
+
+    let lastEnded: SubtitleT | null = null;
+    for (const sub of subtitles) {
+      if (sub.endSeconds < currentTime) {
+        if (!lastEnded || sub.endSeconds > lastEnded.endSeconds) {
+          lastEnded = sub;
+        }
+      }
+    }
+    if (lastEnded) return lastEnded;
+
+    return null;
+  }
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!repository.videoRef.current) return;
@@ -19,6 +43,22 @@ export const usePlayerKeyboadrControl = (
           break;
 
         case 'ArrowLeft':
+          if ((event.ctrlKey || event.metaKey) && repository.subtitlesQuery) {
+            const currentTime = repository.videoRef.current.currentTime;
+
+            const currentSub = findClosestSubtitle(
+              repository.subtitlesQuery,
+              currentTime,
+            );
+
+            if (currentSub) {
+              repository.videoRef.current.currentTime =
+                currentSub.startSeconds + 0.01;
+              repository.setCurrentTime(currentSub.startSeconds + 0.01);
+            }
+            break;
+          }
+
           const newTimeBackward = Math.max(
             repository.videoRef.current.currentTime - 10,
             0,

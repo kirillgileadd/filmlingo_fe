@@ -19,7 +19,7 @@ export const useRemoveUserWord = () => {
       toast.success('Слово успешно удалено из словаря');
     },
     onError: () => {
-      toast.success('Что-то пошло не так');
+      toast.error('Что-то пошло не так');
     },
   });
 };

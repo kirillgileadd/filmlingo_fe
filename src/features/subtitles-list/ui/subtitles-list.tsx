@@ -11,6 +11,10 @@ type SubtitlesListProps = {
     word: string,
     sourceContext: string,
     index: number,
+    translate: string | null,
+    ai_translate: string | null,
+    ai_translate_comment: string | null,
+    language: string,
     phrases?: SubtitlePhraseT[] | null,
   ) => ReactNode;
   currentTime: number;
@@ -25,16 +29,18 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
   subtitleListRepository,
   subtitles,
 }) => {
-  const getCurrentSubtitles = (track: SubtitleT[]) => {
-    return track?.filter((subtitle) => {
-      return (
-        currentTime >= subtitle.startSeconds &&
-        currentTime <= subtitle.endSeconds
-      );
-    });
+  const getCurrentSubtitle = (track: SubtitleT[]) => {
+    return (
+      track?.find((subtitle) => {
+        return (
+          currentTime >= subtitle.startSeconds &&
+          currentTime <= subtitle.endSeconds
+        );
+      }) ?? null
+    );
   };
 
-  const currentSubtitles = getCurrentSubtitles(subtitles);
+  const currentSubtitle = getCurrentSubtitle(subtitles);
 
   return (
     <div
@@ -48,22 +54,31 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
           <Loader2 className="animate-spin" />
         </div>
       ) : (
-        currentSubtitles.map((subtitle) => (
+        currentSubtitle && (
           <div
             onMouseEnter={subtitleListRepository.pauseVideo}
-            // onMouseLeave={subtitleListRepository.playVideo}
-            key={subtitle.id}
+            onMouseLeave={subtitleListRepository.playVideo}
+            key={currentSubtitle.id}
             className="pt-3"
           >
             <div className="subtitle py-2 px-4 rounded bg-black bg-opacity-50">
-              {subtitle.text
+              {currentSubtitle.text
                 .split(/\s+|\n+/)
                 .map((word, index) =>
-                  renderSubtitle(word, subtitle.text, index, subtitle?.phrases),
+                  renderSubtitle(
+                    word,
+                    currentSubtitle.text,
+                    index,
+                    currentSubtitle.translate,
+                    currentSubtitle.ai_translate,
+                    currentSubtitle.ai_translate_comment,
+                    currentSubtitle.language,
+                    currentSubtitle?.phrases,
+                  ),
                 )}
             </div>
           </div>
-        ))
+        )
       )}
     </div>
   );

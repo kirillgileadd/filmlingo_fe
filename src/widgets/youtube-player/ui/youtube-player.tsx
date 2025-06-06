@@ -102,9 +102,23 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
           currentTime={currentTime}
           subtitleListRepository={{ pauseVideo, playVideo }}
           subtitles={youtubeSubtitles ?? []}
-          renderSubtitle={(word, sourceContext, index) => (
+          renderSubtitle={(
+            word,
+            sourceContext,
+            index,
+            translate,
+            ai_translate,
+            ai_translate_comment,
+            language,
+            phrases,
+          ) => (
             <TranslateTextHoverCard
               key={index}
+              phrases={phrases}
+              language={language}
+              translate={translate}
+              ai_translate={ai_translate}
+              ai_translate_comment={ai_translate_comment}
               sourceContext={sourceContext}
               word={word}
               renderAddWord={({ sourceContext, translation, original }) => (

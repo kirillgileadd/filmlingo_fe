@@ -9,7 +9,7 @@ export const useAddWord = () => {
   return useMutation<AddWordResT, AddWordErrorT, AddWordBodyT>({
     mutationFn: async (body: AddWordBodyT) => {
       if (!canUpdate) {
-        throw new Error('Авторизуйся ');
+        return Promise.reject(new Error('Вы не авторизованны'));
       }
 
       const _body = validateWordFn(body);
@@ -18,6 +18,9 @@ export const useAddWord = () => {
       const response = await authorizedApiClient.post('/words/add', _body);
 
       return response.data;
+    },
+    onError: (error) => {
+      console.error('Ошибка при добавлении слова:', error);
     },
   });
 };

@@ -3,38 +3,26 @@
 import { FC, ReactNode } from 'react';
 
 import clsx from 'clsx';
-import { useAuthModal } from '@/src/widgets/auth';
-import { UserMenu } from '@/src/widgets/user-menu';
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { ConfirmEmail } from '@/src/features/confirm-email';
 import { MobileMenu } from '@/src/widgets/mobile-menu';
 import { Header } from '@/src/widgets/header';
-import { appSessionStore } from '@/src/shared/session';
-import { Button } from '@/src/shared/components/ui/button';
+import dynamic from 'next/dynamic';
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+
+const HeaderActions = dynamic(() => import('./header-actions'), {
+  ssr: false,
+});
 
 type MainLayoutProps = {
   className?: string;
   children: ReactNode;
 };
 
-const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
-  const session = appSessionStore.useSession();
-  const authModal = useAuthModal();
-
+export const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
   return (
     <div className={clsx('relative min-h-screen', className)}>
       <ConfirmEmail />
-      <Header
-        actions={
-          <>
-            {session ? (
-              <UserMenu />
-            ) : (
-              <Button onClick={authModal.openAuth}>Войти</Button>
-            )}
-          </>
-        }
-      />
+      <Header actions={<HeaderActions />} />
       <ProgressBar
         height="2px"
         color="white"
@@ -46,5 +34,3 @@ const MainLayout: FC<MainLayoutProps> = ({ className, children }) => {
     </div>
   );
 };
-
-export default MainLayout;

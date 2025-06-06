@@ -8,12 +8,13 @@ export const canAddWord = (isAuth?: boolean) => {
 
 export const useCanAddWord = () => {
   const isAuth = !!appSessionStore.useSession();
+  console.log(isAuth);
   return canAddWord(isAuth);
 };
 
 export const useValidateAddWord = () => {
   const cleanWord = (word: string) =>
-    word.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '').toLocaleLowerCase();
+    word.replace(/[^a-zA-Zа-яА-ЯёЁ\s']/g, '').toLocaleLowerCase();
 
   return (body: Partial<AddWordBodyT>) => {
     const original = body.original ? cleanWord(body.original) : '';

@@ -4,6 +4,7 @@ import { appSessionStore } from '@/src/shared/session';
 
 type AuthModalContextType = {
   openAuth: () => Promise<void>;
+  opened: boolean;
 };
 
 const AuthModalContext = createContext<AuthModalContextType | undefined>(
@@ -19,6 +20,8 @@ export const AuthModalProvider = ({
   const [modalProps, setModalProps] = useState<{ onClose: () => void }>();
 
   const modal = modalProps ? <AuthModal {...modalProps} /> : undefined;
+
+  const opened = !!modalProps;
 
   useEffect(() => {
     if (session) {
@@ -37,7 +40,7 @@ export const AuthModalProvider = ({
   };
 
   return (
-    <AuthModalContext.Provider value={{ openAuth }}>
+    <AuthModalContext.Provider value={{ openAuth, opened }}>
       {children}
       {modal}
     </AuthModalContext.Provider>

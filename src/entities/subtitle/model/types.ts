@@ -14,11 +14,14 @@ export type SubtitleT = {
   id: number;
   language: string;
   phrases: SubtitlePhraseT[] | null;
+  translate: string | null;
   startTime: string | null;
   text: string;
   updatedAt: string | null;
   startSeconds: number;
   endSeconds: number;
+  ai_translate: string | null;
+  ai_translate_comment: string | null;
 };
 
 export interface SubtitleYoutubeT {

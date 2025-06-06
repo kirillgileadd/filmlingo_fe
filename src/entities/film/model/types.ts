@@ -9,7 +9,6 @@ export type FilmT = {
 };
 
 export type SubtitleVariantT = {
-  id: number;
   language: string;
   filmId: number;
 };

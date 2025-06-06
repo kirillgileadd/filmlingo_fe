@@ -22,8 +22,8 @@ export const AddWordButton: FC<AddWordButtonProps> = ({
   const canAddWord = useCanAddWord();
   const addWordMutation = useAddWord();
 
-  const handleAddWord = useCallback(async () => {
-    await addWordMutation.mutateAsync({ original, sourceContext, translation });
+  const handleAddWord = useCallback(() => {
+    addWordMutation.mutate({ original, sourceContext, translation });
   }, [addWordMutation, original, sourceContext, translation]);
 
   const renderButton = useMemo(() => {
