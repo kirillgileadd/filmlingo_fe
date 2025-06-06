@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'Filmlingo',
     images: [
       {
-        url: 'https://filmlingo.ru/og-image.png',
+        url: 'https://filmlingo.ru/og-image.png?v=2',
         width: 1200,
         height: 630,
         alt: 'Filmlingo – фильмы с умными субтитрами',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: 'Filmlingo – фильмы с умными субтитрами',
     description:
       'Смотри фильмы на английском языке и улучшай навыки с помощью ChatGPT.',
-    images: ['https://filmlingo.ru/og-image.png'],
+    images: ['https://filmlingo.ru/og-image.png?v=2'],
   },
   icons: {
     icon: [
