@@ -14,7 +14,9 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // close popup after OAuth login
-    window.close();
+    if (window.opener && window.location.pathname.includes('/success')) {
+      window.close();
+    }
   }, []);
 
   return (

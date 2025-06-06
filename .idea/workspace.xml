@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/providers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,7 @@
       <workItem from="1748970233360" duration="2138000" />
       <workItem from="1749014261344" duration="6653000" />
       <workItem from="1749104055459" duration="7917000" />
-      <workItem from="1749203717460" duration="6194000" />
+      <workItem from="1749203717460" duration="8918000" />
     </task>
     <servers />
   </component>
