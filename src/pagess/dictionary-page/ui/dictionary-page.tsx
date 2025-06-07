@@ -15,6 +15,7 @@ import { WordsTab } from './words-tab';
 import Link from 'next/link';
 import { ROUTES } from '@/src/shared/lib/const';
 import { Button } from '@/src/shared/components/ui/button';
+import { PhrasesTab } from '@/src/pagess/dictionary-page/ui/phrases-tab';
 
 const enum TabsVariants {
   WORDS = 'words',
@@ -57,7 +58,9 @@ export const DictionaryPage: FC<DictionaryPageProps> = ({ className }) => {
           <TabsContent value={TabsVariants.WORDS}>
             <WordsTab />
           </TabsContent>
-          <TabsContent value={TabsVariants.PHRASES}>PHRASES</TabsContent>
+          <TabsContent value={TabsVariants.PHRASES}>
+            <PhrasesTab />
+          </TabsContent>
         </Tabs>
       </Container>
     </div>

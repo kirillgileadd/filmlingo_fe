@@ -53,6 +53,7 @@ authorizedApiClient.interceptors.response.use(
   (config) => config,
   async (error) => {
     const request = error.config;
+    console.log(error, 'erin interceptor');
     if (error.response.status === 401) {
       const token = appSessionStore.getSessionToken();
 
@@ -64,6 +65,6 @@ authorizedApiClient.interceptors.response.use(
       }
       appSessionStore.removeSession();
     }
-    throw new Error();
+    throw error;
   },
 );

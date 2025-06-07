@@ -22,6 +22,7 @@ import { PlayerFullscreenButton } from './player-fullscreen-button';
 import { PlayerSettings } from './player-settings';
 import { PlayerTimeDuration } from './player-time-duration';
 import { useGetSubtitlesQuery } from '@/src/entities/subtitle';
+import { AddPhraseButton } from '@/src/features/add-phrase';
 
 interface VideoPlayerProps {
   videoVariants: VideoVariantT[];
@@ -137,6 +138,22 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                   sourceContext={sourceContext}
                   translation={translation}
                   original={original}
+                  renderAuthForm={(trigger) => (
+                    <div onClick={authModal.openAuth}>{trigger}</div>
+                  )}
+                />
+              )}
+              renderAddPhrase={({
+                sourceContext,
+                translation,
+                original,
+                type,
+              }) => (
+                <AddPhraseButton
+                  sourceContext={sourceContext}
+                  translation={translation}
+                  original={original}
+                  type={type}
                   renderAuthForm={(trigger) => (
                     <div onClick={authModal.openAuth}>{trigger}</div>
                   )}

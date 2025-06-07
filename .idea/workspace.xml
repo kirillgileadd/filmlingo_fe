@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/words-tab.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pagess/in-development-page/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pagess/in-development-page/ui/in-development-page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/chat-gpt.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/api/use-add-phrase.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/model/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/model/use-can-add-phrase.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/ui/add-phrase-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/phrases-tab.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/youtube/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/youtube/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/add-word/api/use-add-word.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/add-word/api/use-add-word.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagess/learning-words-page/ui/learning-words-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/learning-words-page/ui/learning-words-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/feedback/ui/feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/feedback/ui/feedback.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/words-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/words-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,25 +50,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/web2/filmlingo-bot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\web2\\filmlingo-fe\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\web2\\filmlingo-fe\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/web2/filmlingo-fe/src/features",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "D:\\web2\\filmlingo-fe\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "D:\\web2\\filmlingo-fe\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web2\filmlingo-fe\src\features" />
       <recent name="D:\web2\filmlingo-fe\src\shared" />
       <recent name="D:\web2\filmlingo-fe\src\shared\lib" />
       <recent name="D:\web2\filmlingo-fe\src\entities" />
@@ -122,7 +130,7 @@
       <workItem from="1749104055459" duration="7917000" />
       <workItem from="1749203717460" duration="13105000" />
       <workItem from="1749277581540" duration="1144000" />
-      <workItem from="1749298607609" duration="4353000" />
+      <workItem from="1749298607609" duration="6049000" />
     </task>
     <servers />
   </component>
