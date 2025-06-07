@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/words-tab.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pagess/in-development-page/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pagess/in-development-page/ui/in-development-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/youtube/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/youtube/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pagess/learning-words-page/ui/learning-words-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/learning-words-page/ui/learning-words-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/feedback/ui/feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/feedback/ui/feedback.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +48,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/web2/avito-parser&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/web2/filmlingo-bot&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -114,6 +121,8 @@
       <workItem from="1749014261344" duration="6653000" />
       <workItem from="1749104055459" duration="7917000" />
       <workItem from="1749203717460" duration="13105000" />
+      <workItem from="1749277581540" duration="1144000" />
+      <workItem from="1749298607609" duration="4353000" />
     </task>
     <servers />
   </component>

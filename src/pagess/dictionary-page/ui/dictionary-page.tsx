@@ -1,108 +1,64 @@
 'use client';
 
 import { FC, useState } from 'react';
-
-import {
-  SORT_WORDS_SELECT_ITEMS,
-  SortWordsSelect,
-  useGetUserWords,
-  WordCard,
-} from '@/src/entities/word';
-import { PaginationCommon } from '@/src/shared/components/common/pagination-common';
 import { Container } from '@/src/shared/components/ui/container';
 import clsx from 'clsx';
-import { DictionaryPageError } from './dictionary-page-error';
 import { DictionaryPageNoAuth } from './dictionary-page-no-auth';
-import { DictionaryPageSkeleton } from './dictionary-page-skeleton';
-
-import styles from './dictionary-page.module.scss';
-import { Button } from '@/src/shared/components/ui/button';
+import { appSessionStore } from '@/src/shared/session';
+import { Tabs } from '@radix-ui/react-tabs';
+import {
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/src/shared/components/ui/tabs';
+import { WordsTab } from './words-tab';
 import Link from 'next/link';
 import { ROUTES } from '@/src/shared/lib/const';
-import { appSessionStore } from '@/src/shared/session';
+import { Button } from '@/src/shared/components/ui/button';
+
+const enum TabsVariants {
+  WORDS = 'words',
+  PHRASES = 'phrases',
+}
 
 type DictionaryPageProps = {
   className?: string;
 };
 
 export const DictionaryPage: FC<DictionaryPageProps> = ({ className }) => {
-  const [sort, setSort] = useState(SORT_WORDS_SELECT_ITEMS[0]);
-  const [page, setPage] = useState(1);
-  const pageSize = 20;
-
   const session = appSessionStore.useSession();
 
-  const wordsQuery = useGetUserWords(
-    {
-      page,
-      pageSize,
-      order: sort.order,
-      orderValue: sort.value,
-    },
-    !!session,
+  const [tabValue, setTabValue] = useState<TabsVariants | string>(
+    TabsVariants.WORDS,
   );
-
-  if (wordsQuery.isLoading) {
-    return <DictionaryPageSkeleton className={className} />;
-  }
 
   if (!session) {
     return <DictionaryPageNoAuth />;
   }
-
-  if (wordsQuery.error) {
-    return <DictionaryPageError />;
-  }
-
-  if (wordsQuery.data?.rows.length === 0) {
-    return (
-      <div className={clsx('pb-10', className)}>
-        <Container className="m-auto">
-          <div>
-            <p className="text-xl mb-4">Вы еще не добавили слова в словарик</p>
-            <Link href={ROUTES.HOME}>
-              <Button>Начать смотреть !</Button>
-            </Link>
-          </div>
-        </Container>
-      </div>
-    );
-  }
-
-  if (!wordsQuery.data) return null;
 
   return (
     <div className={clsx('pb-10', className)}>
       <Container className="m-auto" size="small">
         <div className="flex justify-between mb-4">
           <h3 className="text-3xl">Мой словарик</h3>
-          <div className="flex gap-x-4">
-            <SortWordsSelect value={sort} onChange={setSort} />
-            <Link href={ROUTES.LEARNING}>
-              <Button>Тренировать слова</Button>
-            </Link>
-          </div>
+          <Link href={ROUTES.LEARNING}>
+            <Button>Тренировать слова</Button>
+          </Link>
         </div>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Слово</th>
-              <th>Фраза</th>
-              <th>Дата добавления</th>
-              <th>Удалить</th>
-            </tr>
-          </thead>
-          <tbody>
-            {wordsQuery.data?.rows.map((word) => (
-              <WordCard key={word.id} word={word} />
-            ))}
-          </tbody>
-        </table>
-        <PaginationCommon
-          currentPage={page}
-          onPageChange={setPage}
-          totalPages={wordsQuery.data.totalPages}
-        />
+        <Tabs
+          value={tabValue}
+          onValueChange={setTabValue}
+          defaultValue={TabsVariants.WORDS}
+        >
+          <TabsList className="grid w-full grid-cols-2 mb-4">
+            <TabsTrigger value={TabsVariants.WORDS}>Слова</TabsTrigger>
+            <TabsTrigger value={TabsVariants.PHRASES}>Фразы</TabsTrigger>
+          </TabsList>
+          <TabsContent value={TabsVariants.WORDS}>
+            <WordsTab />
+          </TabsContent>
+          <TabsContent value={TabsVariants.PHRASES}>PHRASES</TabsContent>
+        </Tabs>
       </Container>
     </div>
   );

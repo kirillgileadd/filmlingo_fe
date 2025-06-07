@@ -1,5 +1,5 @@
-import { YoutubePage } from '@/src/pagess/youtube-page';
+import { InDevelopmentPage } from '@/src/pagess/in-development-page';
 
 export default function YouTube() {
-  return <YoutubePage />;
+  return <InDevelopmentPage />;
 }
