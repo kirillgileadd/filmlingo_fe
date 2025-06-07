@@ -2,11 +2,12 @@ import { AddWordButton } from '@/src/features/add-word';
 import { SubtitlesList } from '@/src/features/subtitles-list';
 import { TranslateTextHoverCard } from '@/src/features/tanslate-text';
 import { XIcon } from 'lucide-react';
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import YouTube, { YouTubePlayer, YouTubeProps } from 'react-youtube';
 import { SubtitleT } from '@/src/entities/subtitle';
 import { YoutubePlayerSettings } from '@/src/widgets/youtube-player/ui/youtube-player-settings';
 import { useAuthModal } from '@/src/widgets/auth';
+import { AddPhraseButton } from '@/src/features/add-phrase';
 
 export type YoutubePlayerProps = {
   videoId: string;
@@ -126,6 +127,22 @@ export const YoutubePlayer: FC<YoutubePlayerProps> = ({
                   sourceContext={sourceContext}
                   translation={translation}
                   original={original}
+                  renderAuthForm={(trigger) => (
+                    <div onClick={authModal.openAuth}>{trigger}</div>
+                  )}
+                />
+              )}
+              renderAddPhrase={({
+                sourceContext,
+                translation,
+                original,
+                type,
+              }) => (
+                <AddPhraseButton
+                  sourceContext={sourceContext}
+                  translation={translation}
+                  original={original}
+                  type={type}
                   renderAuthForm={(trigger) => (
                     <div onClick={authModal.openAuth}>{trigger}</div>
                   )}

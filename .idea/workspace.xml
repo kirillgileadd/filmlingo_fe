@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/chat-gpt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/api/use-add-phrase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/model/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/model/use-can-add-phrase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/add-phrase/ui/add-phrase-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/phrases-tab.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/phrase/api/use-get-user-phrases.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/add-word/api/use-add-word.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/add-word/api/use-add-word.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/tanslate-text/ui/translate-text-hover-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/dictionary-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/words-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pagess/dictionary-page/ui/words-tab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/api/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/youtube-player/ui/youtube-player.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +119,7 @@
       <workItem from="1749104055459" duration="7917000" />
       <workItem from="1749203717460" duration="13105000" />
       <workItem from="1749277581540" duration="1144000" />
-      <workItem from="1749298607609" duration="6049000" />
+      <workItem from="1749298607609" duration="6718000" />
     </task>
     <servers />
   </component>

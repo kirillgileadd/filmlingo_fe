@@ -9,7 +9,6 @@ import {
 import { DictionaryPageSkeleton } from './dictionary-page-skeleton';
 import { DictionaryPageError } from './dictionary-page-error';
 import { appSessionStore } from '@/src/shared/session';
-import { Container } from '@/src/shared/components/ui/container';
 import Link from 'next/link';
 import { ROUTES } from '@/src/shared/lib/const';
 import { Button } from '@/src/shared/components/ui/button';
