@@ -20,6 +20,7 @@ type SubtitlesListProps = {
   currentTime: number;
   subtitleListRepository: SubtitlesListRepository;
   subtitles: SubtitleT[];
+  subtitleShift?: number;
 };
 
 export const SubtitlesList: FC<SubtitlesListProps> = ({
@@ -27,14 +28,15 @@ export const SubtitlesList: FC<SubtitlesListProps> = ({
   currentTime,
   renderSubtitle,
   subtitleListRepository,
+  subtitleShift = 0,
   subtitles,
 }) => {
   const getCurrentSubtitle = (track: SubtitleT[]) => {
     return (
       track?.find((subtitle) => {
         return (
-          currentTime >= subtitle.startSeconds &&
-          currentTime <= subtitle.endSeconds
+          currentTime >= subtitle.startSeconds + subtitleShift &&
+          currentTime <= subtitle.endSeconds + subtitleShift
         );
       }) ?? null
     );

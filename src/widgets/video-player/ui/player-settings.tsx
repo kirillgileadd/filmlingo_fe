@@ -17,12 +17,15 @@ import {
   SlidersHorizontalIcon,
   SubtitlesIcon,
 } from 'lucide-react';
+import { SubtitleTimeShift } from '@/src/features/subtitle-settings';
 
 type PlayerSettingsProps = {
   className?: string;
   qualityItems: VideoVariantT[];
   currentQualityLabel: string;
+  subtitleShift: number;
   handleChangeQuality: (id: number) => void;
+  handleChangeSubtitleShift: (value: number) => void;
   modalRef: HTMLDivElement | null;
 };
 
@@ -33,8 +36,10 @@ enum MenuItemEnum {
 
 export const PlayerSettings: FC<PlayerSettingsProps> = ({
   qualityItems,
+  subtitleShift,
   currentQualityLabel,
   handleChangeQuality,
+  handleChangeSubtitleShift,
   modalRef,
 }) => {
   const settingsOpen = useModal();
@@ -44,14 +49,26 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
     setMenuItem(item);
   };
 
+  const handleTogglePopover = () => {
+    settingsOpen.toggleModal();
+    setTimeout(() => {
+      setMenuItem(null);
+    }, 300);
+  };
+
   const handleSelect = (id: number) => {
     handleChangeQuality(id);
     setMenuItem(null);
     settingsOpen.closeModal();
   };
 
+  //TODO придумать как организовать меню
   const MENU_ITEMS = [
-    { label: 'Cубтитры', value: MenuItemEnum.SUBTITLES, icon: SubtitlesIcon },
+    {
+      label: 'Сдвиг субтитров',
+      value: MenuItemEnum.SUBTITLES,
+      icon: SubtitlesIcon,
+    },
     {
       label: `Качетство (${currentQualityLabel})`,
       value: MenuItemEnum.QUALITY,
@@ -68,7 +85,7 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
   ));
 
   return (
-    <Popover open={settingsOpen.isOpen} onOpenChange={settingsOpen.toggleModal}>
+    <Popover open={settingsOpen.isOpen} onOpenChange={handleTogglePopover}>
       <PopoverTrigger className="p-3">
         <SettingsIcon className="text-foreground" size={24} />
       </PopoverTrigger>
@@ -93,7 +110,10 @@ export const PlayerSettings: FC<PlayerSettingsProps> = ({
               />
             )}
             {menuItem === MenuItemEnum.SUBTITLES && (
-              <SettingsItem label="Настройки субтитров" />
+              <SubtitleTimeShift
+                value={subtitleShift}
+                onChange={handleChangeSubtitleShift}
+              />
             )}
           </div>
         ) : (

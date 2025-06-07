@@ -46,6 +46,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const controls = usePlaerControls();
   const core = usePlayerCore(videoId, videoVariant.currentVideoVariant);
 
+  const [subtitleShift, setSubtitleShift] = useState(0);
+
   useSetTimeToStorage({
     videoId,
     videoRef: core.videoRef,
@@ -106,6 +108,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         <SubtitlesList
           subtitles={subtitlesQuery.data ?? []}
           currentTime={core.currentTime}
+          subtitleShift={subtitleShift}
           subtitleListRepository={{
             pauseVideo: core.pauseVideo,
             playVideo: () => {
@@ -195,6 +198,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             subtitlesVariants={subtitlesVariants ?? []}
           />
           <PlayerSettings
+            subtitleShift={subtitleShift}
+            handleChangeSubtitleShift={(value) => setSubtitleShift(value)}
             modalRef={core.modalRef.current ?? null}
             qualityItems={videoVariants}
             handleChangeQuality={videoVariant.handleChangeQuality}

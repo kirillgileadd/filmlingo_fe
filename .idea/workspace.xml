@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803f003d-55d6-4300-a017-97b4cacdbbe3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deply.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deply.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/subtitle-settings/ui/subtitle-time-shift.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/subtitle-settings/ui/subtitle-time-shift.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/subtitles-list/ui/subtitles-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/subtitles-list/ui/subtitles-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/player-settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/player-settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/video-player/ui/video-player.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +121,7 @@
       <workItem from="1749203717460" duration="13105000" />
       <workItem from="1749277581540" duration="1144000" />
       <workItem from="1749298607609" duration="7178000" />
-      <workItem from="1749323835975" duration="769000" />
+      <workItem from="1749323835975" duration="3161000" />
     </task>
     <servers />
   </component>
